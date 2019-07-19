@@ -1,0 +1,352 @@
+<!doctype html>
+<html>
+	<head><meta name="generator" content="Hexo 3.9.0">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>2019년 2월 세미나</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/simple.min.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/pdf.css' : 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/paper.min.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- 시작 부분 -->
+				<section>
+					<section>
+						<h6>2019년 2월 세미나 자료</h6>
+					</section>
+					<section>
+						<h6>순서</h6>
+						<ol>
+							<li>Graphql - Spring 연동</li>
+							<li>Full Text index 실습</li>
+						</ol>
+					</section>
+				</section>
+				<!-- Graphql 부분 -->
+				<section>
+					<section>
+						Graphql - Spring 연동
+					</section>
+					<section>
+						<h6>Graphql 이란?</h6>
+						<p class="fragment fade-in-then-out" data-fragment-index="2">
+							GraphQL은 API를 위한 쿼리 언어 입니다.
+						</p>
+						<pre class="fragment fade-in-then-out" data-fragment-index="3"><code data-trim data-noescape>
+							query {
+							    account(id: "1") {
+							        username
+							        email
+							        firstName
+							        lastName
+							        friends {
+							            firstName
+							            username
+							        }
+							    }
+							}
+						</code></pre>
+					</section>
+					<section>
+						<p>Graphql vs restapi</p>
+						<img src="index/images/graphql_restapi.png" width="50%" height="50%">
+					</section>
+					<section>
+						<h6>연습해보기</h6>
+						<a href="https://graphql-tryout.herokuapp.com/graphql" target="_blank">https://graphql-tryout.herokuapp.com/graphql</a>
+					</section>
+					<section>
+						<h6>Spring에 연동해봅시다.</h6>
+					</section>
+					<section>
+						<h6>예제소스 다운로드</h6>
+						<pre><code lang="shell" data-trim data-noescape>git clone https://github.com/spring-guides/gs-accessing-data-mysql.git</code></pre>
+					</section>
+					<section>
+						<h6>docker 생성</h6>
+						<pre><code lang="shell" data-trim data-noescape>docker run -d \
+--name spring-jpa-test \
+-e MYSQL_ROOT_PASSWORD=root \
+-e MYSQL_DATABASE=db_example \
+-e MYSQL_USER=springuser \
+-e MYSQL_PASSWORD=ThePassword \
+-p 3306:3306 \
+mariadb:latest \
+--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code></pre>
+					</section>
+					<section>
+						<h6>application.property 수정</h6>
+						<pre><code lang="shell" data-trim data-noescape>spring.jpa.hibernate.ddl-auto=update</code></pre>
+						
+					</section>
+
+					<section>
+						<h6>pom.xml dependency 추가</h6>
+						<pre><code lang="xml"><!-- https://mvnrepository.com/artifact/io.leangen.graphql/spqr -->
+<dependency>
+	<groupid>io.leangen.graphql</groupid>
+	<artifactid>spqr</artifactid>
+	<version>0.9.9</version>
+</dependency></code></pre>
+					</section>
+					<section>
+						<h6>User.java 수정</h6>
+						<pre><code lang="shell" data-trim data-noescape>@Entity // This tells Hibernate to make a table out of this class
+public class User {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GraphQLQuery(name = "id", description = "A user's id")
+    private Integer id;
+    @GraphQLQuery(name = "name", description = "A user's name")
+    private String name;
+    @GraphQLQuery(name = "email", description = "A user's email")
+    private String email;
+
+    @Lob
+    @GraphQLQuery(name = "comment", description = "user massage")
+    private String comment;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date create_time;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Date getCreate_time() {
+		return create_time;
+	}
+
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
+	}
+
+
+}</code></pre>
+					</section>
+					<section>
+						<h6>MainService.java 추가</h6>
+<pre><code lang="java" data-trim data-noescape>
+	@Service
+	public class MainService {
+
+		private final UserRepository userRepository;
+
+		public MainService(UserRepository userRepository) {
+			this.userRepository = userRepository;
+		}
+
+		@GraphQLQuery(name = "users")
+		public List<user> getUsers() {
+			return (List<user>)userRepository.findAll();
+		}
+
+		@GraphQLQuery(name = "user")
+		public Optional<user> getUserById(@GraphQLArgument(name = "id") Integer id) {
+	        return userRepository.findById(id);
+	    }
+
+		@GraphQLMutation(name = "saveUser")
+		public User saveUser(@GraphQLArgument(name = "user") User user) {
+			return userRepository.save(user);
+		}
+
+		@GraphQLMutation(name = "deleteUser")
+		public void deleteUser(@GraphQLArgument(name = "id") Integer id) {
+			userRepository.deleteById(id);
+		}
+
+	}
+</user></user></user></code></pre>
+					</section>
+					<section>
+						<h6>MainController.java 수정</h6>
+						<pre><code lang="java" data-trim data-noescape>@RestController
+public class MainController {
+	private final GraphQL graphQL;
+
+	public MainController (MainService mainService) {
+		GraphQLSchema schema = new GraphQLSchemaGenerator()
+                .withResolverBuilders(
+                        new AnnotatedResolverBuilder())
+                .withOperationsFromSingleton(mainService)
+                .withValueMapperFactory(new JacksonValueMapperFactory())
+                .generate();
+        graphQL = GraphQL.newGraphQL(schema).build();
+	}
+
+
+	@PostMapping(value = "/graphql", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public Map<string, object> graphql(@RequestBody Map<string, string> request, HttpServletRequest raw) {
+        ExecutionResult executionResult = graphQL.execute(ExecutionInput.newExecutionInput()
+                .query(request.get("query"))
+                .operationName(request.get("operationName"))
+                .context(raw)
+                .build());
+        return executionResult.toSpecification();
+    }
+
+}</string,></string,></code></pre>
+					</section>
+					<section>
+						<h6>Spring 실행</h6>
+						<pre><code lang="shell" data-trim data-noescape>cd gs-accessing-data-mysql
+mvn spring-boot:run
+						</code></pre>
+					</section>
+					<section>
+						<h6>예제 데이터 삽입</h6>
+	<pre><code lang="shell" data-trim data-noescape>wget https://raw.githubusercontent.com/gadian88/graphql-test/master/generatedata.sql
+cat generatedata.sql | docker exec -i  spring-jpa-test /usr/bin/mysql -u root --password=root db_example
+	</code></pre>
+					</section>
+					<section>
+						<h6>페이징 처리를 합시다</h6>
+						<h6 class="fragment fade-in" data-fragment-index="1">UserRepository.java 수정</h6>
+						<pre class="fragment fade-in" data-fragment-index="1"><code lang="java" data-trim data-noescape>public interface UserRepository extends CrudRepository<user, integer> {
+	Page<user> findAll(Pageable pageable);
+}
+</user></user,></code></pre>
+						<h6 class="fragment fade-in" data-fragment-index="2">MainService.java 수정</h6>
+<pre class="fragment fade-in" data-fragment-index="2"><code lang="java" data-trim data-noescape>@GraphQLQuery(name = "users")
+	public List<user> getUsers(
+			@GraphQLArgument(name = "page") Integer page,
+			@GraphQLArgument(name = "size") Integer size
+			) {
+		return userRepository.findAll(PageRequest.of(page, size, Sort.by("id"))).getContent();
+	}
+</user></code></pre>
+					</section>
+
+				</section>
+
+				<!-- Full Text Index 부분 -->
+				<section>
+					<section>
+						<h6>Full Text index 실습</h6>
+					</section>
+					<section>
+						<h6>Full Text Index 란?<h6>
+						<p>Full text index는 full text serach를 위한 index입니다.</p>
+					</h6></h6></section>
+					<section>
+						<p>기존의 텍스트 검색</p>
+						<pre class="fragment" data-fragment-index="1"><code lang="mysql" data-trim data-noescape>SELECT * FROM user WHERE comment LIKE '%test%'</code></pre>
+						<p class="fragment" data-fragment-index="2">
+							BUT 이런식으로 쿼리를 만들어 사용한다고 하면
+							모든 행의 문자열을 검색하기 때문에 시간이 오래 걸립니다.
+						</p>
+					</section>
+					<section>
+						<p>그럼 ElasticSearch 을 쓰죠</p>
+						<p class="fragment" data-fragment-index="1">하지만 소규모로 서비스를 한다면?</p>
+					</section>
+					<section>
+						<p>FULLTEXT 검색 방식</p>
+						<ul>
+							<li>
+								<p>자연어 검색(natural search)</p>
+								검색 문자열을 단어 단위로 분리한 후, 해당 단어 중 하나라도 포함되는 행을 찾는다.
+							</li>
+							<li>
+								<p>불린 모드 검색(boolean mode search)</p>
+								검색 문자열을 단어 단위로 분리한 후, 해당 단어가 포함되는 행을 찾는 규칙을 추가적으로 적용하여 해당 규칙에 매칭되는 행을 찾는다.
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p>mysql 에서 간단하게 Full Text Index 을 설정할수 있습니다.</p>
+						<pre><code lang="sql" data-trim data-noescape>ALTER TABLE user ADD FULLTEXT(comment);</code></pre>
+					</section>
+					<section>
+						<p>이젠 설정이 끝났으니 자연어 검색을 합니다.</p>
+						<pre><code lang="sql" data-trim data-noescape>SELECT
+name, email, comment , match(comment) against(' 그들의 관현악이며') as score
+FROME db_example.user
+WHERE match(comment) against(' 그들의 관현악이며');</code></pre>
+					</section>
+					<section>
+						<p>불린 모드 검색(boolean mode search) 이란?</p>
+						<ul>
+							<li>검색의 정확도에 따라 결과가 정렬되지 않는다.</li>
+							<li>구문 검색이 가능하다</li>
+							<li>필수(+), 예외(-), 부분(*) 연산자를 사용할 수 있다</li>
+						</ul>
+					</section>
+					<section>
+						<p>한번 불린 모드 검색을 해봅시다.</p>
+						<pre><code lang="sql" data-trim data-noescape>SELECT
+name, email, comment
+FROME db_example.user
+WHERE match(comment) against(' "그들의 관현악이며" -test' in boolean mode);</code></pre>
+					</section>
+
+				</section>
+
+
+				<section>감사합니다.</section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js' },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.min.js' },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.js', async: true },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

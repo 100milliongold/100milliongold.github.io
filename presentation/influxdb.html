@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+	<head><meta name="generator" content="Hexo 3.9.0">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>influxdb</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/simple.min.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/pdf.css' : 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/paper.min.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- 시작 부분 -->
+						<section>
+							<h6>Influxdb 을 통한 모니터링 시스템 구축</h6>
+						</section>
+						<section>
+							<p>상황</p>
+							<ol>
+								<li class="fragment" data-fragment-index="1">각 서버들의 리소스들을 실시간으로 모니터링</li>
+								<li class="fragment" data-fragment-index="2">과거 이력을 살펴볼수 있게 저장 및 관리</li>
+								<li class="fragment" data-fragment-index="3">오픈소스로 구현</li>
+							</ol>
+						</section>
+						<section>
+							<h6>해결방안</h6>
+							<ul>
+								<li>방안 1 : 상관없으니 RDBMS로 하자</li>
+								<li>방안 2 : hbase 을 이용하자</li>
+								<li>방안 3 : 파일을 통하여 로그을 적재하자</li>
+							</ul>
+						</section>
+						<section>
+							<h6>해결방안으로 찾은 방안이</h6>
+							<p>Time series database(시계열 데이터베이스)</p>
+						</section>
+						<section>
+							<h6>시계열 데이터베이스?</h6>
+							<p>시계열 데이터베이스(TSDB)는 시계열 데이터, 시간별 지수화된 번호 배열(Datetime 또는 Datetime 범위)의 처리에 최적화된 소프트웨어 시스템이다.</p>
+						</section>
+						<section>
+							<h6>TSDB 순위</h6>
+							<img src="index/images/time_series_dbms.png" alt>
+						</section>
+						<section>
+							<h6>리소스 수집 시스템 구성도</h6>
+							<img src="index/images/influx_data.png" alt>
+						</section>
+						<section>
+							<h6>docker-compose.yml 작성</h6>
+	<pre><code lang="yml" data-trim data-noescape>
+		version: '2.1'
+
+		services:
+		  influxdb:
+		    container_name: influxdb
+		    image: influxdb:latest
+		    ports:
+		      - '8086:8086'
+		    environment:
+		      - INFLUXDB_DB=alio
+		      - INFLUXDB_ADMIN_USER=root
+		      - INFLUXDB_ADMIN_PASSWORD=root
+		      - INFLUXDB_USER=telegraf
+		      - INFLUXDB_USER_PASSWORD=secretpassword
+		    networks:
+		      influx:
+		        ipv4_address: 10.18.1.2
+
+		  telegraf:
+		    container_name: telegraf
+		    image: telegraf:latest
+		    ports:
+		      - '8125:8125/udp'
+		      - '8092:8092/udp'
+		      - '8094:8094'
+		    networks:
+		      influx:
+		        ipv4_address: 10.18.1.3
+		    extra_hosts:
+		      - "influxdb:10.18.1.2"
+
+		  grafana:
+		    container_name: grafana
+		    image: grafana/grafana:latest
+		    ports:
+		      - '3000:3000'
+		    environment:
+		      - GF_SECURITY_ADMIN_PASSWORD=root
+		    networks:
+		      influx:
+		        ipv4_address: 10.18.1.4
+		    extra_hosts:
+		      - "influxdb:10.18.1.2"
+
+		networks:
+		  influx:
+		    driver: bridge
+		    ipam:
+		     config:
+		       - subnet: 10.18.1.0/16
+		         gateway: 10.18.1.1
+		</code></pre>
+						</section>
+						<section>
+							<h6>docker 생성 및 확인</h6>
+							<pre><code lang="shell" data-trim data-noescape>docker-compose up -d</code></pre>
+							<pre><code lang="shell" data-trim data-noescape>docker ps</code></pre>
+							<h6>telegraf.conf 가져오기</h6>
+							<pre><code lang="shell" data-trim data-noescape>docker cp telegraf:/etc/telegraf/telegraf.conf ~/telegraf.conf</code></pre>
+						</section>
+						<section>
+							<h6>telegraf.conf 수정</h6>
+		<pre><code lang="conf" data-trim data-noescape>
+			[[outputs.influxdb]]
+			  ## The full HTTP or UDP URL for your InfluxDB instance.
+			  ##
+			  ## Multiple URLs can be specified for a single cluster, only ONE of the
+			  ## urls will be written to each interval.
+			  # urls = ["unix:///var/run/influxdb.sock"]
+			  # urls = ["udp://127.0.0.1:8089"]
+			  <mark>urls = ["http://10.18.1.2:8086"]</mark>
+
+			  ## The target database for metrics; will be created as needed.
+			  <mark>database = "alio"</mark>
+
+			  ## If true, no CREATE DATABASE queries will be sent.  Set to true when using
+			  ## Telegraf with a user without permissions to create databases or when the
+			  ## database already exists.
+			  # skip_database_creation = false
+
+			  ## Name of existing retention policy to write to.  Empty string writes to
+			  ## the default retention policy.  Only takes effect when using HTTP.
+			  <mark>retention_policy = ""</mark>
+
+			  ## Write consistency (clusters only), can be: "any", "one", "quorum", "all".
+			  ## Only takes effect when using HTTP.
+			  # write_consistency = "any"
+
+			  ## Timeout for HTTP messages.
+			  # timeout = "5s"
+
+			  ## HTTP Basic Auth
+			  <mark>username = "telegraf"</mark>
+			  <mark>password = "secretpassword"</mark>
+		</code></pre>
+						</section>
+						<section>
+							<h6>docker 에 복사</h6>
+							<pre><code lang="yaml" data-trim data-noescape>docker cp ~/telegraf.conf telegraf:/etc/telegraf/telegraf.conf</code></pre>
+							<pre><code lang="yaml" data-trim data-noescape>docker restart telegraf</code></pre>
+						</section>
+
+						<section>
+							<h6>influxdb 에 접속</h6>
+							<pre><code lang="shell" data-trim data-noescape>docker exec -it influxdb /bin/bash</code></pre>
+							<pre><code lang="shell" data-trim data-noescape>influx</code></pre>
+						</section>
+
+						<section>
+							<h6>데이터 확인</h6>
+							<pre><code lang="shell" data-trim data-noescape>use alio</code></pre>
+							<pre><code lang="shell" data-trim data-noescape>show measurements;</code></pre>
+							<pre><code lang="shell" data-trim data-noescape>select * from cpu limit 100;</code></pre>
+						</section>
+
+						<section>
+							<h6>grafana 접속</h6>
+							<a href="http://localhost:3000" target="_blank">http://localhost:3000</a>
+							<p>id : admin / pw : root</p>
+						</section>
+
+						<section>
+							<p> grafana.com 에서 가져오겠습니다. <a href="https://grafana.com/dashboards" target="_blank">https://grafana.com/dashboards</a> </p>
+						</section>
+
+						<section>
+							감사합니다.
+						</section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js' },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.min.js' },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.js', async: true },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
