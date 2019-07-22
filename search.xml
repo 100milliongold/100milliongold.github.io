@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>java spark wordcount examples</title>
+      <link href="/2019/07/22/java-spark-wordcount-examples/"/>
+      <url>/2019/07/22/java-spark-wordcount-examples/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>pom.xml 설정</p>  <figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.spark<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spark-core_2.12<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>java example</p>  <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SparkConf sparkConf = <span class="hljs-keyword">new</span> SparkConf().setMaster(<span class="hljs-string">"local"</span>).setAppName(<span class="hljs-string">"JD Word Counter"</span>);</span><br><span class="line">JavaSparkContext sc = <span class="hljs-keyword">new</span> JavaSparkContext(sparkConf);</span><br><span class="line">JavaRDD&lt;String&gt; textFile = sc.textFile(<span class="hljs-string">"text.txt"</span>);</span><br><span class="line">JavaPairRDD&lt;String, Integer&gt; counts = textFile</span><br><span class="line">    .flatMap(s -&gt; Arrays.asList(s.split(<span class="hljs-string">" "</span>)).iterator())</span><br><span class="line">    .mapToPair(word -&gt; <span class="hljs-keyword">new</span> Tuple2&lt;&gt;(word, <span class="hljs-number">1</span>))</span><br><span class="line">    .reduceByKey((a, b) -&gt; a + b);</span><br><span class="line">counts.saveAsTextFile(<span class="hljs-string">"wordcouter"</span>);</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> server </tag>
+            
+            <tag> java </tag>
+            
+            <tag> spark </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>react proxy server 설정</title>
       <link href="/2019/07/19/react-proxy-server-%EC%84%A4%EC%A0%95/"/>
       <url>/2019/07/19/react-proxy-server-%EC%84%A4%EC%A0%95/</url>

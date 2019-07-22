@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://100milliongold.github.io/tags/spark/</loc>
+        <lastmod>2019-07-22T00:35:31.617Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://100milliongold.github.io/tags/java/</loc>
+        <lastmod>2019-07-22T00:35:31.617Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://100milliongold.github.io/tags/server/</loc>
+        <lastmod>2019-07-22T00:35:31.617Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://100milliongold.github.io/tags/javascript/</loc>
         <lastmod>2019-07-19T01:17:21.207Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -87,13 +108,6 @@
     </url>
 
     <url>
-        <loc>https://100milliongold.github.io/tags/server/</loc>
-        <lastmod>2019-07-19T00:57:07.675Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://100milliongold.github.io/tags/Netflix/</loc>
         <lastmod>2019-07-19T00:57:07.673Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -130,13 +144,6 @@
 
     <url>
         <loc>https://100milliongold.github.io/tags/spring/</loc>
-        <lastmod>2019-07-19T00:57:07.672Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://100milliongold.github.io/tags/java/</loc>
         <lastmod>2019-07-19T00:57:07.672Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

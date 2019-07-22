@@ -152,6 +152,49 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-15T07:19:54.000Z">2019-05-15</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1분 읽기 (나에 대하여 128 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/15/Vagrant-에서-메모리-CPU-코어수-조정/">Vagrant 에서 메모리 CPU 코어수 조정</a>
+            
+        </h1>
+        <div class="content">
+            <p>메모리 할당을 설정시 Vagrantfile 에서 다음 항목을 추가한다.<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.customize ["modifyvm", :id, "--memory", 2048]</span><br></pre></td></tr></table></figure></p>
+<p>아니면 CPU 설정시 다음 항목을 수정한다.<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.customize ["modifyvm", :id, "--cpus", 2]</span><br></pre></td></tr></table></figure></p>
+<p>Vagrantfile 예시<br><figure class="highlight ruby hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># -*- mode: ruby -*-</span></span><br><span class="line"><span class="hljs-comment"># vi: set ft=ruby :</span></span><br><span class="line"></span><br><span class="line">hosts = &#123;</span><br><span class="line">  <span class="hljs-string">"n1"</span> =&gt; <span class="hljs-string">"192.168.77.10"</span>,</span><br><span class="line">  <span class="hljs-string">"n2"</span> =&gt; <span class="hljs-string">"192.168.77.11"</span>,</span><br><span class="line">  <span class="hljs-string">"n3"</span> =&gt; <span class="hljs-string">"192.168.77.12"</span>,</span><br><span class="line">  <span class="hljs-string">"n4"</span> =&gt; <span class="hljs-string">"192.168.77.13"</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Vagrant.configure(<span class="hljs-string">"2"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|config|</span></span><br><span class="line"></span><br><span class="line">  config.ssh.insert_key     = <span class="hljs-literal">false</span></span><br><span class="line">  config.ssh.forward_agent  = <span class="hljs-literal">true</span></span><br><span class="line">  check_guest_additions     = <span class="hljs-literal">false</span></span><br><span class="line">  functional_vboxsf         = <span class="hljs-literal">false</span></span><br><span class="line"></span><br><span class="line">  config.vm.box = <span class="hljs-string">"bento/ubuntu-16.04"</span></span><br><span class="line"></span><br><span class="line">  hosts.each <span class="hljs-keyword">do</span> <span class="hljs-params">|name, ip|</span></span><br><span class="line">    config.vm.define name <span class="hljs-keyword">do</span> <span class="hljs-params">|machine|</span></span><br><span class="line">      machine.vm.network <span class="hljs-symbol">:private_network</span>, <span class="hljs-symbol">ip:</span> ip</span><br><span class="line">      machine.vm.provider <span class="hljs-string">"virtualbox"</span> <span class="hljs-keyword">do</span> <span class="hljs-params">|v|</span></span><br><span class="line">        v.customize [<span class="hljs-string">"modifyvm"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--cpus"</span>, <span class="hljs-number">2</span>]</span><br><span class="line">        v.name = name</span><br><span class="line">      <span class="hljs-keyword">end</span></span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line">  <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">end</span></span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-05-15T02:49:45.000Z">2019-05-15</time>
                 
                 
@@ -244,76 +287,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-13T14:31:06.000Z">2019-05-13</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4분 읽기 (나에 대하여 586 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/13/arch-linux-에서-한컴뷰어-설치/">manjaro linux(arch linux) 에서 한컴뷰어 설치</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h1><p>참고: <a href="http://arch.korea.com/viewtopic.php?id=203" target="_blank" rel="noopener">아치리눅스 한국사용자 모임 - 한컴뷰어2014 부탁 좀 드려요..</a><br>최근에 기존에 설치되었던 우분투를 지우고 만자로 리눅스를 설치했다. apt 패키지 매니저 대신 pacman 패키지를 사용하는거 제외하고는 우분투쓰는 느낌이고 업데이트 나오는 시기가 빠르다고 하는데 아직은 모르겠다.<br>하지만 한컴뷰어를 설치하고자 했지만 유감스럽게도 Fedora 와 Ubuntu 만 제공하고 있어 아치리눅스 기반이 만자로에서는 설치가 제한이 된다.<br>그러면 한컴뷰어 설치를 포기햐야 하는가? 정답은 그렇지 않다 이다. 다행히 deb 패키지를 arch linux 패키지로 변환이 가능하다.</p>
-<h1 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h1><ol>
-<li>한컴 뷰어 다운로드</li>
-<li><p>deb -&gt; pkg.tar.xz 파일로 변환</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">debtap hancomoffice-hwpviewer-Ubuntu-amd64.deb</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>한컴뷰어 설치</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -U ./hancomoffice-hwpviewer-9.20.0.1573-1-x86_64.pkg.tar.xz</span><br></pre></td></tr></table></figure>
-<p>그런데 webkitgtk 의존성 문제가 발생했다. webkitgtk 을 설치하는데 확인해보니 AUR 로 설치해야 해서 yaourt 로 진행한다.</p>
-</li>
-<li><p>webkitgtk 설치</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S webkitgtk</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>설치는 되는거 같은데 .. 소스코드가 많아서 그런지 반나절이 지나도 빌드가 끝나지 않는다. 설치파일을 받아서 진행을 한다.</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://cdn.repo.archlinuxcn.org/x86_64/webkitgtk-3%3A2.4.11-16-x86_64.pkg.tar.xz</span><br><span class="line">sudo pacman -U ./webkitgtk-3_2.4.11-16-x86_64.pkg.tar.xz</span><br></pre></td></tr></table></figure>
-<p>  다시 3번을 진행하니 설치가 진행이 된다.<br>  그런데 이제는 실행이 안되고 콘솔에서 hwpviewer 을 실행하니 다음에러가 발생했다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hwpviewer: error while loading shared libraries: libicui18n.so.63: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure></p>
-<p>  확인해보니 내컴퓨터에서 설치된 icu 패키지 버젼은 64 이고 한컴뷰어에서 요구하는 icu 패키지 버젼이 63인거 같다. 하지만 pacman 에서는 icu 64 로만 설치가된다. AUR 로 설치하자</p>
-<ol start="5">
-<li><p>icu63 설치</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S icu63</span><br></pre></td></tr></table></figure>
-<p>다행히 빌드하는데 오래걸리지는 않았다.</p>
-</li>
-<li><p>한컴뷰어 실행</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hwpviewer</span><br></pre></td></tr></table></figure>
-<p>이제야 실행이 된다</p>
-<img src="/2019/05/13/arch-linux-에서-한컴뷰어-설치/hwpviewer.png" title="spaced title">
-</li>
-</ol>
-<h1 id="후기"><a href="#후기" class="headerlink" title="후기"></a>후기</h1><p>  설치하면서 기존의 pacman 도 좋지만 대부분 AUR 을 이용해야만 설치가 진행이 되었다.</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -386,7 +359,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        56
+                        57
                     </p>
                 </div>
             </div>
@@ -406,7 +379,7 @@
                         태그
                     </p>
                     <p class="title has-text-weight-normal">
-                        54
+                        55
                     </p>
                 </div>
             </div>
@@ -504,7 +477,7 @@
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.43px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.43px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/docker/" style="font-size: 12.86px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.43px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.43px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.14px;">front-end</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 15.71px;">java</a> <a href="/tags/javascript/" style="font-size: 14.29px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.57px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.86px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 14.29px;">python</a> <a href="/tags/react-js/" style="font-size: 15.71px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spring/" style="font-size: 15.71px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 14.29px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.43px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 14.29px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 14.29px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.43px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.43px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.43px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/docker/" style="font-size: 12.86px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.43px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.43px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.14px;">front-end</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 17.14px;">java</a> <a href="/tags/javascript/" style="font-size: 14.29px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.57px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.86px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 14.29px;">python</a> <a href="/tags/react-js/" style="font-size: 15.71px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 15.71px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 14.29px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.43px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 14.29px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 14.29px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.43px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
     </div>
 </div>
 
@@ -518,6 +491,25 @@
         <h3 class="menu-label">
             최근 글
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T00:28:30.000Z">2019-07-22</time></div>
+                    <a href="/2019/07/22/java-spark-wordcount-examples/" class="has-link-black-ter is-size-6">java spark wordcount examples</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -595,25 +587,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/java-랜덤-문자열-생성/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java 랜덤 문자열 생성">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:41:54.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/java-랜덤-문자열-생성/" class="has-link-black-ter is-size-6">java 랜덤 문자열 생성</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -632,7 +605,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">14</span>
+                    <span class="level-item tag">15</span>
                 </span>
             </a>
         </li>
@@ -926,7 +899,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/java/">
                         <span class="tag">java</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1010,13 +983,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">20</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server-linux-hadoop-hadoop-yarn/">
                         <span class="tag">server, linux, hadoop, hadoop-yarn</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/spark/">
+                        <span class="tag">spark</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1130,6 +1110,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T00:28:30.000Z">2019-07-22</time></div>
+                    <a href="/2019/07/22/java-spark-wordcount-examples/" class="has-link-black-ter is-size-6">java spark wordcount examples</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/19/react-proxy-server-설정/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="react proxy server 설정">
@@ -1204,25 +1203,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/java-랜덤-문자열-생성/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java 랜덤 문자열 생성">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:41:54.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/java-랜덤-문자열-생성/" class="has-link-black-ter is-size-6">java 랜덤 문자열 생성</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1241,7 +1221,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">14</span>
+                    <span class="level-item tag">15</span>
                 </span>
             </a>
         </li>
@@ -1535,7 +1515,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/java/">
                         <span class="tag">java</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1619,13 +1599,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">20</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server-linux-hadoop-hadoop-yarn/">
                         <span class="tag">server, linux, hadoop, hadoop-yarn</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/spark/">
+                        <span class="tag">spark</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

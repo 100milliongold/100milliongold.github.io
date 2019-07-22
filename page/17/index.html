@@ -152,6 +152,53 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-19T15:47:48.000Z">2018-12-20</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    몇 초 읽기 (나에 대하여 109 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/12/20/Centos7-SELINUX-disable-설정후-커널페닉-증상/">Centos7 SELINUX disable 설정후 커널페닉 증상</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="증상"><a href="#증상" class="headerlink" title="증상"></a>증상</h1><p>   Centos SELINUX 설정을 비활성화 후에 재부팅시 부팅화면에서 멈추는 현상</p>
+<h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>   /etc/selinux/config 파일에</p>
+<p>   SELINUXTYPE=disabled 설정되어 있음</p>
+<h1 id="해결방안"><a href="#해결방안" class="headerlink" title="해결방안"></a>해결방안</h1><p>  grub 화면에서 부팅 운영체제를 선택후 e 키를 눌러서 kernel 부팅 옵션으로 들어가서</p>
+<p>  linux16 / vmlinu 가 있는 부분에 selinux = 0 추가할것</p>
+<p>  linux16 / vmlinu - 생략 - selinux = 0</p>
+<p>  완료후에 Ctrl + x 키로 리부트</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2018-12-18T15:45:33.000Z">2018-12-19</time>
                 
                 
@@ -276,87 +323,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-15T09:15:30.000Z">2018-12-15</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6분 읽기 (나에 대하여 852 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/15/Vagrant-사용법/">Vagrant 사용법</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Vagrant"><a href="#Vagrant" class="headerlink" title="Vagrant"></a>Vagrant</h1><blockquote>
-<p>베이그런트(Vagrant)는 포터블 가상화 소프트웨어 개발 환경 (예: 개발 생산성 증가를 위해 가상화의 소프트웨어 구성 관리의 단순화를 시도하는 버추얼박스, 하이퍼-V, 도커 컨테이너, VM웨어, AWS)의 생성 및 유지보수를 위한 오픈 소스 소프트웨어 제품의 하나이다. 베이그런트는 루비 언어로 작성되어 있지만 생태계는 몇 가지 언어로 개발을 지원한다. - <a href="https://ko.wikipedia.org/wiki/%EB%B2%A0%EC%9D%B4%EA%B7%B8%EB%9F%B0%ED%8A%B8_(%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4" target="_blank" rel="noopener">위키백과</a>)</p>
-</blockquote>
-<h1 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h1><h2 id="설치환경"><a href="#설치환경" class="headerlink" title="설치환경"></a>설치환경</h2><ol>
-<li>virtualbox 설치<ul>
-<li>추가 virtualbox 확장설치</li>
-</ul>
-</li>
-<li>Hyper-V 설정</li>
-</ol>
-<h2 id="설치절차"><a href="#설치절차" class="headerlink" title="설치절차"></a>설치절차</h2><ul>
-<li><p>우분투</p>
- <figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install virtualbox</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>윈도우즈</p>
-<ol>
-<li>Download <a href="https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.msi" target="_blank" rel="noopener">https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.msi</a></li>
-<li>install package</li>
-</ol>
-</li>
-<li><p>맥</p>
-<ol>
-<li><a href="https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.dmg" target="_blank" rel="noopener">https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.dmg</a></li>
-<li>install package</li>
-</ol>
-</li>
-</ul>
-<h1 id="Vagrantfile"><a href="#Vagrantfile" class="headerlink" title="Vagrantfile"></a>Vagrantfile</h1><p>  Vagrantfile 내용</p>
-  <figure class="highlight ruby hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># -*- mode: ruby -*-</span></span><br><span class="line"><span class="hljs-comment"># vi: set ft=ruby :</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># vagrant 버쟌 설정</span></span><br><span class="line">Vagrant.configure(<span class="hljs-string">"2"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|config|</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment"># box 이름 지정</span></span><br><span class="line">  <span class="hljs-comment"># https://app.vagrantup.com/boxes/search 에서 검색가능</span></span><br><span class="line">  config.vm.box = <span class="hljs-string">"CentosBox/Centos7-v7.3-Minimal"</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment"># vagrant 가상머신 이름지정</span></span><br><span class="line"> config.vm.define <span class="hljs-symbol">:node01</span> <span class="hljs-keyword">do</span> <span class="hljs-params">|node01|</span></span><br><span class="line">   <span class="hljs-comment"># 호스트이름 지정</span></span><br><span class="line">   node01.vm.hostname = <span class="hljs-string">"node01"</span></span><br><span class="line">   <span class="hljs-comment"># 네트워크 설정 (브릿지 네트워크)</span></span><br><span class="line">   node01.vm.network <span class="hljs-symbol">:<span class="hljs-string">"public_network"</span></span>, <span class="hljs-symbol">ip:</span> <span class="hljs-string">"192.168.1.195"</span>, <span class="hljs-symbol">bridge:</span> <span class="hljs-string">"enp6s0"</span></span><br><span class="line">   <span class="hljs-comment"># virtualbox 설정</span></span><br><span class="line">   node01.vm.provider <span class="hljs-string">"virtualbox"</span> <span class="hljs-keyword">do</span> <span class="hljs-params">|vb|</span></span><br><span class="line">     <span class="hljs-comment"># 메모리 설정</span></span><br><span class="line">     vb.customize [<span class="hljs-string">"modifyvm"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--memory"</span>, <span class="hljs-number">1024</span>*<span class="hljs-number">2</span>]</span><br><span class="line">     vb.customize [<span class="hljs-string">"modifyvm"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--name"</span>, <span class="hljs-string">"node01"</span>]</span><br><span class="line"></span><br><span class="line">     <span class="hljs-comment"># 디스크 설정</span></span><br><span class="line">     <span class="hljs-comment"># 만약에 파일이 존재하지 않을경우 디스크 파일 생성</span></span><br><span class="line">     <span class="hljs-keyword">if</span> !File.exist?(<span class="hljs-string">"mst01.vdi"</span>)</span><br><span class="line">       vb.customize [<span class="hljs-string">"createhd"</span>, <span class="hljs-string">"--filename"</span>, <span class="hljs-string">"mst01.vdi"</span>, <span class="hljs-string">"--size"</span>, <span class="hljs-number">1024</span>*<span class="hljs-number">10</span>, <span class="hljs-string">"--variant"</span>, <span class="hljs-string">"Fixed"</span>]</span><br><span class="line">       vb.customize [<span class="hljs-string">"modifyhd"</span>, <span class="hljs-string">"mst01.vdi"</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"shareable"</span>]</span><br><span class="line">     <span class="hljs-keyword">end</span></span><br><span class="line">     <span class="hljs-comment"># 해당 파일 병으로 디스크 추가</span></span><br><span class="line">     vb.customize [<span class="hljs-string">"storageattach"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--storagectl"</span>, <span class="hljs-string">"SATA"</span>, <span class="hljs-string">"--port"</span>, <span class="hljs-number">1</span>, <span class="hljs-string">"--device"</span>, <span class="hljs-number">0</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"hdd"</span>, <span class="hljs-string">"--medium"</span>, <span class="hljs-string">"mst01.vdi"</span>]</span><br><span class="line">     <span class="hljs-keyword">if</span> !File.exist?(<span class="hljs-string">"mst02.vdi"</span>)</span><br><span class="line">       vb.customize [<span class="hljs-string">"createhd"</span>, <span class="hljs-string">"--filename"</span>, <span class="hljs-string">"mst02.vdi"</span>, <span class="hljs-string">"--size"</span>, <span class="hljs-number">1024</span>*<span class="hljs-number">4</span>, <span class="hljs-string">"--variant"</span>, <span class="hljs-string">"Fixed"</span>]</span><br><span class="line">       vb.customize [<span class="hljs-string">"modifyhd"</span>, <span class="hljs-string">"mst02.vdi"</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"shareable"</span>]</span><br><span class="line">     <span class="hljs-keyword">end</span></span><br><span class="line">     vb.customize [<span class="hljs-string">"storageattach"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--storagectl"</span>, <span class="hljs-string">"SATA"</span>, <span class="hljs-string">"--port"</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"--device"</span>, <span class="hljs-number">0</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"hdd"</span>, <span class="hljs-string">"--medium"</span>, <span class="hljs-string">"mst02.vdi"</span>]</span><br><span class="line">     <span class="hljs-keyword">if</span> !File.exist?(<span class="hljs-string">"mst03.vdi"</span>)</span><br><span class="line">       vb.customize [<span class="hljs-string">"createhd"</span>, <span class="hljs-string">"--filename"</span>, <span class="hljs-string">"mst03.vdi"</span>, <span class="hljs-string">"--size"</span>, <span class="hljs-number">1024</span>*<span class="hljs-number">4</span>, <span class="hljs-string">"--variant"</span>, <span class="hljs-string">"Fixed"</span>]</span><br><span class="line">       vb.customize [<span class="hljs-string">"modifyhd"</span>, <span class="hljs-string">"mst03.vdi"</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"shareable"</span>]</span><br><span class="line">     <span class="hljs-keyword">end</span></span><br><span class="line">     vb.customize [<span class="hljs-string">"storageattach"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--storagectl"</span>, <span class="hljs-string">"SATA"</span>, <span class="hljs-string">"--port"</span>, <span class="hljs-number">3</span>, <span class="hljs-string">"--device"</span>, <span class="hljs-number">0</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"hdd"</span>, <span class="hljs-string">"--medium"</span>, <span class="hljs-string">"mst03.vdi"</span>]</span><br><span class="line">   <span class="hljs-keyword">end</span></span><br><span class="line"> <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line">  config.vm.define <span class="hljs-symbol">:node02</span> <span class="hljs-keyword">do</span> <span class="hljs-params">|node02|</span></span><br><span class="line">    node02.vm.hostname = <span class="hljs-string">"node02"</span></span><br><span class="line">    node02.vm.network <span class="hljs-symbol">:<span class="hljs-string">"public_network"</span></span>, <span class="hljs-symbol">ip:</span> <span class="hljs-string">"192.168.1.196"</span>, <span class="hljs-symbol">bridge:</span> <span class="hljs-string">"enp6s0"</span></span><br><span class="line">    node02.vm.provider <span class="hljs-string">"virtualbox"</span> <span class="hljs-keyword">do</span> <span class="hljs-params">|vb|</span></span><br><span class="line">      vb.customize [<span class="hljs-string">"modifyvm"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--memory"</span>, <span class="hljs-number">1024</span>*<span class="hljs-number">2</span>]</span><br><span class="line">      vb.customize [<span class="hljs-string">"modifyvm"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--name"</span>, <span class="hljs-string">"node02"</span>]</span><br><span class="line">      <span class="hljs-keyword">if</span> !File.exist?(<span class="hljs-string">"ost1.vdi"</span>)</span><br><span class="line">        vb.customize [<span class="hljs-string">"createhd"</span>, <span class="hljs-string">"--filename"</span>, <span class="hljs-string">"ost1.vdi"</span>, <span class="hljs-string">"--size"</span>, <span class="hljs-number">1024</span>*<span class="hljs-number">10</span>, <span class="hljs-string">"--variant"</span>, <span class="hljs-string">"Fixed"</span>]</span><br><span class="line">        vb.customize [<span class="hljs-string">"modifyhd"</span>, <span class="hljs-string">"ost1.vdi"</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"shareable"</span>]</span><br><span class="line">      <span class="hljs-keyword">end</span></span><br><span class="line">      vb.customize [<span class="hljs-string">"storageattach"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--storagectl"</span>, <span class="hljs-string">"SATA"</span>, <span class="hljs-string">"--port"</span>, <span class="hljs-number">1</span>, <span class="hljs-string">"--device"</span>, <span class="hljs-number">0</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"hdd"</span>, <span class="hljs-string">"--medium"</span>, <span class="hljs-string">"ost1.vdi"</span>]</span><br><span class="line">      <span class="hljs-keyword">if</span> !File.exist?(<span class="hljs-string">"ost2.vdi"</span>)</span><br><span class="line">        vb.customize [<span class="hljs-string">"createhd"</span>, <span class="hljs-string">"--filename"</span>, <span class="hljs-string">"ost2.vdi"</span>, <span class="hljs-string">"--size"</span>, <span class="hljs-number">1024</span>*<span class="hljs-number">4</span>, <span class="hljs-string">"--variant"</span>, <span class="hljs-string">"Fixed"</span>]</span><br><span class="line">        vb.customize [<span class="hljs-string">"modifyhd"</span>, <span class="hljs-string">"ost2.vdi"</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"shareable"</span>]</span><br><span class="line">      <span class="hljs-keyword">end</span></span><br><span class="line">      vb.customize [<span class="hljs-string">"storageattach"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--storagectl"</span>, <span class="hljs-string">"SATA"</span>, <span class="hljs-string">"--port"</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"--device"</span>, <span class="hljs-number">0</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"hdd"</span>, <span class="hljs-string">"--medium"</span>, <span class="hljs-string">"ost2.vdi"</span>]</span><br><span class="line">      <span class="hljs-keyword">if</span> !File.exist?(<span class="hljs-string">"ost3.vdi"</span>)</span><br><span class="line">        vb.customize [<span class="hljs-string">"createhd"</span>, <span class="hljs-string">"--filename"</span>, <span class="hljs-string">"ost3.vdi"</span>, <span class="hljs-string">"--size"</span>, <span class="hljs-number">1024</span>*<span class="hljs-number">4</span>, <span class="hljs-string">"--variant"</span>, <span class="hljs-string">"Fixed"</span>]</span><br><span class="line">        vb.customize [<span class="hljs-string">"modifyhd"</span>, <span class="hljs-string">"ost3.vdi"</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"shareable"</span>]</span><br><span class="line">      <span class="hljs-keyword">end</span></span><br><span class="line">      vb.customize [<span class="hljs-string">"storageattach"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--storagectl"</span>, <span class="hljs-string">"SATA"</span>, <span class="hljs-string">"--port"</span>, <span class="hljs-number">3</span>, <span class="hljs-string">"--device"</span>, <span class="hljs-number">0</span>, <span class="hljs-string">"--type"</span>, <span class="hljs-string">"hdd"</span>, <span class="hljs-string">"--medium"</span>, <span class="hljs-string">"ost3.vdi"</span>]</span><br><span class="line">   <span class="hljs-keyword">end</span></span><br><span class="line">  <span class="hljs-keyword">end</span></span><br><span class="line"><span class="hljs-keyword">end</span></span><br></pre></td></tr></table></figure>
-<h1 id="기본명령어"><a href="#기본명령어" class="headerlink" title="기본명령어"></a>기본명령어</h1><h2 id="vagrant-snapshot-list"><a href="#vagrant-snapshot-list" class="headerlink" title="vagrant snapshot list"></a>vagrant snapshot list</h2><p>  현재 스냅샷 목록을 불려온다</p>
-<h2 id="vagrant-snapshot-save-name"><a href="#vagrant-snapshot-save-name" class="headerlink" title="vagrant snapshot save [name]"></a>vagrant snapshot save [name]</h2><p>  해당 스냅샷 이름으로 저장한다</p>
-<h2 id="vagrant-snapshot-resotere-name"><a href="#vagrant-snapshot-resotere-name" class="headerlink" title="vagrant snapshot resotere [name]"></a>vagrant snapshot resotere [name]</h2><p>   해당 스냅샷 이름으로 복구한다</p>
-<h2 id="vagrant-init-name-url"><a href="#vagrant-init-name-url" class="headerlink" title="vagrant init [name [url]]"></a>vagrant init [name [url]]</h2><p>   현재 디렉터리룰 Vagrant 환경으로 초기화한다.</p>
-   <figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vagrant init ubuntu/trusty64</span><br><span class="line">vagrant up</span><br></pre></td></tr></table></figure>
-<h2 id="vagrant-up-name-id"><a href="#vagrant-up-name-id" class="headerlink" title="vagrant up [name|id]"></a>vagrant up [name|id]</h2><p>  이 명령은 Vagrant 파일에 따라 가상머신을 생성 및 구성한다</p>
-<h2 id="vagrant-reload-name-id"><a href="#vagrant-reload-name-id" class="headerlink" title="vagrant reload [name|id]"></a>vagrant reload [name|id]</h2><p>  해당 가상머신을 종료하고 다시 실행한다</p>
-<h2 id="vagrant-halt-name-id"><a href="#vagrant-halt-name-id" class="headerlink" title="vagrant halt [name|id]"></a>vagrant halt [name|id]</h2><p>  해당 가상머신을 종료한다</p>
-<h2 id="vagrant-suspend-name-id"><a href="#vagrant-suspend-name-id" class="headerlink" title="vagrant suspend [name|id]"></a>vagrant suspend [name|id]</h2><p>  해당 가상머신을 일시중지 한다</p>
-<h2 id="vagrant-status-name-id"><a href="#vagrant-status-name-id" class="headerlink" title="vagrant status [name|id]"></a>vagrant status [name|id]</h2><p>  현재 가상머신들의 상태를 표시한다</p>
-<h2 id="vagrant-ssh-name-id-–-extra-ssh-args"><a href="#vagrant-ssh-name-id-–-extra-ssh-args" class="headerlink" title="vagrant ssh [name|id] [– extra_ssh_args]"></a>vagrant ssh [name|id] [– extra_ssh_args]</h2><p>  해당 가상머신으로 ssh 접속을 한다.</p>
-<h2 id="vagrant-destroy-name-id"><a href="#vagrant-destroy-name-id" class="headerlink" title="vagrant destroy [name|id]"></a>vagrant destroy [name|id]</h2><p>  해당 가상머신을 삭제한다.</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -427,7 +393,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        56
+                        57
                     </p>
                 </div>
             </div>
@@ -447,7 +413,7 @@
                         태그
                     </p>
                     <p class="title has-text-weight-normal">
-                        54
+                        55
                     </p>
                 </div>
             </div>
@@ -545,7 +511,7 @@
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.43px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.43px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/docker/" style="font-size: 12.86px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.43px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.43px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.14px;">front-end</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 15.71px;">java</a> <a href="/tags/javascript/" style="font-size: 14.29px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.57px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.86px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 14.29px;">python</a> <a href="/tags/react-js/" style="font-size: 15.71px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spring/" style="font-size: 15.71px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 14.29px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.43px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 14.29px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 14.29px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.43px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.43px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.43px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/docker/" style="font-size: 12.86px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.43px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.43px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.14px;">front-end</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 17.14px;">java</a> <a href="/tags/javascript/" style="font-size: 14.29px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.57px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.86px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 14.29px;">python</a> <a href="/tags/react-js/" style="font-size: 15.71px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 15.71px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 14.29px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.43px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 14.29px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 14.29px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.43px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
     </div>
 </div>
 
@@ -559,6 +525,25 @@
         <h3 class="menu-label">
             최근 글
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T00:28:30.000Z">2019-07-22</time></div>
+                    <a href="/2019/07/22/java-spark-wordcount-examples/" class="has-link-black-ter is-size-6">java spark wordcount examples</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -636,25 +621,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/java-랜덤-문자열-생성/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java 랜덤 문자열 생성">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:41:54.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/java-랜덤-문자열-생성/" class="has-link-black-ter is-size-6">java 랜덤 문자열 생성</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -673,7 +639,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">14</span>
+                    <span class="level-item tag">15</span>
                 </span>
             </a>
         </li>
@@ -967,7 +933,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/java/">
                         <span class="tag">java</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1051,13 +1017,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">20</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server-linux-hadoop-hadoop-yarn/">
                         <span class="tag">server, linux, hadoop, hadoop-yarn</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/spark/">
+                        <span class="tag">spark</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1171,6 +1144,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T00:28:30.000Z">2019-07-22</time></div>
+                    <a href="/2019/07/22/java-spark-wordcount-examples/" class="has-link-black-ter is-size-6">java spark wordcount examples</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/19/react-proxy-server-설정/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="react proxy server 설정">
@@ -1245,25 +1237,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/java-랜덤-문자열-생성/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java 랜덤 문자열 생성">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:41:54.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/java-랜덤-문자열-생성/" class="has-link-black-ter is-size-6">java 랜덤 문자열 생성</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1282,7 +1255,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">14</span>
+                    <span class="level-item tag">15</span>
                 </span>
             </a>
         </li>
@@ -1576,7 +1549,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/java/">
                         <span class="tag">java</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1660,13 +1633,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">20</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server-linux-hadoop-hadoop-yarn/">
                         <span class="tag">server, linux, hadoop, hadoop-yarn</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/spark/">
+                        <span class="tag">spark</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
