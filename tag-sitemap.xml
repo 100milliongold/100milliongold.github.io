@@ -3,8 +3,15 @@
 
 
     <url>
+        <loc>https://100milliongold.github.io/tags/gitlab/</loc>
+        <lastmod>2019-07-25T07:52:52.214Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://100milliongold.github.io/tags/server/</loc>
-        <lastmod>2019-07-25T05:26:14.965Z</lastmod>
+        <lastmod>2019-07-25T07:52:52.214Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -59,6 +66,13 @@
     </url>
 
     <url>
+        <loc>https://100milliongold.github.io/tags/server-linux-hadoop-hadoop-yarn/</loc>
+        <lastmod>2019-07-19T00:57:07.675Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://100milliongold.github.io/tags/sshpass/</loc>
         <lastmod>2019-07-19T00:57:07.675Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -73,13 +87,6 @@
     </url>
 
     <url>
-        <loc>https://100milliongold.github.io/tags/server-linux-hadoop-hadoop-yarn/</loc>
-        <lastmod>2019-07-19T00:57:07.675Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://100milliongold.github.io/tags/python/</loc>
         <lastmod>2019-07-19T00:57:07.675Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -87,14 +94,14 @@
     </url>
 
     <url>
-        <loc>https://100milliongold.github.io/tags/ubuntu/</loc>
+        <loc>https://100milliongold.github.io/tags/vagrant/</loc>
         <lastmod>2019-07-19T00:57:07.675Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://100milliongold.github.io/tags/vagrant/</loc>
+        <loc>https://100milliongold.github.io/tags/ubuntu/</loc>
         <lastmod>2019-07-19T00:57:07.675Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -241,14 +248,14 @@
     </url>
 
     <url>
-        <loc>https://100milliongold.github.io/tags/docker-server-linux/</loc>
+        <loc>https://100milliongold.github.io/tags/css/</loc>
         <lastmod>2019-07-19T00:57:07.657Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://100milliongold.github.io/tags/css/</loc>
+        <loc>https://100milliongold.github.io/tags/docker-server-linux/</loc>
         <lastmod>2019-07-19T00:57:07.657Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -262,14 +269,14 @@
     </url>
 
     <url>
-        <loc>https://100milliongold.github.io/tags/ssh/</loc>
+        <loc>https://100milliongold.github.io/tags/server-arch-linux-manjaro/</loc>
         <lastmod>2019-07-19T00:57:07.654Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://100milliongold.github.io/tags/server-arch-linux-manjaro/</loc>
+        <loc>https://100milliongold.github.io/tags/ssh/</loc>
         <lastmod>2019-07-19T00:57:07.654Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

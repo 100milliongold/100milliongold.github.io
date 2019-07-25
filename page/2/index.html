@@ -152,6 +152,58 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-19T00:59:35.000Z">2019-07-19</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3분 읽기 (나에 대하여 412 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/19/react-proxy-server-설정/">react proxy server 설정</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h2><p>npm devserver 에서 proxy 설정을 할경우 package.json 파일에 <code>&quot;proxy&quot;: &quot;http://localhost:&lt;PORT-GOES-HERE&gt;”</code> 항목을 추가해서 설정을 했었다.<br><br><br></p>
+<p>문제는 기본적인 주소만 설정이 되어 있어서 웹소켓 같은 세부설정이 안되는 문제가 있었다. <br><br></p>
+<p>CRA (Create-react-app) v2 부터는 src/setupProxy.js 파일을 통하여 proxy server 을 커스터마이징 을 할수있게 되었다.<br><br><br></p>
+<p>참고 <a href="https://velog.io/@velopert/create-react-app-v2#5.-proxy-%EC%84%A4%EC%A0%95%EC%9D%84-%EC%BB%A4%EC%8A%A4%ED%84%B0%EB%A7%88%EC%9D%B4%EC%A7%95-%EA%B0%80%EB%8A%A5" target="_blank" rel="noopener">@velopert Create-react-app V2 릴리즈! 무슨 변경 사항이 있을까?</a></p>
+<h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><ol>
+<li><p>기존 프로젝트에 <a href="https://github.com/chimurai/http-proxy-middleware" target="_blank" rel="noopener">http-proxy-middleware</a> 추가하기</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> npm install --save-dev http-proxy-middleware</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>package.json 에 <code>&quot;proxy&quot;: &quot;http://localhost:&lt;PORT-GOES-HERE&gt;”</code> 항목 제거</p>
+</li>
+<li>src/setupProxy.js 파일 생성 및 수정<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-keyword">const</span> proxy = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http-proxy-middleware'</span>);</span><br><span class="line"><span class="hljs-comment">// create-react-app proxy 설정</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 190524 je.kim dev server 에서 proxy 사용시 세션 유지 불가 -&gt; 강제로 세션키를 맞춤</span></span><br><span class="line"><span class="hljs-keyword">var</span> cookie;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// proxy 로 request 시 이벤트</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">relayRequestHeaders</span>(<span class="hljs-params">proxyReq, req</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.debug(<span class="hljs-string">'💥💥💥 request 💥💥💥'</span>);</span><br><span class="line">    <span class="hljs-built_in">Object</span>.keys(req.headers).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.debug(<span class="hljs-string">`<span class="hljs-subst">$&#123;key&#125;</span> : <span class="hljs-subst">$&#123;req.headers[key]&#125;</span>`</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="hljs-keyword">if</span> (cookie) &#123;</span><br><span class="line">      proxyReq.setHeader(<span class="hljs-string">'cookie'</span>, cookie);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// proxy 로 Response 시 이벤트</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">relayResponseHeaders</span>(<span class="hljs-params">proxyRes, req, res</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.debug(<span class="hljs-string">'💥💥💥 response 💥💥💥'</span>);</span><br><span class="line">    <span class="hljs-built_in">Object</span>.keys(proxyRes.headers).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.debug(<span class="hljs-string">`<span class="hljs-subst">$&#123;key&#125;</span> : <span class="hljs-subst">$&#123;proxyRes.headers[key]&#125;</span>`</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="hljs-keyword">var</span> proxyCookie = proxyRes.headers[<span class="hljs-string">"set-cookie"</span>];</span><br><span class="line">    <span class="hljs-keyword">if</span> (proxyCookie) &#123;</span><br><span class="line">      cookie = proxyCookie;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">app</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">  <span class="hljs-comment">// 프록시 설정</span></span><br><span class="line">  app.use(</span><br><span class="line">    proxy(</span><br><span class="line">      [</span><br><span class="line">        <span class="hljs-string">'/'</span>,</span><br><span class="line">      ], &#123;</span><br><span class="line">        <span class="hljs-comment">// 대상서버</span></span><br><span class="line">         target: <span class="hljs-string">'http://localhost:8080'</span> ,</span><br><span class="line">         secure: <span class="hljs-literal">false</span>, <span class="hljs-comment">// disable SSL verification</span></span><br><span class="line">         <span class="hljs-comment">//changeOrigin: true, // for vhosted sites, changes host header to match to target's host</span></span><br><span class="line">         ws : <span class="hljs-literal">true</span>, <span class="hljs-comment">// websock on</span></span><br><span class="line">         onProxyReq: relayRequestHeaders,</span><br><span class="line">         onProxyRes: relayResponseHeaders,</span><br><span class="line">         <span class="hljs-comment">// ajax 혹은 통신이 있을경우에 로그에 표시</span></span><br><span class="line">         <span class="hljs-comment">// logLevel: 'debug'</span></span><br><span class="line">       &#125;</span><br><span class="line">    )</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-07-18T09:19:37.000Z">2019-07-18</time>
                 
                 
@@ -173,7 +225,7 @@
         <div class="content">
             <h2 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h2><p>react 을 이용하다 보면 대부분의 라이브러리들은 npm 을 이용하여 손쉽게 이용이 가능하다.<br><br>하지만 cdn 혹은 kakao map 과 같은 api 을 통한 javascript 라이브러리 은 인증문제도 있어서 가져오기 애매할수도 있다.<br><br></p>
 <p>그렇다고 해서 방법이 없는것은 아니다. <a href="https://www.npmjs.com/package/scriptjs" target="_blank" rel="noopener">scriptjs</a> 을 통하여 외부 라이브러리를 통하여 가져올수는 있다.</p>
-<h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> npm i scriptjs</span><br></pre></td></tr></table></figure>
+<h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> npm i scriptjs</span></span><br></pre></td></tr></table></figure>
 <h2 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> $script <span class="hljs-keyword">from</span> <span class="hljs-string">'scriptjs'</span>;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> kakao_url = <span class="hljs-string">`http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&amp;appkey=<span class="hljs-subst">$&#123;API_KEY&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">$script(kakao_url, () =&gt; &#123;</span><br><span class="line">    <span class="hljs-comment">/*global kakao*/</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.kakao = kakao;</span><br><span class="line">    kakao.maps.load(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// v3가 모두 로드된 후, 이 콜백 함수가 실행됩니다.</span></span><br><span class="line">        ...</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>scriptjs 사용시 /<em> global {변수명} </em>/ 을 추가하여 컴파일시 에러가 나지 않도록 조치 한다.</li>
@@ -232,58 +284,6 @@
 <p>  authentication.getName() : basic auth 부분에 id <br><br>   authentication.getCredentials().toString() : basic auth 부분에 password <br></p>
 </li>
 <li><p>basic auth 은 base64 로 인코딩 되어 전송되기 때문에 중간자 공격에 취약할수도 있음</p>
-</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2분 읽기 (나에 대하여 254 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-            
-        </h1>
-        <div class="content">
-            <ul>
-<li>Spring Security 을 사용하면 가끔식 로그인 팝업창이 나오는데 출력을 헤제할수가 있다.</li>
-<li><p>중요한건 NoPopupBasicAuthenticationEntryPoint.java 에서 제어하는 것이다.</p>
-<ul>
-<li><p>WebSecurityConfig.java</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.jeaeok.myproject.testApp.configs;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.security.config.annotation.web.builders.HttpSecurity;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.security.crypto.password.PasswordEncoder;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Configuration</span></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">* 스프링 시큐리티 설정</span></span><br><span class="line"><span class="hljs-comment">* <span class="hljs-doctag">@author</span> atcis</span></span><br><span class="line"><span class="hljs-comment">*</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WebSecurityConfig</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-meta">@Autowired</span></span><br><span class="line">    <span class="hljs-keyword">private</span> AuthProvider authProvider;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="hljs-meta">@Bean</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> PasswordEncoder <span class="hljs-title">getEncoder</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> BCryptPasswordEncoder();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">    * 스크링 시큐리트를 통하여 접근페이지 설정</span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">configure</span><span class="hljs-params">(HttpSecurity http)</span> <span class="hljs-keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        http</span><br><span class="line">        .logout()                                                                </span><br><span class="line">        .logoutUrl(<span class="hljs-string">"/api/logout"</span>)</span><br><span class="line">        .and()</span><br><span class="line">        .csrf()</span><br><span class="line">        .disable()</span><br><span class="line">        .authorizeRequests()</span><br><span class="line">        .antMatchers(</span><br><span class="line">                <span class="hljs-string">"/"</span>,</span><br><span class="line">                <span class="hljs-string">"/api/v1/user/join"</span>,</span><br><span class="line">                <span class="hljs-string">"/static/**"</span></span><br><span class="line">        ).permitAll()</span><br><span class="line">        .anyRequest().authenticated()</span><br><span class="line">        .and()</span><br><span class="line">        .headers().frameOptions().sameOrigin()</span><br><span class="line">        .and()</span><br><span class="line">        .httpBasic()</span><br><span class="line">        .authenticationEntryPoint(<span class="hljs-keyword">new</span> NoPopupBasicAuthenticationEntryPoint())</span><br><span class="line">        ;</span><br><span class="line">        </span><br><span class="line">        http.authenticationProvider(authProvider);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>NoPopupBasicAuthenticationEntryPoint.java</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.jeaeok.myproject.testApp.configs;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.security.core.AuthenticationException;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.security.web.AuthenticationEntryPoint;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoPopupBasicAuthenticationEntryPoint</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">AuthenticationEntryPoint</span> </span>&#123;</span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">commence</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
 </li>
 </ul>
 
@@ -369,7 +369,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        58
+                        59
                     </p>
                 </div>
             </div>
@@ -389,7 +389,7 @@
                         태그
                     </p>
                     <p class="title has-text-weight-normal">
-                        55
+                        56
                     </p>
                 </div>
             </div>
@@ -487,7 +487,7 @@
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.43px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.43px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/docker/" style="font-size: 12.86px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.43px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.43px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.14px;">front-end</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 17.14px;">java</a> <a href="/tags/javascript/" style="font-size: 14.29px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.57px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.86px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 14.29px;">python</a> <a href="/tags/react-js/" style="font-size: 15.71px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 15.71px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 14.29px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.43px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 14.29px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 14.29px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.43px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.43px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.43px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/docker/" style="font-size: 12.86px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.43px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.43px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.14px;">front-end</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 17.14px;">java</a> <a href="/tags/javascript/" style="font-size: 14.29px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.57px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.86px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 14.29px;">python</a> <a href="/tags/react-js/" style="font-size: 15.71px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 15.71px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 14.29px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.43px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 14.29px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 14.29px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.43px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
     </div>
 </div>
 
@@ -501,6 +501,25 @@
         <h3 class="menu-label">
             최근 글
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="gitlab docker root password reset">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T07:33:10.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="has-link-black-ter is-size-6">gitlab docker root password reset</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -578,25 +597,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/basic-auth-구현-및-설명/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="basic auth 구현 및 설명">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T09:01:20.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/basic-auth-구현-및-설명/" class="has-link-black-ter is-size-6">basic auth 구현 및 설명</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -615,7 +615,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -872,6 +872,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/gitlab/">
+                        <span class="tag">gitlab</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/gnome/">
                         <span class="tag">gnome</span>
                         <span class="tag is-grey">1</span>
@@ -993,7 +1000,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">21</span>
+                        <span class="tag is-grey">22</span>
                     </a>
                 </div>
                 
@@ -1120,6 +1127,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="gitlab docker root password reset">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T07:33:10.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="has-link-black-ter is-size-6">gitlab docker root password reset</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
@@ -1194,25 +1220,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/basic-auth-구현-및-설명/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="basic auth 구현 및 설명">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T09:01:20.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/basic-auth-구현-및-설명/" class="has-link-black-ter is-size-6">basic auth 구현 및 설명</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1231,7 +1238,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1488,6 +1495,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/gitlab/">
+                        <span class="tag">gitlab</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/gnome/">
                         <span class="tag">gnome</span>
                         <span class="tag is-grey">1</span>
@@ -1609,7 +1623,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">21</span>
+                        <span class="tag is-grey">22</span>
                     </a>
                 </div>
                 
@@ -1840,7 +1854,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
