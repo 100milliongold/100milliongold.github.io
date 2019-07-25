@@ -162,6 +162,49 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-15T07:19:54.000Z">2019-05-15</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1분 읽기 (나에 대하여 128 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/15/Vagrant-에서-메모리-CPU-코어수-조정/">Vagrant 에서 메모리 CPU 코어수 조정</a>
+            
+        </h1>
+        <div class="content">
+            <p>메모리 할당을 설정시 Vagrantfile 에서 다음 항목을 추가한다.<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.customize ["modifyvm", :id, "--memory", 2048]</span><br></pre></td></tr></table></figure></p>
+<p>아니면 CPU 설정시 다음 항목을 수정한다.<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.customize ["modifyvm", :id, "--cpus", 2]</span><br></pre></td></tr></table></figure></p>
+<p>Vagrantfile 예시<br><figure class="highlight ruby hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># -*- mode: ruby -*-</span></span><br><span class="line"><span class="hljs-comment"># vi: set ft=ruby :</span></span><br><span class="line"></span><br><span class="line">hosts = &#123;</span><br><span class="line">  <span class="hljs-string">"n1"</span> =&gt; <span class="hljs-string">"192.168.77.10"</span>,</span><br><span class="line">  <span class="hljs-string">"n2"</span> =&gt; <span class="hljs-string">"192.168.77.11"</span>,</span><br><span class="line">  <span class="hljs-string">"n3"</span> =&gt; <span class="hljs-string">"192.168.77.12"</span>,</span><br><span class="line">  <span class="hljs-string">"n4"</span> =&gt; <span class="hljs-string">"192.168.77.13"</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Vagrant.configure(<span class="hljs-string">"2"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|config|</span></span><br><span class="line"></span><br><span class="line">  config.ssh.insert_key     = <span class="hljs-literal">false</span></span><br><span class="line">  config.ssh.forward_agent  = <span class="hljs-literal">true</span></span><br><span class="line">  check_guest_additions     = <span class="hljs-literal">false</span></span><br><span class="line">  functional_vboxsf         = <span class="hljs-literal">false</span></span><br><span class="line"></span><br><span class="line">  config.vm.box = <span class="hljs-string">"bento/ubuntu-16.04"</span></span><br><span class="line"></span><br><span class="line">  hosts.each <span class="hljs-keyword">do</span> <span class="hljs-params">|name, ip|</span></span><br><span class="line">    config.vm.define name <span class="hljs-keyword">do</span> <span class="hljs-params">|machine|</span></span><br><span class="line">      machine.vm.network <span class="hljs-symbol">:private_network</span>, <span class="hljs-symbol">ip:</span> ip</span><br><span class="line">      machine.vm.provider <span class="hljs-string">"virtualbox"</span> <span class="hljs-keyword">do</span> <span class="hljs-params">|v|</span></span><br><span class="line">        v.customize [<span class="hljs-string">"modifyvm"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--cpus"</span>, <span class="hljs-number">2</span>]</span><br><span class="line">        v.name = name</span><br><span class="line">      <span class="hljs-keyword">end</span></span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line">  <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">end</span></span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-04-16T20:11:50.000Z">2019-04-17</time>
                 
                 
@@ -338,51 +381,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-09T12:54:51.000Z">2019-03-09</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    몇 초 읽기 (나에 대하여 40 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/03/09/ubuntu-jupyter-notekook-설치/">ubuntu jupyter-notekook 설치</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="ubuntu-jupyter-notebook-python3-설치"><a href="#ubuntu-jupyter-notebook-python3-설치" class="headerlink" title="ubuntu jupyter notebook (python3) 설치"></a>ubuntu jupyter notebook (python3) 설치</h1><h2 id="1-python3-install"><a href="#1-python3-install" class="headerlink" title="1. python3 install"></a>1. python3 install</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span>sudo apt install python3</span><br></pre></td></tr></table></figure>
-<h2 id="2-pip3-install"><a href="#2-pip3-install" class="headerlink" title="2. pip3 install"></a>2. pip3 install</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span>sudo apt install python3-pip</span><br></pre></td></tr></table></figure>
-<h2 id="3-ipython3-install"><a href="#3-ipython3-install" class="headerlink" title="3. ipython3 install"></a>3. ipython3 install</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ipython3</span><br></pre></td></tr></table></figure>
-<h2 id="4-jupyter-notebook-install"><a href="#4-jupyter-notebook-install" class="headerlink" title="4. jupyter-notebook install"></a>4. jupyter-notebook install</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install jupyter-notebook</span><br></pre></td></tr></table></figure>
-<h2 id="5-start-jupyter-notebook"><a href="#5-start-jupyter-notebook" class="headerlink" title="5. start jupyter-notebook"></a>5. start jupyter-notebook</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter-notebook</span><br></pre></td></tr></table></figure>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -402,6 +400,8 @@
             <li><a class="pagination-link has-text-black-ter" href="/tags/server/page/3/">3</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/tags/server/page/4/">4</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/tags/server/page/5/">5</a></li>
             
         </ul>
     </nav>
@@ -449,7 +449,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        57
+                        58
                     </p>
                 </div>
             </div>
@@ -584,6 +584,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -658,25 +677,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -695,7 +695,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1073,7 +1073,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1200,6 +1200,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -1274,25 +1293,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1311,7 +1311,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1689,7 +1689,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1920,7 +1920,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

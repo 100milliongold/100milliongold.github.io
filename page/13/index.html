@@ -152,6 +152,49 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-02-24T06:08:51.000Z">2019-02-24</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    몇 초 읽기 (나에 대하여 85 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/02/24/Hbase-RegionServer-가-시간마다-셧다운될때/">Hbase RegionServer 가 시간마다 셧다운될때</a>
+            
+        </h1>
+        <div class="content">
+            <p>참고 : <a href="https://superuser.blog/hbase-dead-regionserver/" target="_blank" rel="noopener">https://superuser.blog/hbase-dead-regionserver/</a></p>
+<h3 id="원인-시간-동기화-문제"><a href="#원인-시간-동기화-문제" class="headerlink" title="원인 : 시간 동기화 문제"></a>원인 : 시간 동기화 문제</h3><p>로그에 다음과같은 에러 메세지 출력</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018-02-06 22:17:06,598 INFO  [regionserver/node04/192.168.1.194:16020] regionserver.HRegionServer: STOPPED: Unhandled: org.apache.hadoop.hbase.ClockOutOfSyncException: Server node04,16020,1517973362638 has been rejected; Reported time is too far out of sync with master.  Time difference of 37329ms &gt; max allowed of 30000ms</span><br></pre></td></tr></table></figure>
+<h3 id="각-노드마다-시간-동기화-필요"><a href="#각-노드마다-시간-동기화-필요" class="headerlink" title="각 노드마다 시간 동기화 필요"></a>각 노드마다 시간 동기화 필요</h3>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-02-24T06:05:58.000Z">2019-02-24</time>
                 
                 
@@ -232,64 +275,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-24T04:41:30.000Z">2019-02-24</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1분 읽기 (나에 대하여 208 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/02/24/우분투-18-04-최대절전모드-활성화/">우분투 18.04 최대절전모드 활성화</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="최대절전모드-확인"><a href="#최대절전모드-확인" class="headerlink" title="최대절전모드 확인"></a>최대절전모드 확인</h1><ol>
-<li>터미널 창에서 다음 명령어로 최대절전모드가 작동이 되는지 확인</li>
-</ol>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl hibernate</span><br></pre></td></tr></table></figure>
-<h1 id="그놈메뉴에-최대절전모드-활성화-하기"><a href="#그놈메뉴에-최대절전모드-활성화-하기" class="headerlink" title="그놈메뉴에 최대절전모드 활성화 하기"></a>그놈메뉴에 최대절전모드 활성화 하기</h1><ol>
-<li>터미널창에 다음 명령어를 입력하여 환경설정 파일 열기</li>
-</ol>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/24/우분투-18-04-최대절전모드-활성화/systemctl-hibernate-600x84.jpg" title="spaced title">
-<ol start="2">
-<li>파일에 다음과 같은 내용을 입력</li>
-</ol>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Re-enable hibernate by default in upower]</span><br><span class="line">Identity=unix-user:*</span><br><span class="line">Action=org.freedesktop.upower.hibernate</span><br><span class="line">ResultActive=yes</span><br><span class="line"></span><br><span class="line">[Re-enable hibernate by default in logind]</span><br><span class="line">Identity=unix-user:*</span><br><span class="line">Action=org.freedesktop.login1.hibernate;org.freedesktop.login1.handle-hibernate-key;org.freedesktop.login1;org.freedesktop.login1.hibernate-multiple-sessions;org.freedesktop.login1.hibernate-ignore-inhibit</span><br><span class="line">ResultActive=yes</span><br></pre></td></tr></table></figure>
-<img src="/2019/02/24/우분투-18-04-최대절전모드-활성화/enable-hibernate-600x247.jpg" title="spaced title">
-<ol start="3">
-<li>시스템 재시작 및 그놈 확장 설치 : <a href="https://extensions.gnome.org/extension/755/hibernate-status-button/" target="_blank" rel="noopener">Hibernate Status Button.</a><img src="/2019/02/24/우분투-18-04-최대절전모드-활성화/hibernate-status-button-600x325.jpg" title="spaced title">
-</li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -314,7 +299,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/19/">19</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/20/">20</a></li>
             
         </ul>
     </nav>
@@ -362,7 +347,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        57
+                        58
                     </p>
                 </div>
             </div>
@@ -497,6 +482,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -571,25 +575,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -608,7 +593,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -986,7 +971,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1113,6 +1098,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -1187,25 +1191,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1224,7 +1209,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1602,7 +1587,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1833,7 +1818,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

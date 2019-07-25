@@ -152,6 +152,48 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-26T15:57:57.000Z">2018-12-27</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    몇 초 읽기 (나에 대하여 26 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/12/27/hexo-tags-페이지-생성/">hexo tags 페이지 생성</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="새로운-페이지-생성"><a href="#새로운-페이지-생성" class="headerlink" title="새로운 페이지 생성"></a>새로운 페이지 생성</h1><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "tags"</span><br></pre></td></tr></table></figure>
+<h1 id="source-tags-index-md-header-수정"><a href="#source-tags-index-md-header-수정" class="headerlink" title="source/tags/index.md header 수정"></a>source/tags/index.md header 수정</h1><figure class="highlight markdown hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Tags</span><br><span class="line">date: 2018-12-27 00:55:17</span><br><span class="line">type: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2018-12-26T15:46:55.000Z">2018-12-27</time>
                 
                 
@@ -240,60 +282,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-19T15:53:35.000Z">2018-12-20</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2분 읽기 (나에 대하여 233 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/20/How-to-Disable-SELinux-on-CentOS-7/">How to Disable SELinux on CentOS 7</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="SELinux"><a href="#SELinux" class="headerlink" title="SELinux"></a>SELinux</h1><p>SELinux(Security Enhanced Linux)는 관리자와 사용자가 액세스 제어에 대한 제어력을 높일 수 있는 Linux 커널 보안 모듈이다. SELinux 정책 규칙에 따라 접속할 수 있다.</p>
-<p>SELinux 정책 규칙은 프로세스와 사용자가 파일과 상호 작용하는 방법뿐만 아니라 프로세스와 사용자가 서로 상호작용하는 방법을 지정한다.</p>
-<p>파일을 여는 프로세스처럼 액세스를 특별히 허용하는 SELinux 정책 규칙이 없는 경우, 액세스가 거부된다.</p>
-<h1 id="Disable-SELinux"><a href="#Disable-SELinux" class="headerlink" title="Disable SELinux"></a>Disable SELinux</h1><ol>
-<li><p>SELinux mode 변경</p>
- <figure class="highlight console hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo setenforce 0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>/etc/selinux/config 변경</p>
-<p> SELINUX 항목을 disabled로 변경</p>
- <figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span> This file controls the state of SELinux on the system.</span><br><span class="line"><span class="hljs-meta">#</span> SELINUX= can take one of these three values:</span><br><span class="line"><span class="hljs-meta">#</span>       enforcing - SELinux security policy is enforced.</span><br><span class="line"><span class="hljs-meta">#</span>       permissive - SELinux prints warnings instead of enforcing.</span><br><span class="line"><span class="hljs-meta">#</span>       disabled - No SELinux policy is loaded.</span><br><span class="line">SELINUX=disabled</span><br><span class="line"><span class="hljs-meta">#</span> SELINUXTYPE= can take one of these two values:</span><br><span class="line"><span class="hljs-meta">#</span>       targeted - Targeted processes are protected,</span><br><span class="line"><span class="hljs-meta">#</span>       mls - Multi Level Security protection.</span><br><span class="line">SELINUXTYPE=targeted</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Server reboot</p>
-</li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -316,9 +304,9 @@
             
             <li><a class="pagination-link has-text-black-ter" href="/page/17/">17</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/18/">18</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/19/">19</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/20/">20</a></li>
             
         </ul>
     </nav>
@@ -366,7 +354,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        57
+                        58
                     </p>
                 </div>
             </div>
@@ -501,6 +489,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -575,25 +582,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -612,7 +600,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -990,7 +978,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1117,6 +1105,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -1191,25 +1198,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1228,7 +1216,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1606,7 +1594,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1837,7 +1825,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

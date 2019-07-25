@@ -152,6 +152,61 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-12T15:38:30.000Z">2018-12-13</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2분 읽기 (나에 대하여 233 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/12/13/Docker-이미지-저장-경로-변경하는-방법/">Docker 이미지 저장 경로 변경하는 방법</a>
+            
+        </h1>
+        <div class="content">
+            <ol>
+<li>/etc/default/docker 파일내용을 다음과 같이 수정<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DOCKER_OPTS=&quot;--dns 8.8.8.8 -g &lt;YOUR_DIR&gt;&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>예시)</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span> Docker Upstart and SysVinit configuration file</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#</span></span><br><span class="line"><span class="hljs-meta">#</span> THIS FILE DOES NOT APPLY TO SYSTEMD</span><br><span class="line"><span class="hljs-meta">#</span></span><br><span class="line"><span class="hljs-meta">#</span>   Please see the documentation for "systemd drop-ins":</span><br><span class="line"><span class="hljs-meta">#</span>   https://docs.docker.com/engine/admin/systemd/</span><br><span class="line"><span class="hljs-meta">#</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#</span> Customize location of Docker binary (especially for development testing).</span><br><span class="line"><span class="hljs-meta">#</span>DOCKERD="/usr/local/bin/dockerd"</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#</span> Use DOCKER_OPTS to modify the daemon startup options.</span><br><span class="line">DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 -g /mnt"</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#</span> If you need Docker to use an HTTP proxy, it can also be specified here.</span><br><span class="line"><span class="hljs-meta">#</span>export http_proxy="http://127.0.0.1:3128/"</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#</span> This is also a handy place to tweak where Docker's temporary files go.</span><br><span class="line"><span class="hljs-meta">#</span>export DOCKER_TMPDIR="/mnt/bigdrive/docker-tmp"</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>/lib/systemd/system/docker.service 파일내용을 다음과 같이 수정<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EnvironmentFile=/etc/default/docker</span><br><span class="line">ExecStart=/usr/bin/dockerd -H unix:// $DOCKER_OPTS</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>예시)<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line"><span class="hljs-meta">#</span> the default is not to use systemd for cgroups because the delegate issues still</span><br><span class="line"><span class="hljs-meta">#</span> exists and systemd currently does not support the cgroup feature set required</span><br><span class="line"><span class="hljs-meta">#</span> for containers run by docker</span><br><span class="line"><span class="hljs-meta">#</span>ExecStart=/usr/bin/dockerd -H unix://</span><br><span class="line">EnvironmentFile=/etc/default/docker</span><br><span class="line">ExecStart=/usr/bin/dockerd -H unix:// $DOCKER_OPTS</span><br><span class="line">ExecReload=/bin/kill -s HUP $MAINPID</span><br><span class="line">TimeoutSec=0</span><br><span class="line">RestartSec=2</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li>docker 서비스 리로딩 및 재시작<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service docker stop</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">service docker start</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2018-12-12T15:32:11.000Z">2018-12-13</time>
                 
                 
@@ -232,52 +287,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-12T15:24:15.000Z">2018-12-13</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1분 읽기 (나에 대하여 129 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/13/org-apache-ibatis-reflection-ReflectionException-오류/">org.apache.ibatis.reflection.ReflectionException:  오류</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>mybatis를 사용해서 쿼리를 실행할 때 주의할 점이 있다.<br>parameterType=”string” 이면서 1개 입력값만 받을 때 if test 문법으로 null 처리를 할 때 오류가 날 수 있다.<br>오류는 아래와 같다.</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">org.apache.ibatis.reflection.ReflectionException:</span><br><span class="line">There is no getter <span class="hljs-keyword">for</span> property named <span class="hljs-string">'name'</span> in <span class="hljs-string">'class java.lang.String'</span></span><br></pre></td></tr></table></figure>
-<h1 id="해결방안"><a href="#해결방안" class="headerlink" title="해결방안"></a>해결방안</h1><p>if test 부분에 parameter 이름을 value로 하면 된다.</p>
-<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"value != null and value !=''"</span>&gt;</span></span><br><span class="line">   AND a.name = #&#123;value&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>parameterType=”hashmap” 을 사용하면 컬럼명 그대로 사용 가능하다.</p>
-<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"name != null and name !=''"</span>&gt;</span></span><br><span class="line">  AND a.name = #&#123;name &#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -285,7 +294,7 @@
         <div class="pagination-previous">
             <a class="is-flex-grow has-text-black-ter" href="/page/18/">이전</a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
+        <div class="pagination-next">
             <a class="is-flex-grow has-text-black-ter" href="/page/20/">다음</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
@@ -297,6 +306,8 @@
             <li><a class="pagination-link has-text-black-ter" href="/page/18/">18</a></li>
             
             <li><a class="pagination-link is-current" href="/page/19/">19</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/20/">20</a></li>
             
         </ul>
     </nav>
@@ -344,7 +355,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        57
+                        58
                     </p>
                 </div>
             </div>
@@ -479,6 +490,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -553,25 +583,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -590,7 +601,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -968,7 +979,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1095,6 +1106,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -1169,25 +1199,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1206,7 +1217,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1584,7 +1595,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1815,7 +1826,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

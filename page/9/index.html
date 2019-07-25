@@ -152,6 +152,59 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-23T09:42:48.000Z">2019-03-23</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1분 읽기 (나에 대하여 152 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/23/java-io-IOException-com-jcraft-jsch-JSchException-invalid-privatekey-B-24a1c17f-jsch-오류발생/">java.io.IOException: com.jcraft.jsch.JSchException: invalid privatekey: [B@24a1c17f jsch 오류발생</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="증상"><a href="#증상" class="headerlink" title="증상"></a>증상</h1><ul>
+<li>jsch 운영간에 다음과 같은 에러발생<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Caused by: com.jcraft.jsch.JSchException: invalid privatekey: [B@24a1c17f</span><br><span class="line">   at com.jcraft.jsch.KeyPair.load(KeyPair.java:902)</span><br><span class="line">   at com.jcraft.jsch.KeyPair.load(KeyPair.java:543)</span><br><span class="line">   at com.jcraft.jsch.IdentityFile.newInstance(IdentityFile.java:40)</span><br><span class="line">   at com.jcraft.jsch.JSch.addIdentity(JSch.java:393)</span><br><span class="line">   at com.jcraft.jsch.JSch.addIdentity(JSch.java:353)</span><br><span class="line">   at com.jcabi.ssh.SSH.session(SSH.java:261)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><ul>
+<li>jsch 에서 연동되는 .ssh/id_rsa 파일형식이 잘못되었다.</li>
+<li>cat ~/.ssh/id_rsa 파일을 확인하면 다음과 같이 출력<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN OPENSSH PRIVATE KEY-----</span><br><span class="line">........</span><br><span class="line">........</span><br><span class="line">........</span><br><span class="line">-----END OPENSSH PRIVATE KEY-----</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="조치사항"><a href="#조치사항" class="headerlink" title="조치사항"></a>조치사항</h1><ul>
+<li>ssh-keygen 으로 키을 생성할때 다음과 같은 옵셥추가<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -m PEM</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-03-23T09:14:58.000Z">2019-03-23</time>
                 
                 
@@ -254,54 +307,6 @@ iii. hbase.zookeeper.property.dataDir
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-09T23:58:31.000Z">2019-03-10</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    몇 초 읽기 (나에 대하여 109 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/03/10/freebsd-에서-게스트확장-설치하기/">freebsd 에서 게스트확장 설치하기</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="1-vbox-guest-additions-설치하기"><a href="#1-vbox-guest-additions-설치하기" class="headerlink" title="1. vbox guest additions 설치하기"></a>1. vbox guest additions 설치하기</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> pkg install virtualbox-ose-additions</span><br></pre></td></tr></table></figure>
-<h2 id="2-etc-X11-xorg-conf-파일-설정"><a href="#2-etc-X11-xorg-conf-파일-설정" class="headerlink" title="2. /etc/X11/xorg.conf 파일 설정"></a>2. /etc/X11/xorg.conf 파일 설정</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/X11/xorg.conf</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Section &quot;Device&quot;</span><br><span class="line">	Identifier &quot;Card0&quot;</span><br><span class="line">	Driver &quot;vboxvideo&quot;</span><br><span class="line">	VendorName &quot;InnoTek Systemberatung GmbH&quot;</span><br><span class="line">	BoardName &quot;VirtualBox Graphics Adapter&quot;</span><br><span class="line">EndSection</span><br><span class="line"></span><br><span class="line">Section &quot;InputDevice&quot;</span><br><span class="line">	Identifier &quot;Mouse0&quot;</span><br><span class="line">	Driver &quot;vboxmouse&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-<h2 id="3-etc-rc-conf-파일-설정"><a href="#3-etc-rc-conf-파일-설정" class="headerlink" title="3.  /etc/rc.conf 파일 설정"></a>3.  /etc/rc.conf 파일 설정</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/rc.conf</span><br></pre></td></tr></table></figure>
-<p>/etc/rc.conf 파일에 다음과 내용 추가<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vboxguest_enable=&quot;YES&quot;</span><br><span class="line">vboxservice_enable=&quot;YES&quot;</span><br></pre></td></tr></table></figure></p>
-<h2 id="4-reboot-후-확인"><a href="#4-reboot-후-확인" class="headerlink" title="4. reboot 후 확인"></a>4. reboot 후 확인</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ reboot</span><br></pre></td></tr></table></figure>
-<img src="/2019/03/10/freebsd-에서-게스트확장-설치하기/freebsd.png" title="spaced title">
-<p>참고 : <a href="https://www.freebsd.org/doc/handbook/virtualization-guest-virtualbox.html" target="_blank" rel="noopener">freebsd handbook - 21.5. FreeBSD as a Guest on VirtualBox</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -326,7 +331,7 @@ iii. hbase.zookeeper.property.dataDir
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/19/">19</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/20/">20</a></li>
             
         </ul>
     </nav>
@@ -374,7 +379,7 @@ iii. hbase.zookeeper.property.dataDir
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        57
+                        58
                     </p>
                 </div>
             </div>
@@ -509,6 +514,25 @@ iii. hbase.zookeeper.property.dataDir
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -583,25 +607,6 @@ iii. hbase.zookeeper.property.dataDir
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -620,7 +625,7 @@ iii. hbase.zookeeper.property.dataDir
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -998,7 +1003,7 @@ iii. hbase.zookeeper.property.dataDir
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1125,6 +1130,25 @@ iii. hbase.zookeeper.property.dataDir
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -1199,25 +1223,6 @@ iii. hbase.zookeeper.property.dataDir
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1236,7 +1241,7 @@ iii. hbase.zookeeper.property.dataDir
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1614,7 +1619,7 @@ iii. hbase.zookeeper.property.dataDir
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1845,7 +1850,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

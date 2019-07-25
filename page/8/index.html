@@ -152,6 +152,52 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-14T14:20:36.000Z">2019-05-14</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1분 읽기 (나에 대하여 211 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/14/AUR-yaourt-설치-절차/">AUR(yaourt) 설치 절차 및 debtap</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h2><p>debian 패키지를 Arch Linux 에 설치 하기 위해서는 debtap 이 필요하며 이는 AUR 을 이용하여 설치하면 된다.<br>arch linux 특징중에 하나는 유저가 패키지를 만들고 이를 공유할수 있다. 이를 이용하여 여러가지 패키지들을 설치할수 있다.</p>
+<h2 id="설치절차"><a href="#설치절차" class="headerlink" title="설치절차"></a>설치절차</h2><h3 id="1-관련-패키지-설치"><a href="#1-관련-패키지-설치" class="headerlink" title="1. 관련 패키지 설치"></a>1. 관련 패키지 설치</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S binutils gcc pkgfile</span><br><span class="line">sudo pkgfile --update</span><br><span class="line">sudo pkgfile strip</span><br><span class="line">sudo pacman -S pkg-config</span><br><span class="line">sudo pacman -S make</span><br><span class="line">sudo pacman -S base-devel</span><br></pre></td></tr></table></figure>
+<h3 id="2-yaourt-설치"><a href="#2-yaourt-설치" class="headerlink" title="2. yaourt 설치"></a>2. yaourt 설치</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://aur.archlinux.org/yaourt.git</span><br><span class="line">cd yaourt</span><br><span class="line">makepkg -si</span><br></pre></td></tr></table></figure>
+<h3 id="3-debtap-설치"><a href="#3-debtap-설치" class="headerlink" title="3. debtap 설치"></a>3. debtap 설치</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S debtap</span><br></pre></td></tr></table></figure>
+<h3 id="4-debtap-으로-패키지-변환하기"><a href="#4-debtap-으로-패키지-변환하기" class="headerlink" title="4. debtap 으로 패키지 변환하기"></a>4. debtap 으로 패키지 변환하기</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">debtap hancomoffice-hwpviewer-Ubuntu-amd64.deb</span><br><span class="line">sudo pacman -U ./hancomoffice-hwpviewer-9.20.0.1573-1-x86_64.pkg.tar.xz</span><br></pre></td></tr></table></figure>
+<h2 id="후기"><a href="#후기" class="headerlink" title="후기"></a>후기</h2><p>데비안도 써보고 우분투도 써봤지만 아치리눅스 만큼 업데이트가 빠른 운영체제는 처음본거 같다.</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-05-13T14:31:06.000Z">2019-05-13</time>
                 
                 
@@ -265,59 +311,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-23T09:42:48.000Z">2019-03-23</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1분 읽기 (나에 대하여 152 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/03/23/java-io-IOException-com-jcraft-jsch-JSchException-invalid-privatekey-B-24a1c17f-jsch-오류발생/">java.io.IOException: com.jcraft.jsch.JSchException: invalid privatekey: [B@24a1c17f jsch 오류발생</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="증상"><a href="#증상" class="headerlink" title="증상"></a>증상</h1><ul>
-<li>jsch 운영간에 다음과 같은 에러발생<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Caused by: com.jcraft.jsch.JSchException: invalid privatekey: [B@24a1c17f</span><br><span class="line">   at com.jcraft.jsch.KeyPair.load(KeyPair.java:902)</span><br><span class="line">   at com.jcraft.jsch.KeyPair.load(KeyPair.java:543)</span><br><span class="line">   at com.jcraft.jsch.IdentityFile.newInstance(IdentityFile.java:40)</span><br><span class="line">   at com.jcraft.jsch.JSch.addIdentity(JSch.java:393)</span><br><span class="line">   at com.jcraft.jsch.JSch.addIdentity(JSch.java:353)</span><br><span class="line">   at com.jcabi.ssh.SSH.session(SSH.java:261)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><ul>
-<li>jsch 에서 연동되는 .ssh/id_rsa 파일형식이 잘못되었다.</li>
-<li>cat ~/.ssh/id_rsa 파일을 확인하면 다음과 같이 출력<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN OPENSSH PRIVATE KEY-----</span><br><span class="line">........</span><br><span class="line">........</span><br><span class="line">........</span><br><span class="line">-----END OPENSSH PRIVATE KEY-----</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="조치사항"><a href="#조치사항" class="headerlink" title="조치사항"></a>조치사항</h1><ul>
-<li>ssh-keygen 으로 키을 생성할때 다음과 같은 옵셥추가<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -m PEM</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -342,7 +335,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/19/">19</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/20/">20</a></li>
             
         </ul>
     </nav>
@@ -390,7 +383,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        57
+                        58
                     </p>
                 </div>
             </div>
@@ -525,6 +518,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -599,25 +611,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -636,7 +629,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1014,7 +1007,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1141,6 +1134,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
@@ -1215,25 +1227,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Security 에서 로그인 팝업창 안나오게 설정">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T08:53:04.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/Spring-Security-에서-로그인-팝업창-안나오게-설정/" class="has-link-black-ter is-size-6">Spring Security 에서 로그인 팝업창 안나오게 설정</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1252,7 +1245,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1630,7 +1623,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1861,7 +1854,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
