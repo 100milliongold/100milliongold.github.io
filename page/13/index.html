@@ -152,6 +152,52 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-02-24T06:15:21.000Z">2019-02-24</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1분 읽기 (나에 대하여 215 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/02/24/docker-remote-port-open-docker-원격-API-활성화/">docker remote port open (docker 원격 API 활성화)</a>
+            
+        </h1>
+        <div class="content">
+            <p>경고 : Docker 에서 remote port open 할 경우 별도의 인증절차 없이 restful api 을 사용하므로<br>보안에 취약합니다. 해당 작업으로 발생하는 사항은 권장하지 않으며 발생한 사항에 대하여 책임지지 않습니다.</p>
+<p><a href="http://blog.brian.jp/docker,/docker/swarm,/netsec/2017/10/31/free-servers-with-docker-swarm.html" target="_blank" rel="noopener">http://blog.brian.jp/docker,/docker/swarm,/netsec/2017/10/31/free-servers-with-docker-swarm.html</a></p>
+<h1 id="docker-remote-port-open-docker-원격-API-활성화"><a href="#docker-remote-port-open-docker-원격-API-활성화" class="headerlink" title="docker remote port open (docker 원격 API 활성화)"></a>docker remote port open (docker 원격 API 활성화)</h1><h2 id="1-lib-systemd-system-docker-service-내용-수정"><a href="#1-lib-systemd-system-docker-service-내용-수정" class="headerlink" title="1. /lib/systemd/system/docker.service 내용 수정"></a>1. /lib/systemd/system/docker.service 내용 수정</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Service]</span><br><span class="line">EnvironmentFile=/etc/default/docker</span><br><span class="line">ExecStart=/usr/bin/dockerd -H fd:// $DOCKER_OPTS</span><br></pre></td></tr></table></figure>
+<h2 id="2-etc-default-docker-내용-수정"><a href="#2-etc-default-docker-내용-수정" class="headerlink" title="2. /etc/default/docker 내용 수정"></a>2. /etc/default/docker 내용 수정</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DOCKER_OPTS=&quot;--dns 8.8.8.8 --dns 8.8.4.4 -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="3-docker-리로드-및-재시작"><a href="#3-docker-리로드-및-재시작" class="headerlink" title="3. docker 리로드 및 재시작"></a>3. docker 리로드 및 재시작</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">service docker restart</span><br></pre></td></tr></table></figure>
+<h2 id="4-테스트"><a href="#4-테스트" class="headerlink" title="4. 테스트"></a>4. 테스트</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:2375/version</span><br><span class="line"></span><br><span class="line">&#123;"Platform":&#123;"Name":"Docker Engine - Community"&#125;,"Components":[&#123;"Name":"Engine","Version":"18.09.2","Details":&#123;"ApiVersion":"1.39","Arch":"amd64","BuildTime":"2019-02-10T03:42:13.000000000+00:00","Experimental":"false","GitCommit":"6247962","GoVersion":"go1.10.6","KernelVersion":"4.15.0-45-generic","MinAPIVersion":"1.12","Os":"linux"&#125;&#125;],"Version":"18.09.2","ApiVersion":"1.39","MinAPIVersion":"1.12","GitCommit":"6247962","GoVersion":"go1.10.6","Os":"linux","Arch":"amd64","KernelVersion":"4.15.0-45-generic","BuildTime":"2019-02-10T03:42:13.000000000+00:00"&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-02-24T06:12:07.000Z">2019-02-24</time>
                 
                 
@@ -218,48 +264,6 @@
 <h3 id="원인-시간-동기화-문제"><a href="#원인-시간-동기화-문제" class="headerlink" title="원인 : 시간 동기화 문제"></a>원인 : 시간 동기화 문제</h3><p>로그에 다음과같은 에러 메세지 출력</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018-02-06 22:17:06,598 INFO  [regionserver/node04/192.168.1.194:16020] regionserver.HRegionServer: STOPPED: Unhandled: org.apache.hadoop.hbase.ClockOutOfSyncException: Server node04,16020,1517973362638 has been rejected; Reported time is too far out of sync with master.  Time difference of 37329ms &gt; max allowed of 30000ms</span><br></pre></td></tr></table></figure>
 <h3 id="각-노드마다-시간-동기화-필요"><a href="#각-노드마다-시간-동기화-필요" class="headerlink" title="각 노드마다 시간 동기화 필요"></a>각 노드마다 시간 동기화 필요</h3>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-24T06:05:58.000Z">2019-02-24</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    몇 초 읽기 (나에 대하여 71 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/02/24/AMBARI-METRICS-COLLECTOR-이동법/">AMBARI METRICS COLLECTOR 이동법</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="1-기존에-설치된-METRICS-COLLECTOR-제거"><a href="#1-기존에-설치된-METRICS-COLLECTOR-제거" class="headerlink" title="1. 기존에 설치된 METRICS_COLLECTOR 제거"></a>1. 기존에 설치된 METRICS_COLLECTOR 제거</h1><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -u admin:admin -H "X-Requested-By:ambari" - i -X DELETE http://192.168.1.191:8080/api/v1/clusters/supercom_test/hosts/node04/host_components/METRICS_COLLECTOR</span><br></pre></td></tr></table></figure>
-<h1 id="2-새로운-호스트에-METRICS-COLLECTOR-설치"><a href="#2-새로운-호스트에-METRICS-COLLECTOR-설치" class="headerlink" title="2. 새로운 호스트에 METRICS_COLLECTOR 설치"></a>2. 새로운 호스트에 METRICS_COLLECTOR 설치</h1><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -u admin:admin -H "X-Requested-By:ambari" -i -X POST http://192.168.1.191:8080/api/v1/clusters/supercom_test/hosts/node02/host_components/METRICS_COLLECTOR</span><br></pre></td></tr></table></figure>
-
         </div>
         
         
@@ -346,7 +350,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        59
+                        60
                     </p>
                 </div>
             </div>
@@ -366,7 +370,7 @@
                         태그
                     </p>
                     <p class="title has-text-weight-normal">
-                        56
+                        57
                     </p>
                 </div>
             </div>
@@ -464,7 +468,7 @@
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.43px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.43px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/docker/" style="font-size: 12.86px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.43px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.43px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.14px;">front-end</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 17.14px;">java</a> <a href="/tags/javascript/" style="font-size: 14.29px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.57px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.86px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 14.29px;">python</a> <a href="/tags/react-js/" style="font-size: 15.71px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 15.71px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 14.29px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.43px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 14.29px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 14.29px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.43px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.25px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.25px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.25px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.25px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.5px;">front-end</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 16.25px;">java</a> <a href="/tags/javascript/" style="font-size: 13.75px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.75px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.5px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 13.75px;">python</a> <a href="/tags/react-js/" style="font-size: 15px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 13.75px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.25px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 13.75px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 13.75px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.25px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
     </div>
 </div>
 
@@ -478,6 +482,25 @@
         <h3 class="menu-label">
             최근 글
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vscode 특정폴더 숨기기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-26T03:31:45.000Z">2019-07-26</time></div>
+                    <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="has-link-black-ter is-size-6">vscode 특정폴더 숨기기</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -555,25 +578,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/react-외부-javascript-라이브러리-불려오기-kakao-map-javascript/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react 외부 javascript 라이브러리 불려오기 (kakao map javascript)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T09:19:37.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/react-외부-javascript-라이브러리-불려오기-kakao-map-javascript/" class="has-link-black-ter is-size-6">react 외부 javascript 라이브러리 불려오기 (kakao map javascript)</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -592,7 +596,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">18</span>
                 </span>
             </a>
         </li>
@@ -844,7 +848,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/front-end/">
                         <span class="tag">front-end</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1068,6 +1072,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vitualbox/">
                         <span class="tag">vitualbox</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vscode/">
+                        <span class="tag">vscode</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1104,6 +1115,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vscode 특정폴더 숨기기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-26T03:31:45.000Z">2019-07-26</time></div>
+                    <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="has-link-black-ter is-size-6">vscode 특정폴더 숨기기</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="gitlab docker root password reset">
@@ -1178,25 +1208,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/18/react-외부-javascript-라이브러리-불려오기-kakao-map-javascript/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react 외부 javascript 라이브러리 불려오기 (kakao map javascript)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-18T09:19:37.000Z">2019-07-18</time></div>
-                    <a href="/2019/07/18/react-외부-javascript-라이브러리-불려오기-kakao-map-javascript/" class="has-link-black-ter is-size-6">react 외부 javascript 라이브러리 불려오기 (kakao map javascript)</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1215,7 +1226,7 @@
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">18</span>
                 </span>
             </a>
         </li>
@@ -1467,7 +1478,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/front-end/">
                         <span class="tag">front-end</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1691,6 +1702,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vitualbox/">
                         <span class="tag">vitualbox</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vscode/">
+                        <span class="tag">vscode</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

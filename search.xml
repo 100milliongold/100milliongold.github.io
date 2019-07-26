@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>vscode 특정폴더 숨기기</title>
+      <link href="/2019/07/26/vscode-%ED%8A%B9%EC%A0%95%ED%8F%B4%EB%8D%94-%EC%88%A8%EA%B8%B0%EA%B8%B0/"/>
+      <url>/2019/07/26/vscode-%ED%8A%B9%EC%A0%95%ED%8F%B4%EB%8D%94-%EC%88%A8%EA%B8%B0%EA%B8%B0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="설정"><a href="#설정" class="headerlink" title="설정"></a>설정</h2><ol><li>vscode 설정창으로 이동 <img src="/2019/07/26/vscode-특정폴더-숨기기/img1.png" title="spaced title"></li><li>사용자 설정에서 검색창에 exclude 을 입력후에 Files.Execlude 항목에서 숨길 폴더 추가 <img src="/2019/07/26/vscode-특정폴더-숨기기/img2.png" title="spaced title"></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> front-end </tag>
+            
+            <tag> vscode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>gitlab docker root password reset</title>
       <link href="/2019/07/25/gitlab-docker-root-password-reset/"/>
       <url>/2019/07/25/gitlab-docker-root-password-reset/</url>
@@ -348,9 +369,9 @@
       
         <tags>
             
-            <tag> manjaro </tag>
-            
             <tag> linux </tag>
+            
+            <tag> manjaro </tag>
             
         </tags>
       
@@ -371,9 +392,9 @@
             
             <tag> server </tag>
             
-            <tag> manjaro </tag>
-            
             <tag> linux </tag>
+            
+            <tag> manjaro </tag>
             
             <tag> error </tag>
             
