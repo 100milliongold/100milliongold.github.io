@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+	<head><meta name="generator" content="Hexo 3.9.0">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/simple.min.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/pdf.css' : 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/paper.min.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- 시작 부분 -->
+						<section>
+							<h6>reveal.js 을 통한 손쉬운 프레젠테이션</h6>
+						</section>
+						<section>
+							<p>발표을 할때</p>
+						<section>
+						</section>
+							<h6>파워 포인트를 쓴다면</h6>
+
+									<div>
+										<img class src="index/images/fuxx_code.png" alt style="float: right;magin-left: 30px;">
+										<img class src="index/images/lisence.png" alt style="float: right;">
+									</div>
+						</section>
+						<section>
+							<h6>reveal.js 을 이용하여 손쉽게 ppt 을 만듭시다</h6>
+						</section>
+						<section>
+							<h6>github 에서 가져오기</h6>
+							<pre><code lang="shell" data-trim data-noescape>$ git clone https://github.com/hakimel/reveal.js.git
+$ cd reveal.js
+$ npm start</code></pre>
+						</section>
+						<section>
+							<section>
+								<h6>html 파일에 추가</h6>
+								<pre><code lang="html" contenteditable>&lt;section&gt;Slide 1&lt;/section&gt;</code></pre>
+							</section>
+							<section>
+								Slide 1
+							</section>
+						</section>
+						<section>
+							<section>
+								<h6>순차적으로 출력</h6>
+								<pre><code lang="html" data-trim data-noescape>
+&lt;section id=&quot;fragments&quot;&gt;
+	&lt;h2&gt;Fragments&lt;/h2&gt;
+	&lt;p&gt;Hit the next arrow...&lt;/p&gt;
+	&lt;p class=&quot;fragment&quot;&gt;... to step through ...&lt;/p&gt;
+	&lt;p&gt;&lt;span class=&quot;fragment&quot;&gt;... a&lt;/span&gt; &lt;span class=&quot;fragment&quot;&gt;fragmented&lt;/span&gt; &lt;span class=&quot;fragment&quot;&gt;slide.&lt;/span&gt;&lt;/p&gt;
+
+	&lt;aside class=&quot;notes&quot;&gt;
+		This slide has fragments which are also stepped through in the notes window.
+	&lt;/aside&gt;
+&lt;/section&gt;
+</code></pre>
+							</section>
+							<section id="fragments">
+								<h2>Fragments</h2>
+								<p>Hit the next arrow...</p>
+								<p class="fragment">... to step through ...</p>
+								<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+
+								<aside class="notes">
+									This slide has fragments which are also stepped through in the notes window.
+								</aside>
+							</section>
+						</section>
+						<section>
+							<section>
+								<h6>이미지 배경 삽입</h6>
+								<pre><code lang="html" data-trim data-noescape>&lt;section data-background=&quot;http://i.giphy.com/90F8aUepslB84.gif&quot;&gt;
+      &lt;h2&gt;... and GIFs!&lt;/h2&gt;
+&lt;/section&gt;
+</code></pre>
+							</section>
+
+							<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+								<h2>... and GIFs!</h2>
+							</section>
+						</section>
+						<section>
+							감사합니다.
+						</section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js' },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.min.js' },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.js', async: true },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

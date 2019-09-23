@@ -152,13 +152,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-26T15:46:55.000Z">2018-12-27</time>
+                <time class="level-item has-text-grey" datetime="2019-02-24T05:53:05.000Z">2019-02-24</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    몇 초 읽기 (나에 대하여 92 단어)
+                    1분 읽기 (나에 대하여 116 단어)
                 </span>
                 
                 
@@ -167,15 +167,15 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/12/27/npm-build-간-javascript-heap-out-of-memory-npm-build-발생시/">npm build 간 javascript heap out of memory npm build 발생시</a>
+                <a class="has-link-black-ter" href="/2019/02/24/yarn-캐쉬-지우기/">yarn 캐쉬 지우기</a>
             
         </h1>
         <div class="content">
-            <h1 id="증상"><a href="#증상" class="headerlink" title="증상"></a>증상</h1><p>npm run build 후 다음과 같은 에러 메세지 발생<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory</span><br></pre></td></tr></table></figure></p>
-<h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>이는 기본 Node.js 가용 메모리가 빌드하기에 충분하지 않아 발생하는 오류</p>
-<h1 id="조치"><a href="#조치" class="headerlink" title="조치"></a>조치</h1><p>package.json 내부의 build 항목을 다음과 같이 수정</p>
-<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  ...</span><br><span class="line">    "build": "node --max_old_space_size=8096 scripts/build.js",</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
+            <p>가끔 맵리듀스 작업을 하다보면, yarn 에 캐쉬가 많이 남아 있어서 충돌이 발생하는 경우가 발생한다. <br><br>초기화을 하자</p>
+<h1 id="yarn-cache-저장위치-확인하기"><a href="#yarn-cache-저장위치-확인하기" class="headerlink" title="yarn cache 저장위치 확인하기"></a>yarn cache 저장위치 확인하기</h1><p>yarn-site.xml 파일에 yarn.nodemanager.local-dirs 위치 확인하기  </p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>       </span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>yarn.nodemanager.local-dirs<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>       </span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/hadoop/yarn/local<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="해당-폴더의-내용-지우기"><a href="#해당-폴더의-내용-지우기" class="headerlink" title="해당 폴더의 내용 지우기"></a>해당 폴더의 내용 지우기</h1><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[yarn@node2 ~]$ cd /hadoop/yarn/local/</span><br><span class="line">[yarn@node2 local]$ ls filecache  nmPrivate  spark_shuffle  usercache</span><br><span class="line">[yarn@node2 local]$ rm -rf filecache/ usercache/</span><br></pre></td></tr></table></figure>
+<h1 id="yarn-재시작"><a href="#yarn-재시작" class="headerlink" title="yarn 재시작"></a>yarn 재시작</h1>
         </div>
         
         
@@ -196,13 +196,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-19T16:03:46.000Z">2018-12-20</time>
+                <time class="level-item has-text-grey" datetime="2019-02-24T04:41:30.000Z">2019-02-24</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    몇 초 읽기 (나에 대하여 86 단어)
+                    1분 읽기 (나에 대하여 208 단어)
                 </span>
                 
                 
@@ -211,74 +211,120 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/12/20/Ambari-Agent가-실행되고도-Ambari-에서는-heartbeat-lost가-발생할경우/">Ambari Agent가 실행되고도 Ambari 에서는 heartbeat lost가 발생할경우</a>
+                <a class="has-link-black-ter" href="/2019/02/24/우분투-18-04-최대절전모드-활성화/">우분투 18.04 최대절전모드 활성화</a>
             
         </h1>
         <div class="content">
-            <h1 id="윈인-및-해결"><a href="#윈인-및-해결" class="headerlink" title="윈인 및 해결"></a>윈인 및 해결</h1><h2 id="시간동기화-문제"><a href="#시간동기화-문제" class="headerlink" title="시간동기화 문제"></a>시간동기화 문제</h2><ul>
-<li><p>해당 호스트들이 몇초 이상 시간차가 나서 인식을 안할수도 있다.</p>
-<ul>
-<li>해결방안 : 각각의 Ambari Node 서버들에서 다음과 같은 명령어를 실행한다.<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop ntpd</span><br><span class="line">ntpdate 0.centos.pool.ntp.org</span><br><span class="line">systemctl start ntpd</span><br><span class="line">ambari-agent restart</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>open ssl 설정문제</p>
-</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-19T15:53:35.000Z">2018-12-20</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2분 읽기 (나에 대하여 233 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/20/How-to-Disable-SELinux-on-CentOS-7/">How to Disable SELinux on CentOS 7</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="SELinux"><a href="#SELinux" class="headerlink" title="SELinux"></a>SELinux</h1><p>SELinux(Security Enhanced Linux)는 관리자와 사용자가 액세스 제어에 대한 제어력을 높일 수 있는 Linux 커널 보안 모듈이다. SELinux 정책 규칙에 따라 접속할 수 있다.</p>
-<p>SELinux 정책 규칙은 프로세스와 사용자가 파일과 상호 작용하는 방법뿐만 아니라 프로세스와 사용자가 서로 상호작용하는 방법을 지정한다.</p>
-<p>파일을 여는 프로세스처럼 액세스를 특별히 허용하는 SELinux 정책 규칙이 없는 경우, 액세스가 거부된다.</p>
-<h1 id="Disable-SELinux"><a href="#Disable-SELinux" class="headerlink" title="Disable SELinux"></a>Disable SELinux</h1><ol>
-<li><p>SELinux mode 변경</p>
- <figure class="highlight console hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo setenforce 0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>/etc/selinux/config 변경</p>
-<p> SELINUX 항목을 disabled로 변경</p>
- <figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span> This file controls the state of SELinux on the system.</span><br><span class="line"><span class="hljs-meta">#</span> SELINUX= can take one of these three values:</span><br><span class="line"><span class="hljs-meta">#</span>       enforcing - SELinux security policy is enforced.</span><br><span class="line"><span class="hljs-meta">#</span>       permissive - SELinux prints warnings instead of enforcing.</span><br><span class="line"><span class="hljs-meta">#</span>       disabled - No SELinux policy is loaded.</span><br><span class="line">SELINUX=disabled</span><br><span class="line"><span class="hljs-meta">#</span> SELINUXTYPE= can take one of these two values:</span><br><span class="line"><span class="hljs-meta">#</span>       targeted - Targeted processes are protected,</span><br><span class="line"><span class="hljs-meta">#</span>       mls - Multi Level Security protection.</span><br><span class="line">SELINUXTYPE=targeted</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Server reboot</p>
+            <h1 id="최대절전모드-확인"><a href="#최대절전모드-확인" class="headerlink" title="최대절전모드 확인"></a>최대절전모드 확인</h1><ol>
+<li>터미널 창에서 다음 명령어로 최대절전모드가 작동이 되는지 확인</li>
+</ol>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl hibernate</span><br></pre></td></tr></table></figure>
+<h1 id="그놈메뉴에-최대절전모드-활성화-하기"><a href="#그놈메뉴에-최대절전모드-활성화-하기" class="headerlink" title="그놈메뉴에 최대절전모드 활성화 하기"></a>그놈메뉴에 최대절전모드 활성화 하기</h1><ol>
+<li>터미널창에 다음 명령어를 입력하여 환경설정 파일 열기</li>
+</ol>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla</span><br></pre></td></tr></table></figure>
+<img src="/2019/02/24/우분투-18-04-최대절전모드-활성화/systemctl-hibernate-600x84.jpg" title="spaced title">
+<ol start="2">
+<li>파일에 다음과 같은 내용을 입력</li>
+</ol>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Re-enable hibernate by default in upower]</span><br><span class="line">Identity=unix-user:*</span><br><span class="line">Action=org.freedesktop.upower.hibernate</span><br><span class="line">ResultActive=yes</span><br><span class="line"></span><br><span class="line">[Re-enable hibernate by default in logind]</span><br><span class="line">Identity=unix-user:*</span><br><span class="line">Action=org.freedesktop.login1.hibernate;org.freedesktop.login1.handle-hibernate-key;org.freedesktop.login1;org.freedesktop.login1.hibernate-multiple-sessions;org.freedesktop.login1.hibernate-ignore-inhibit</span><br><span class="line">ResultActive=yes</span><br></pre></td></tr></table></figure>
+<img src="/2019/02/24/우분투-18-04-최대절전모드-활성화/enable-hibernate-600x247.jpg" title="spaced title">
+<ol start="3">
+<li>시스템 재시작 및 그놈 확장 설치 : <a href="https://extensions.gnome.org/extension/755/hibernate-status-button/" target="_blank" rel="noopener">Hibernate Status Button.</a><img src="/2019/02/24/우분투-18-04-최대절전모드-활성화/hibernate-status-button-600x325.jpg" title="spaced title">
 </li>
 </ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-02-10T01:14:18.000Z">2019-02-10</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4분 읽기 (나에 대하여 543 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/02/10/spring-boot-을-influxDB-와-연동하기/">spring boot 을 influxDB 와 연동하기</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="요구사항"><a href="#요구사항" class="headerlink" title="요구사항"></a>요구사항</h1><ul>
+<li>spring boot : 1.5.10.RELEASE 이상</li>
+<li>jdk : 1.8 이상</li>
+<li>influxDB : 2.7</li>
+</ul>
+<h1 id="influxDB-설치"><a href="#influxDB-설치" class="headerlink" title="influxDB 설치"></a>influxDB 설치</h1><ul>
+<li>docker 에서 설치<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull influxdb</span><br><span class="line">docker run --name  influxdb-test -p8086:8086 -d influxdb</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="샘플-데이터-생성하기"><a href="#샘플-데이터-생성하기" class="headerlink" title="샘플 데이터 생성하기"></a>샘플 데이터 생성하기</h1><ul>
+<li><p>influxDB 접속</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it influxdb-test /bin/bash</span><br><span class="line">influx -precision rfc3339</span><br><span class="line">Connected to http://localhost:8086 version 1.4.x</span><br><span class="line">InfluxDB shell 1.4.x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>데이터베이스 생성</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE NOAA_water_database</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>샘플 데이터 다운받기</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://s3.amazonaws.com/noaa.water-database/NOAA_data.txt -o NOAA_data.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>데이터를 influxDB 에 import 하기</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">influx -import -path=NOAA_data.txt -precision=s -database=NOAA_water_database</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>테스트 하기</p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">influx -precision rfc3339</span><br><span class="line">use NOAA_water_database</span><br><span class="line">SELECT * FROM h2o_feet LIMIT 5</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="spring-boot-에-연동하기"><a href="#spring-boot-에-연동하기" class="headerlink" title="spring boot 에 연동하기"></a>spring boot 에 연동하기</h1><ul>
+<li>spring boot 프로젝트 생성</li>
+<li><p>pom.xml 설정</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://maven.apache.org/POM/4.0.0"</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>influxDB-Test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.5.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.influxdb<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>influxdb-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.14<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.github.miwurster<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-data-influxdb<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">java.version</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">java.version</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span></span><br><span class="line">                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>spring configure 설정 (InfluxDBConfiguration.java)</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Configuration</span></span><br><span class="line"><span class="hljs-meta">@EnableConfigurationProperties</span>(InfluxDBProperties.class)</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InfluxDBConfiguration</span></span></span><br><span class="line"><span class="hljs-class"></span>&#123;</span><br><span class="line">  <span class="hljs-meta">@Bean</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> InfluxDBConnectionFactory <span class="hljs-title">connectionFactory</span><span class="hljs-params">(<span class="hljs-keyword">final</span> InfluxDBProperties properties)</span></span></span><br><span class="line"><span class="hljs-function">  </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> InfluxDBConnectionFactory(properties);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-meta">@Bean</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> InfluxDBTemplate&lt;Point&gt; <span class="hljs-title">influxDBTemplate</span><span class="hljs-params">(<span class="hljs-keyword">final</span> InfluxDBConnectionFactory connectionFactory)</span></span></span><br><span class="line"><span class="hljs-function">  </span>&#123;</span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">     * You can use your own 'PointCollectionConverter' implementation, e.g. in case</span></span><br><span class="line"><span class="hljs-comment">     * you want to use your own custom measurement object.</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> InfluxDBTemplate&lt;&gt;(connectionFactory, <span class="hljs-keyword">new</span> PointConverter());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-meta">@Bean</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> DefaultInfluxDBTemplate <span class="hljs-title">defaultTemplate</span><span class="hljs-params">(<span class="hljs-keyword">final</span> InfluxDBConnectionFactory connectionFactory)</span></span></span><br><span class="line"><span class="hljs-function">  </span>&#123;</span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">     * If you are just dealing with Point objects from 'influxdb-java' you could</span></span><br><span class="line"><span class="hljs-comment">     * also use an instance of class DefaultInfluxDBTemplate.</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DefaultInfluxDBTemplate(connectionFactory);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>application.properties 설정</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.influxdb.url=http://localhost:8086</span><br><span class="line">spring.influxdb.database=NOAA_water_database</span><br><span class="line">spring.influxdb.username=~</span><br><span class="line">spring.influxdb.retentionPolicy=autogen</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DTO 생성(H2oFeet.java)</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Measurement</span>(name = <span class="hljs-string">"h2o_feet"</span>)</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">H2oFeet</span> </span>&#123;</span><br><span class="line">	<span class="hljs-meta">@Column</span>(name = <span class="hljs-string">"water_level"</span>)</span><br><span class="line">	<span class="hljs-keyword">private</span> Double water_level;</span><br><span class="line">	<span class="hljs-meta">@Column</span>(name = <span class="hljs-string">"level description"</span>)</span><br><span class="line">	<span class="hljs-keyword">private</span> String level_description;</span><br><span class="line">	<span class="hljs-meta">@Column</span>(name = <span class="hljs-string">"location"</span>)</span><br><span class="line">	<span class="hljs-keyword">private</span> String location;</span><br><span class="line">	<span class="hljs-meta">@Column</span>(name = <span class="hljs-string">"time"</span>)</span><br><span class="line">	<span class="hljs-keyword">private</span> Instant time;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">getWater_level</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span> water_level;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setWater_level</span><span class="hljs-params">(Double water_level)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">this</span>.water_level = water_level;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getLevel_description</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span> level_description;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setLevel_description</span><span class="hljs-params">(String level_description)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">this</span>.level_description = level_description;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getLocation</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span> location;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setLocation</span><span class="hljs-params">(String location)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">this</span>.location = location;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> Instant <span class="hljs-title">getTime</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span> time;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setTime</span><span class="hljs-params">(Instant time)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">this</span>.time = time;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>controller 생성 (MainController.java)</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Controller</span></span><br><span class="line"><span class="hljs-meta">@RequestMapping</span>(path=<span class="hljs-string">"/api/v1/NOAAWater"</span>)</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-meta">@Autowired</span></span><br><span class="line">	<span class="hljs-keyword">private</span> MainService mainService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="hljs-meta">@GetMapping</span>(path=<span class="hljs-string">"/h2os"</span>)</span><br><span class="line">	<span class="hljs-keyword">public</span> <span class="hljs-meta">@ResponseBody</span> <span class="hljs-function">List&lt;H2oFeet&gt; <span class="hljs-title">h2o_list</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="hljs-keyword">return</span> mainService.h2o_list();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>service 생성 (MainService.java)</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Service</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-meta">@Autowired</span></span><br><span class="line">	<span class="hljs-keyword">private</span> InfluxDBTemplate&lt;Point&gt; influxDBTemplate;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;H2oFeet&gt; <span class="hljs-title">h2o_list</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">		Query query = QueryBuilder.newQuery(<span class="hljs-string">"SELECT * FROM h2o_feet LIMIT 1000"</span>)</span><br><span class="line">		        .forDatabase(<span class="hljs-string">"NOAA_water_database"</span>)</span><br><span class="line">		        .create();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		QueryResult queryResult = influxDBTemplate.query(query);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		InfluxDBResultMapper resultMapper = <span class="hljs-keyword">new</span> InfluxDBResultMapper(); <span class="hljs-comment">// thread-safe - can be reused</span></span><br><span class="line"></span><br><span class="line">		<span class="hljs-keyword">return</span> resultMapper.toPOJO(queryResult, H2oFeet.class);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h1><ul>
+<li>curl<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash">curl -X GET http://localhost:8080/api/v1/NOAAWater/h2os</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>github : <a href="https://github.com/gadian88/influxDB-Test" target="_blank" rel="noopener">https://github.com/gadian88/influxDB-Test</a></p>
 
         </div>
         
@@ -316,9 +362,9 @@
             
             <li><a class="pagination-link has-text-black-ter" href="/page/18/">18</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/19/">19</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/20/">20</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/23/">23</a></li>
             
         </ul>
     </nav>
@@ -366,7 +412,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        60
+                        68
                     </p>
                 </div>
             </div>
@@ -386,7 +432,7 @@
                         태그
                     </p>
                     <p class="title has-text-weight-normal">
-                        57
+                        62
                     </p>
                 </div>
             </div>
@@ -484,7 +530,7 @@
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.25px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.25px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.25px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.25px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.5px;">front-end</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 16.25px;">java</a> <a href="/tags/javascript/" style="font-size: 13.75px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.75px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.5px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 13.75px;">python</a> <a href="/tags/react-js/" style="font-size: 15px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 13.75px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.25px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 13.75px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 13.75px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.25px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.25px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.25px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/dev/" style="font-size: 10px;">dev</a> <a href="/tags/docker/" style="font-size: 13.75px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.25px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.25px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.5px;">front-end</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 13.75px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 16.25px;">java</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.75px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.5px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 13.75px;">python</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-js/" style="font-size: 16.25px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 13.75px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.25px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 13.75px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 13.75px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.25px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/vscode/" style="font-size: 11.25px;">vscode</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
     </div>
 </div>
 
@@ -501,16 +547,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="media-left">
+            <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vscode 특정폴더 숨기기">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-26T03:31:45.000Z">2019-07-26</time></div>
-                    <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="has-link-black-ter is-size-6">vscode 특정폴더 숨기기</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-23T03:23:22.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="has-link-black-ter is-size-6">Arrow Function (ES6) 과 Normal Function 의 차이</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -520,16 +566,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="media-left">
+            <a href="/2019/09/08/linux-에서-vscode-chrome-debug-설정하기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="gitlab docker root password reset">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux 에서 vscode-chrome-debug 설정하기">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T07:33:10.000Z">2019-07-25</time></div>
-                    <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="has-link-black-ter is-size-6">gitlab docker root password reset</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T14:58:20.000Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/linux-에서-vscode-chrome-debug-설정하기/" class="has-link-black-ter is-size-6">linux 에서 vscode-chrome-debug 설정하기</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -539,16 +585,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+            <a href="/2019/09/06/react-에서-package-json-내의-버젼정보-가져오기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react 에서 package.json 내의 버젼정보 가져오기">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
-                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-05T16:03:11.000Z">2019-09-06</time></div>
+                    <a href="/2019/09/06/react-에서-package-json-내의-버젼정보-가져오기/" class="has-link-black-ter is-size-6">react 에서 package.json 내의 버젼정보 가져오기</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -558,16 +604,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
+            <a href="/2019/08/28/Got-permission-denied-while-trying-to-connect-to-the-Docker-daemon-socket-at-unix-var-run-docker-sock-Get-http-2Fvar-2Frun-2Fdocker-sock-v1-40-containers-json-dial-unix-var-run-docker-sock-connect-permission-denied/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: connect: permission denied">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T00:28:30.000Z">2019-07-22</time></div>
-                    <a href="/2019/07/22/java-spark-wordcount-examples/" class="has-link-black-ter is-size-6">java spark wordcount examples</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-27T17:22:00.000Z">2019-08-28</time></div>
+                    <a href="/2019/08/28/Got-permission-denied-while-trying-to-connect-to-the-Docker-daemon-socket-at-unix-var-run-docker-sock-Get-http-2Fvar-2Frun-2Fdocker-sock-v1-40-containers-json-dial-unix-var-run-docker-sock-connect-permission-denied/" class="has-link-black-ter is-size-6">Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: connect: permission denied</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -577,16 +623,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/19/react-proxy-server-설정/" class="media-left">
+            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react proxy server 설정">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-19T00:59:35.000Z">2019-07-19</time></div>
-                    <a href="/2019/07/19/react-proxy-server-설정/" class="has-link-black-ter is-size-6">react proxy server 설정</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
+                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -607,12 +653,34 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">9월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">8월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/07/">
                 <span class="level-start">
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -813,9 +881,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/dev/">
+                        <span class="tag">dev</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -864,7 +939,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/front-end/">
                         <span class="tag">front-end</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -899,7 +981,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/hexo/">
                         <span class="tag">hexo</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -920,7 +1002,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -934,7 +1016,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">13</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
@@ -967,6 +1049,20 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/npm/">
+                        <span class="tag">npm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/pip/">
                         <span class="tag">pip</span>
                         <span class="tag is-grey">1</span>
@@ -981,9 +1077,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/react/">
+                        <span class="tag">react</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/react-js/">
                         <span class="tag">react.js</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -997,7 +1100,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">22</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -1095,7 +1198,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vscode/">
                         <span class="tag">vscode</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1131,16 +1234,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="media-left">
+            <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vscode 특정폴더 숨기기">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-26T03:31:45.000Z">2019-07-26</time></div>
-                    <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="has-link-black-ter is-size-6">vscode 특정폴더 숨기기</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-23T03:23:22.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="has-link-black-ter is-size-6">Arrow Function (ES6) 과 Normal Function 의 차이</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1150,16 +1253,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="media-left">
+            <a href="/2019/09/08/linux-에서-vscode-chrome-debug-설정하기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="gitlab docker root password reset">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux 에서 vscode-chrome-debug 설정하기">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T07:33:10.000Z">2019-07-25</time></div>
-                    <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="has-link-black-ter is-size-6">gitlab docker root password reset</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T14:58:20.000Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/linux-에서-vscode-chrome-debug-설정하기/" class="has-link-black-ter is-size-6">linux 에서 vscode-chrome-debug 설정하기</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1169,16 +1272,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+            <a href="/2019/09/06/react-에서-package-json-내의-버젼정보-가져오기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react 에서 package.json 내의 버젼정보 가져오기">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
-                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-05T16:03:11.000Z">2019-09-06</time></div>
+                    <a href="/2019/09/06/react-에서-package-json-내의-버젼정보-가져오기/" class="has-link-black-ter is-size-6">react 에서 package.json 내의 버젼정보 가져오기</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1188,16 +1291,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
+            <a href="/2019/08/28/Got-permission-denied-while-trying-to-connect-to-the-Docker-daemon-socket-at-unix-var-run-docker-sock-Get-http-2Fvar-2Frun-2Fdocker-sock-v1-40-containers-json-dial-unix-var-run-docker-sock-connect-permission-denied/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: connect: permission denied">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T00:28:30.000Z">2019-07-22</time></div>
-                    <a href="/2019/07/22/java-spark-wordcount-examples/" class="has-link-black-ter is-size-6">java spark wordcount examples</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-27T17:22:00.000Z">2019-08-28</time></div>
+                    <a href="/2019/08/28/Got-permission-denied-while-trying-to-connect-to-the-Docker-daemon-socket-at-unix-var-run-docker-sock-Get-http-2Fvar-2Frun-2Fdocker-sock-v1-40-containers-json-dial-unix-var-run-docker-sock-connect-permission-denied/" class="has-link-black-ter is-size-6">Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: connect: permission denied</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1207,16 +1310,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/19/react-proxy-server-설정/" class="media-left">
+            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react proxy server 설정">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-19T00:59:35.000Z">2019-07-19</time></div>
-                    <a href="/2019/07/19/react-proxy-server-설정/" class="has-link-black-ter is-size-6">react proxy server 설정</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
+                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1237,12 +1340,34 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">9월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">8월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/07/">
                 <span class="level-start">
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -1443,9 +1568,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/dev/">
+                        <span class="tag">dev</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1494,7 +1626,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/front-end/">
                         <span class="tag">front-end</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1529,7 +1668,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/hexo/">
                         <span class="tag">hexo</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1550,7 +1689,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -1564,7 +1703,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">13</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
@@ -1597,6 +1736,20 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/npm/">
+                        <span class="tag">npm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/pip/">
                         <span class="tag">pip</span>
                         <span class="tag is-grey">1</span>
@@ -1611,9 +1764,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/react/">
+                        <span class="tag">react</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/react-js/">
                         <span class="tag">react.js</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1627,7 +1787,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">22</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -1725,7 +1885,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vscode/">
                         <span class="tag">vscode</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1865,7 +2025,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

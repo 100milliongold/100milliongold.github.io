@@ -152,13 +152,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-13T14:31:06.000Z">2019-05-13</time>
+                <time class="level-item has-text-grey" datetime="2019-07-08T11:42:25.000Z">2019-07-08</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4분 읽기 (나에 대하여 586 단어)
+                    1분 읽기 (나에 대하여 144 단어)
                 </span>
                 
                 
@@ -167,40 +167,15 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/05/13/arch-linux-에서-한컴뷰어-설치/">manjaro linux(arch linux) 에서 한컴뷰어 설치</a>
+                <a class="has-link-black-ter" href="/2019/07/08/markdown-문서에서-word-문서로-변환/">markdown 문서에서 word 문서로 변환</a>
             
         </h1>
         <div class="content">
-            <h1 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h1><p>참고: <a href="http://arch.korea.com/viewtopic.php?id=203" target="_blank" rel="noopener">아치리눅스 한국사용자 모임 - 한컴뷰어2014 부탁 좀 드려요..</a><br>최근에 기존에 설치되었던 우분투를 지우고 만자로 리눅스를 설치했다. apt 패키지 매니저 대신 pacman 패키지를 사용하는거 제외하고는 우분투쓰는 느낌이고 업데이트 나오는 시기가 빠르다고 하는데 아직은 모르겠다.<br>하지만 한컴뷰어를 설치하고자 했지만 유감스럽게도 Fedora 와 Ubuntu 만 제공하고 있어 아치리눅스 기반이 만자로에서는 설치가 제한이 된다.<br>그러면 한컴뷰어 설치를 포기햐야 하는가? 정답은 그렇지 않다 이다. 다행히 deb 패키지를 arch linux 패키지로 변환이 가능하다.</p>
-<h1 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h1><ol>
-<li>한컴 뷰어 다운로드</li>
-<li><p>deb -&gt; pkg.tar.xz 파일로 변환</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">debtap hancomoffice-hwpviewer-Ubuntu-amd64.deb</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>한컴뷰어 설치</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -U ./hancomoffice-hwpviewer-9.20.0.1573-1-x86_64.pkg.tar.xz</span><br></pre></td></tr></table></figure>
-<p>그런데 webkitgtk 의존성 문제가 발생했다. webkitgtk 을 설치하는데 확인해보니 AUR 로 설치해야 해서 yaourt 로 진행한다.</p>
-</li>
-<li><p>webkitgtk 설치</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S webkitgtk</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>설치는 되는거 같은데 .. 소스코드가 많아서 그런지 반나절이 지나도 빌드가 끝나지 않는다. 설치파일을 받아서 진행을 한다.</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://cdn.repo.archlinuxcn.org/x86_64/webkitgtk-3%3A2.4.11-16-x86_64.pkg.tar.xz</span><br><span class="line">sudo pacman -U ./webkitgtk-3_2.4.11-16-x86_64.pkg.tar.xz</span><br></pre></td></tr></table></figure>
-<p>  다시 3번을 진행하니 설치가 진행이 된다.<br>  그런데 이제는 실행이 안되고 콘솔에서 hwpviewer 을 실행하니 다음에러가 발생했다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hwpviewer: error while loading shared libraries: libicui18n.so.63: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure></p>
-<p>  확인해보니 내컴퓨터에서 설치된 icu 패키지 버젼은 64 이고 한컴뷰어에서 요구하는 icu 패키지 버젼이 63인거 같다. 하지만 pacman 에서는 icu 64 로만 설치가된다. AUR 로 설치하자</p>
-<ol start="5">
-<li><p>icu63 설치</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S icu63</span><br></pre></td></tr></table></figure>
-<p>다행히 빌드하는데 오래걸리지는 않았다.</p>
-</li>
-<li><p>한컴뷰어 실행</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hwpviewer</span><br></pre></td></tr></table></figure>
-<p>이제야 실행이 된다</p>
-<img src="/2019/05/13/arch-linux-에서-한컴뷰어-설치/hwpviewer.png" title="spaced title">
-</li>
-</ol>
-<h1 id="후기"><a href="#후기" class="headerlink" title="후기"></a>후기</h1><p>  설치하면서 기존의 pacman 도 좋지만 대부분 AUR 을 이용해야만 설치가 진행이 되었다.</p>
+            <h2 id="markdown-문서-gt-워드형식으로-변환"><a href="#markdown-문서-gt-워드형식으로-변환" class="headerlink" title="markdown 문서 -&gt; 워드형식으로 변환"></a>markdown 문서 -&gt; 워드형식으로 변환</h2><p>markdown 문서를 작성하다가 워드형식으로 문서가 필요했고 마크다운에서 복붙하기에는 양식이 깨져서 문제가 있었다. <br><br>해결방안을 찾다가 pandoc 이라는 것을 찾아서 적용하기로 했다.</p>
+<h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S pandoc</span><br></pre></td></tr></table></figure>
+<p>지금 사용하는 리눅스는 manjaro 이니 설치한 리늑스에 맞추어서 사용하면 된다.</p>
+<h2 id="변환"><a href="#변환" class="headerlink" title="변환"></a>변환</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc README.md -f markdown -t docx -s -o README.docx</span><br></pre></td></tr></table></figure>
+<h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><p><a href="https://hue9010.github.io/etc/pandoc/" target="_blank" rel="noopener">https://hue9010.github.io/etc/pandoc/</a></p>
 
         </div>
         
@@ -222,13 +197,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-16T20:11:50.000Z">2019-04-17</time>
+                <time class="level-item has-text-grey" datetime="2019-07-04T16:21:47.000Z">2019-07-05</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    몇 초 읽기 (나에 대하여 39 단어)
+                    몇 초 읽기 (나에 대하여 90 단어)
                 </span>
                 
                 
@@ -237,72 +212,72 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/04/17/ssh-port-forwording/">ssh port forwording</a>
+                <a class="has-link-black-ter" href="/2019/07/05/manjaro-에서-update-할때-npm-usr-lib-node-modules-npm-node-modules-query-string-index-d-ts-증복오류-발생/">manjaro 에서 update 할때 npm : /usr/lib/node_modules/npm/node_modules/query-string/index.d.ts 증복오류 발생</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h2><p>과게에 npm 을 pacman 으로 설치하고 최근에 npm install -g npm 을 해서 중복된 파일이 발생하여 무결성 검사에 실패함</p>
+<h2 id="조치"><a href="#조치" class="headerlink" title="조치"></a>조치</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> sudo pacman -S npm --overwrite /usr/lib/node_modules/npm/node_modules/query-string/index.d.ts</span></span><br></pre></td></tr></table></figure>
+<p>명령어로 해결</p>
+<p>pacman 설치시 중복된 파일이 있을경우 –overwrite /filepath 을 사용하자</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-08T06:13:22.000Z">2019-06-08</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1분 읽기 (나에 대하여 175 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/08/manjaro-에서-pacman-이용시-pgp-에러-발생시/">manjaro 에서 pacman 이용시 pgp 에러 발생시</a>
             
         </h1>
         <div class="content">
             <ul>
-<li><p>local</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 80:intra.example.com:80 gw.example.com</span><br></pre></td></tr></table></figure>
+<li><p>pacman -Syyu 입력시 다음 에러가 발생할경우</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pacman -Syyu</span><br><span class="line">error: fzf: signature from &quot;Ambrevar &lt;ambrevar@gmail.com&gt;&quot; is unknown trust :: File /var/cache/pacman/pkg/fzf-0.17.0.2-1-x86_64.pkg.tar.xz is corrupted (invalid or corrupted package (PGP signature)).</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>remote</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -R 8080:localhost:80 public.example.com</span><br></pre></td></tr></table></figure>
+<li><p>다음 명령어로 해결한다.</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --refresh-keys</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>이를 이용하여 ssh 을 통하여 port 포워딩이 가능해진다.</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-23T09:42:48.000Z">2019-03-23</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1분 읽기 (나에 대하여 152 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/03/23/java-io-IOException-com-jcraft-jsch-JSchException-invalid-privatekey-B-24a1c17f-jsch-오류발생/">java.io.IOException: com.jcraft.jsch.JSchException: invalid privatekey: [B@24a1c17f jsch 오류발생</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="증상"><a href="#증상" class="headerlink" title="증상"></a>증상</h1><ul>
-<li>jsch 운영간에 다음과 같은 에러발생<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Caused by: com.jcraft.jsch.JSchException: invalid privatekey: [B@24a1c17f</span><br><span class="line">   at com.jcraft.jsch.KeyPair.load(KeyPair.java:902)</span><br><span class="line">   at com.jcraft.jsch.KeyPair.load(KeyPair.java:543)</span><br><span class="line">   at com.jcraft.jsch.IdentityFile.newInstance(IdentityFile.java:40)</span><br><span class="line">   at com.jcraft.jsch.JSch.addIdentity(JSch.java:393)</span><br><span class="line">   at com.jcraft.jsch.JSch.addIdentity(JSch.java:353)</span><br><span class="line">   at com.jcabi.ssh.SSH.session(SSH.java:261)</span><br></pre></td></tr></table></figure>
+<li><p>다음 에러가 추가 발생시</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Syu</span><br><span class="line">error: GPGME error: No data</span><br><span class="line">error: GPGME error: No data</span><br><span class="line">error: GPGME error: No data</span><br><span class="line">error: GPGME error: No data</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>다음 명령어를 입력한다.</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sy archlinux-keyring manjaro-keyring</span><br><span class="line">sudo pacman-key --populate archlinux manjaro</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>다음에 다시한번 확인한다.</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><ul>
-<li>jsch 에서 연동되는 .ssh/id_rsa 파일형식이 잘못되었다.</li>
-<li>cat ~/.ssh/id_rsa 파일을 확인하면 다음과 같이 출력<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN OPENSSH PRIVATE KEY-----</span><br><span class="line">........</span><br><span class="line">........</span><br><span class="line">........</span><br><span class="line">-----END OPENSSH PRIVATE KEY-----</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="조치사항"><a href="#조치사항" class="headerlink" title="조치사항"></a>조치사항</h1><ul>
-<li>ssh-keygen 으로 키을 생성할때 다음과 같은 옵셥추가<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -m PEM</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<p>원인은 자세하게 확인해봐야 하겠지만 업데이트 서버에 있는 서명과 내노트북에 있는 서명값이 달라서 생긴것 같다.</p>
 
         </div>
         
@@ -342,7 +317,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/20/">20</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/23/">23</a></li>
             
         </ul>
     </nav>
@@ -390,7 +365,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        60
+                        68
                     </p>
                 </div>
             </div>
@@ -410,7 +385,7 @@
                         태그
                     </p>
                     <p class="title has-text-weight-normal">
-                        57
+                        62
                     </p>
                 </div>
             </div>
@@ -508,7 +483,7 @@
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.25px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.25px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.25px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.25px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.5px;">front-end</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 16.25px;">java</a> <a href="/tags/javascript/" style="font-size: 13.75px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.75px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.5px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 13.75px;">python</a> <a href="/tags/react-js/" style="font-size: 15px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 13.75px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.25px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 13.75px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 13.75px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.25px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+        <a href="/tags/server-arch-linux-manjaro/" style="font-size: 10px;">-server -arch linux -manjaro</a> <a href="/tags/Ambari/" style="font-size: 11.25px;">Ambari</a> <a href="/tags/Arch-Linux/" style="font-size: 10px;">Arch Linux</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Centos/" style="font-size: 10px;">Centos</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Netflix/" style="font-size: 10px;">Netflix</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/Server/" style="font-size: 11.25px;">Server</a> <a href="/tags/ambari/" style="font-size: 10px;">ambari</a> <a href="/tags/ambari-hadoop-server-linux/" style="font-size: 10px;">ambari, hadoop, server, linux</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/dev/" style="font-size: 10px;">dev</a> <a href="/tags/docker/" style="font-size: 13.75px;">docker</a> <a href="/tags/docker-server-linux/" style="font-size: 10px;">docker, server, linux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/elementaryOS/" style="font-size: 10px;">elementaryOS</a> <a href="/tags/error/" style="font-size: 11.25px;">error</a> <a href="/tags/freebsd/" style="font-size: 11.25px;">freebsd</a> <a href="/tags/fron-end/" style="font-size: 10px;">fron-end</a> <a href="/tags/front-end/" style="font-size: 17.5px;">front-end</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hadoop-server-linux-hbase/" style="font-size: 10px;">hadoop, server, linux, hbase</a> <a href="/tags/hexo/" style="font-size: 13.75px;">hexo</a> <a href="/tags/influxDB/" style="font-size: 10px;">influxDB</a> <a href="/tags/java/" style="font-size: 16.25px;">java</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/linix/" style="font-size: 10px;">linix</a> <a href="/tags/linux/" style="font-size: 18.75px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/manjaro/" style="font-size: 12.5px;">manjaro</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/python/" style="font-size: 13.75px;">python</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-js/" style="font-size: 16.25px;">react.js</a> <a href="/tags/revealjs/" style="font-size: 10px;">revealjs</a> <a href="/tags/server/" style="font-size: 20px;">server</a> <a href="/tags/server-linux-hadoop-hadoop-yarn/" style="font-size: 10px;">server, linux, hadoop, hadoop-yarn</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/spring-boot/" style="font-size: 13.75px;">spring boot</a> <a href="/tags/spring-security/" style="font-size: 11.25px;">spring security</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sshpass/" style="font-size: 10px;">sshpass</a> <a href="/tags/troubleshooting/" style="font-size: 10px;">troubleshooting</a> <a href="/tags/ubuntu/" style="font-size: 13.75px;">ubuntu</a> <a href="/tags/ubuntu-linux-server/" style="font-size: 10px;">ubuntu, linux, server</a> <a href="/tags/vagrant/" style="font-size: 13.75px;">vagrant</a> <a href="/tags/virsualbox/" style="font-size: 11.25px;">virsualbox</a> <a href="/tags/vitualbox/" style="font-size: 10px;">vitualbox</a> <a href="/tags/vscode/" style="font-size: 11.25px;">vscode</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
     </div>
 </div>
 
@@ -525,16 +500,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="media-left">
+            <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vscode 특정폴더 숨기기">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-26T03:31:45.000Z">2019-07-26</time></div>
-                    <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="has-link-black-ter is-size-6">vscode 특정폴더 숨기기</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-23T03:23:22.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="has-link-black-ter is-size-6">Arrow Function (ES6) 과 Normal Function 의 차이</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -544,16 +519,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="media-left">
+            <a href="/2019/09/08/linux-에서-vscode-chrome-debug-설정하기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="gitlab docker root password reset">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux 에서 vscode-chrome-debug 설정하기">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T07:33:10.000Z">2019-07-25</time></div>
-                    <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="has-link-black-ter is-size-6">gitlab docker root password reset</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T14:58:20.000Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/linux-에서-vscode-chrome-debug-설정하기/" class="has-link-black-ter is-size-6">linux 에서 vscode-chrome-debug 설정하기</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -563,16 +538,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+            <a href="/2019/09/06/react-에서-package-json-내의-버젼정보-가져오기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react 에서 package.json 내의 버젼정보 가져오기">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
-                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-05T16:03:11.000Z">2019-09-06</time></div>
+                    <a href="/2019/09/06/react-에서-package-json-내의-버젼정보-가져오기/" class="has-link-black-ter is-size-6">react 에서 package.json 내의 버젼정보 가져오기</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -582,16 +557,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
+            <a href="/2019/08/28/Got-permission-denied-while-trying-to-connect-to-the-Docker-daemon-socket-at-unix-var-run-docker-sock-Get-http-2Fvar-2Frun-2Fdocker-sock-v1-40-containers-json-dial-unix-var-run-docker-sock-connect-permission-denied/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: connect: permission denied">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T00:28:30.000Z">2019-07-22</time></div>
-                    <a href="/2019/07/22/java-spark-wordcount-examples/" class="has-link-black-ter is-size-6">java spark wordcount examples</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-27T17:22:00.000Z">2019-08-28</time></div>
+                    <a href="/2019/08/28/Got-permission-denied-while-trying-to-connect-to-the-Docker-daemon-socket-at-unix-var-run-docker-sock-Get-http-2Fvar-2Frun-2Fdocker-sock-v1-40-containers-json-dial-unix-var-run-docker-sock-connect-permission-denied/" class="has-link-black-ter is-size-6">Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: connect: permission denied</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -601,16 +576,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/19/react-proxy-server-설정/" class="media-left">
+            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react proxy server 설정">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-19T00:59:35.000Z">2019-07-19</time></div>
-                    <a href="/2019/07/19/react-proxy-server-설정/" class="has-link-black-ter is-size-6">react proxy server 설정</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
+                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -631,12 +606,34 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">9월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">8월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/07/">
                 <span class="level-start">
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -837,9 +834,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/dev/">
+                        <span class="tag">dev</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -888,7 +892,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/front-end/">
                         <span class="tag">front-end</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -923,7 +934,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/hexo/">
                         <span class="tag">hexo</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -944,7 +955,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -958,7 +969,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">13</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
@@ -991,6 +1002,20 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/npm/">
+                        <span class="tag">npm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/pip/">
                         <span class="tag">pip</span>
                         <span class="tag is-grey">1</span>
@@ -1005,9 +1030,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/react/">
+                        <span class="tag">react</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/react-js/">
                         <span class="tag">react.js</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1021,7 +1053,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">22</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -1119,7 +1151,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vscode/">
                         <span class="tag">vscode</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1155,16 +1187,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="media-left">
+            <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vscode 특정폴더 숨기기">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-26T03:31:45.000Z">2019-07-26</time></div>
-                    <a href="/2019/07/26/vscode-특정폴더-숨기기/" class="has-link-black-ter is-size-6">vscode 특정폴더 숨기기</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-23T03:23:22.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="has-link-black-ter is-size-6">Arrow Function (ES6) 과 Normal Function 의 차이</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1174,16 +1206,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="media-left">
+            <a href="/2019/09/08/linux-에서-vscode-chrome-debug-설정하기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="gitlab docker root password reset">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="linux 에서 vscode-chrome-debug 설정하기">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T07:33:10.000Z">2019-07-25</time></div>
-                    <a href="/2019/07/25/gitlab-docker-root-password-reset/" class="has-link-black-ter is-size-6">gitlab docker root password reset</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T14:58:20.000Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/linux-에서-vscode-chrome-debug-설정하기/" class="has-link-black-ter is-size-6">linux 에서 vscode-chrome-debug 설정하기</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1193,16 +1225,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="media-left">
+            <a href="/2019/09/06/react-에서-package-json-내의-버젼정보-가져오기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mecab-ko-dic 품사 태그 설명">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react 에서 package.json 내의 버젼정보 가져오기">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T04:29:35.000Z">2019-07-25</time></div>
-                    <a href="/2019/07/25/mecab-ko-dic-품사-태그-설명/" class="has-link-black-ter is-size-6">mecab-ko-dic 품사 태그 설명</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-05T16:03:11.000Z">2019-09-06</time></div>
+                    <a href="/2019/09/06/react-에서-package-json-내의-버젼정보-가져오기/" class="has-link-black-ter is-size-6">react 에서 package.json 내의 버젼정보 가져오기</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1212,16 +1244,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/22/java-spark-wordcount-examples/" class="media-left">
+            <a href="/2019/08/28/Got-permission-denied-while-trying-to-connect-to-the-Docker-daemon-socket-at-unix-var-run-docker-sock-Get-http-2Fvar-2Frun-2Fdocker-sock-v1-40-containers-json-dial-unix-var-run-docker-sock-connect-permission-denied/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java spark wordcount examples">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: connect: permission denied">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T00:28:30.000Z">2019-07-22</time></div>
-                    <a href="/2019/07/22/java-spark-wordcount-examples/" class="has-link-black-ter is-size-6">java spark wordcount examples</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-27T17:22:00.000Z">2019-08-28</time></div>
+                    <a href="/2019/08/28/Got-permission-denied-while-trying-to-connect-to-the-Docker-daemon-socket-at-unix-var-run-docker-sock-Get-http-2Fvar-2Frun-2Fdocker-sock-v1-40-containers-json-dial-unix-var-run-docker-sock-connect-permission-denied/" class="has-link-black-ter is-size-6">Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: connect: permission denied</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1231,16 +1263,16 @@
         
         <article class="media">
             
-            <a href="/2019/07/19/react-proxy-server-설정/" class="media-left">
+            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react proxy server 설정">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-19T00:59:35.000Z">2019-07-19</time></div>
-                    <a href="/2019/07/19/react-proxy-server-설정/" class="has-link-black-ter is-size-6">react proxy server 설정</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
+                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1261,12 +1293,34 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">9월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">8월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/07/">
                 <span class="level-start">
                     <span class="level-item">7월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -1467,9 +1521,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/dev/">
+                        <span class="tag">dev</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1518,7 +1579,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/front-end/">
                         <span class="tag">front-end</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">12</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1553,7 +1621,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/hexo/">
                         <span class="tag">hexo</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1574,7 +1642,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -1588,7 +1656,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">13</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
@@ -1621,6 +1689,20 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/npm/">
+                        <span class="tag">npm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/pip/">
                         <span class="tag">pip</span>
                         <span class="tag is-grey">1</span>
@@ -1635,9 +1717,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/react/">
+                        <span class="tag">react</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/react-js/">
                         <span class="tag">react.js</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1651,7 +1740,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/server/">
                         <span class="tag">server</span>
-                        <span class="tag is-grey">22</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -1749,7 +1838,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/vscode/">
                         <span class="tag">vscode</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1889,7 +1978,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

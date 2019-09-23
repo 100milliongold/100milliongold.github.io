@@ -4,6 +4,178 @@
   
     
     <entry>
+      <title>Arrow Function (ES6) 과 Normal Function 의 차이</title>
+      <link href="/2019/09/23/Arrow-Function-ES6-%EA%B3%BC-Function-%EC%9D%98-%EC%B0%A8%EC%9D%B4/"/>
+      <url>/2019/09/23/Arrow-Function-ES6-%EA%B3%BC-Function-%EC%9D%98-%EC%B0%A8%EC%9D%B4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Arrow-Function-ES6-과-Function-의-차이"><a href="#Arrow-Function-ES6-과-Function-의-차이" class="headerlink" title="Arrow-Function-ES6-과-Function-의-차이"></a>Arrow-Function-ES6-과-Function-의-차이</h1><p>기존의 javascript Function 의 this 객체는 java 와 달리 자기 자신이 아니라 호출 방식에 따라 this에 바인딩되는 객체가 달라집니다.</p><p>this는 전역객체(Global object)에 포함되며 이는 내부함수와 메소드의 내부함수 , 그리고 콜백함수 에서도 this는 외부함수가 아닌 전역객체에 바인딩됩니다.</p><p>하지만 Arrow Function 안의 this는 해당 함수를 포함하는 겍체의 this가 됩니다.</p><p>또한 Arrow Function(() =&gt; {}) 은 기존 Function 과 달리 new로 호출할 수 없습니다.</p><p>따라서 <code>handleClose()</code> 을 넘길때 다음과 같이 bind 을 해서 처리해야 합니다.</p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Testone</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">constructor</span>(props)&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>(props);</span><br><span class="line">        <span class="hljs-keyword">this</span>.state= &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">this</span>.handleClose = <span class="hljs-keyword">this</span>.handleClose.bind(<span class="hljs-keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleClose(e)&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(e)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    handleOpen = <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(e);</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> (</span><br><span class="line">        &lt;Testtow</span><br><span class="line">          handleClose=&#123;<span class="hljs-keyword">this</span>.handleClose&#125;</span><br><span class="line">          handleOpen=&#123;<span class="hljs-keyword">this</span>.handleOpen&#125;</span><br><span class="line">        &gt;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> front-end </tag>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux 에서 vscode-chrome-debug 설정하기</title>
+      <link href="/2019/09/08/linux-%EC%97%90%EC%84%9C-vscode-chrome-debug-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0/"/>
+      <url>/2019/09/08/linux-%EC%97%90%EC%84%9C-vscode-chrome-debug-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0/</url>
+      
+        <content type="html"><![CDATA[<ul><li>launch.json 에서 다음과 같이 수정</li></ul><figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.</span><br><span class="line">    // 기존 특성에 대한 설명을 보려면 가리킵니다.</span><br><span class="line">    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.</span><br><span class="line">    "version": "0.2.0",</span><br><span class="line">    "configurations": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"chrome"</span>,</span><br><span class="line">            <span class="hljs-attr">"request"</span>: <span class="hljs-string">"launch"</span>,</span><br><span class="line">            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Launch Chrome against localhost"</span>,</span><br><span class="line">            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://localhost:3000"</span>,</span><br><span class="line">            <span class="hljs-attr">"webRoot"</span>: <span class="hljs-string">"$&#123;workspaceFolder&#125;/src"</span>,</span><br><span class="line">            <span class="hljs-attr">"runtimeExecutable"</span>: <span class="hljs-string">"/usr/bin/google-chrome-stable"</span>,</span><br><span class="line">            <span class="hljs-attr">"runtimeArgs"</span>: [</span><br><span class="line">                <span class="hljs-string">"--new-window"</span>,</span><br><span class="line">                <span class="hljs-string">"-user-data-dir=\"/$&#123;workspaceFolder&#125;/DevProfile\""</span>,</span><br><span class="line">                <span class="hljs-string">"--remote-debugging-port=9222"</span>,</span><br><span class="line">                <span class="hljs-string">"--disable-background-networking"</span></span><br><span class="line">              ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>runtimeExecutable 에 들어갈 chrome 위치 확인하기</li></ul><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis google-chrome-stable</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> front-end </tag>
+            
+            <tag> linux </tag>
+            
+            <tag> vscode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>react 에서 package.json 내의 버젼정보 가져오기</title>
+      <link href="/2019/09/06/react-%EC%97%90%EC%84%9C-package-json-%EB%82%B4%EC%9D%98-%EB%B2%84%EC%A0%BC%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/"/>
+      <url>/2019/09/06/react-%EC%97%90%EC%84%9C-package-json-%EB%82%B4%EC%9D%98-%EB%B2%84%EC%A0%BC%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/</url>
+      
+        <content type="html"><![CDATA[<ol><li>루트 폴더에 .env 파일 생성후에 다음항목 입력</li></ol><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">REACT_APP_VERSION=$npm_package_version</span><br><span class="line">REACT_APP_NAME=$npm_package_name</span><br></pre></td></tr></table></figure><ol start="2"><li>react app 재시작 후에 임의의 파일에 넣고 테스트</li></ol><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(`$&#123;process.env.REACT_APP_NAME&#125; $&#123;process.env.REACT_APP_VERSION&#125;`)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> front-end </tag>
+            
+            <tag> react </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: connect: permission denied</title>
+      <link href="/2019/08/28/Got-permission-denied-while-trying-to-connect-to-the-Docker-daemon-socket-at-unix-var-run-docker-sock-Get-http-2Fvar-2Frun-2Fdocker-sock-v1-40-containers-json-dial-unix-var-run-docker-sock-connect-permission-denied/"/>
+      <url>/2019/08/28/Got-permission-denied-while-trying-to-connect-to-the-Docker-daemon-socket-at-unix-var-run-docker-sock-Get-http-2Fvar-2Frun-2Fdocker-sock-v1-40-containers-json-dial-unix-var-run-docker-sock-connect-permission-denied/</url>
+      
+        <content type="html"><![CDATA[<img src="/2019/08/28/Got-permission-denied-while-trying-to-connect-to-the-Docker-daemon-socket-at-unix-var-run-docker-sock-Get-http-2Fvar-2Frun-2Fdocker-sock-v1-40-containers-json-dial-unix-var-run-docker-sock-connect-permission-denied/image.png" title="spaced title"><p>docker가 root 계정으로 설치 되었을때 root 계정이 아닌 계정으로 docker를 실행하고자 하면 제목과 같은 에러가 발생할 때가 있다.</p><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo usermod -a -G docker <span class="hljs-variable">$USER</span></span><br><span class="line">$ sudo service docker restart</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> server </tag>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</title>
+      <link href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-%EA%B2%BD%EA%B3%A0%EB%B0%9C%EC%83%9D/"/>
+      <url>/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-%EA%B2%BD%EA%B3%A0%EB%B0%9C%EC%83%9D/</url>
+      
+        <content type="html"><![CDATA[<h2 id="증상"><a href="#증상" class="headerlink" title="증상"></a>증상</h2><p><code>npm install</code> 간 경고창 생성<br><img src="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/typescript-error.png" title="typescript-error.png"></p><h2 id="해결방안"><a href="#해결방안" class="headerlink" title="해결방안"></a>해결방안</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ rm -rf package-lock.json</span><br><span class="line">$ npm install --save typescript </span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure><img src="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/typescript-error2.png" title="typescript-error2.png"><ul><li>참고 : <a href="https://stackoverflow.com/questions/56907286/npm-warn-typescript-eslint-eslint-plugin1-6-0-requires-a-peer-of-typescript" target="_blank" rel="noopener">https://stackoverflow.com/questions/56907286/npm-warn-typescript-eslint-eslint-plugin1-6-0-requires-a-peer-of-typescript</a></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> server </tag>
+            
+            <tag> nodejs </tag>
+            
+            <tag> npm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>react-apollo 을 통한 graphql 연동 (1일차)</title>
+      <link href="/2019/08/01/react-apollo-%EC%9D%84-%ED%86%B5%ED%95%9C-graphql-%EC%97%B0%EB%8F%99-1%EC%9D%BC%EC%B0%A8/"/>
+      <url>/2019/08/01/react-apollo-%EC%9D%84-%ED%86%B5%ED%95%9C-graphql-%EC%97%B0%EB%8F%99-1%EC%9D%BC%EC%B0%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="react-apollo"><a href="#react-apollo" class="headerlink" title="react-apollo"></a>react-apollo</h2><p>react-apollo 을 통하여 graphql 을 손쉽게 제어가능 </p><ul><li>axios - graphql 연동 예시</li></ul><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> axios.post(API_URL, &#123;</span><br><span class="line">  query: <span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">    updateUserCity(userID: <span class="hljs-subst">$&#123;id&#125;</span>, city:<span class="hljs-subst">$&#123;city&#125;</span>)&#123;</span></span><br><span class="line"><span class="hljs-string">      id</span></span><br><span class="line"><span class="hljs-string">      name</span></span><br><span class="line"><span class="hljs-string">      age</span></span><br><span class="line"><span class="hljs-string">      city</span></span><br><span class="line"><span class="hljs-string">      knowledge&#123;</span></span><br><span class="line"><span class="hljs-string">        language</span></span><br><span class="line"><span class="hljs-string">        frameworks</span></span><br><span class="line"><span class="hljs-string">      &#125;</span></span><br><span class="line"><span class="hljs-string">    &#125;</span></span><br><span class="line"><span class="hljs-string">  `</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><ol><li><p>create-react-app 으로 프로젝트 생성</p><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app my-app</span><br><span class="line"><span class="hljs-built_in">cd</span> my-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure></li><li><p>react-apollo 설치</p><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># installing the preset package (apollo-boost) and react integration</span></span><br><span class="line">npm install apollo-boost react-apollo graphql-tag graphql --save</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> front-end </tag>
+            
+            <tag> javascript </tag>
+            
+            <tag> react.js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo password 설정</title>
+      <link href="/2019/07/31/hexo-password-%EC%84%A4%EC%A0%95/"/>
+      <url>/2019/07/31/hexo-password-%EC%84%A4%EC%A0%95/</url>
+      
+        <content type="html"><![CDATA[<ol><li><p><a href="https://www.npmjs.com/package/hexo-blog-encrypt" target="_blank" rel="noopener">hexo-blog-encrypt</a> 모듈 설치</p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save hexo-blog-encrypt</span><br></pre></td></tr></table></figure></li><li><p>_config.yml 에 다음항목 추가</p> <figure class="highlight yml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">encrypt:</span></span><br><span class="line"><span class="hljs-attr">    enable:</span> <span class="hljs-literal">true</span></span><br></pre></td></tr></table></figure></li><li><p>post 상단에 다음 항목추가</p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">password: mikemessi</span><br><span class="line">abstract: Welcome to my blog, enter password to read.</span><br><span class="line">message: Welcome to my blog, enter password to read.</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git pull시 &#39;fatal: 관계 없는 커밋 내역의 병합을 거부합니다&#39; 발생시</title>
+      <link href="/2019/07/31/git-pull%EC%8B%9C-fatal-%EA%B4%80%EA%B3%84-%EC%97%86%EB%8A%94-%EC%BB%A4%EB%B0%8B-%EB%82%B4%EC%97%AD%EC%9D%98-%EB%B3%91%ED%95%A9%EC%9D%84-%EA%B1%B0%EB%B6%80%ED%95%A9%EB%8B%88%EB%8B%A4-%EB%B0%9C%EC%83%9D%EC%8B%9C/"/>
+      <url>/2019/07/31/git-pull%EC%8B%9C-fatal-%EA%B4%80%EA%B3%84-%EC%97%86%EB%8A%94-%EC%BB%A4%EB%B0%8B-%EB%82%B4%EC%97%AD%EC%9D%98-%EB%B3%91%ED%95%A9%EC%9D%84-%EA%B1%B0%EB%B6%80%ED%95%A9%EB%8B%88%EB%8B%A4-%EB%B0%9C%EC%83%9D%EC%8B%9C/</url>
+      
+        <content type="html"><![CDATA[<p>git 에서 오래동안 pull 을 안했더니 fatal: 관계 없는 커밋 내역의 병합을 거부합니다 에러 메세지가 발생하였다.</p><h2 id="해결방안"><a href="#해결방안" class="headerlink" title="해결방안"></a>해결방안</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch --all</span><br><span class="line">$ git reset --hard origin/master</span><br><span class="line">$ git pull origin master</span><br></pre></td></tr></table></figure><ul><li><code>git fetch --all</code> : git remote 에서 전체 내용을 받아온다.</li><li><code>git reset --hard origin/master</code> : 수정된 내역을 지우고 이전내용으로 복구한다.</li><li><code>git pull origin master</code> :  현재 작업하고있는 로컬에 커밋을 병합한다.</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+            <tag> dev </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vscode 특정폴더 숨기기</title>
       <link href="/2019/07/26/vscode-%ED%8A%B9%EC%A0%95%ED%8F%B4%EB%8D%94-%EC%88%A8%EA%B8%B0%EA%B8%B0/"/>
       <url>/2019/07/26/vscode-%ED%8A%B9%EC%A0%95%ED%8F%B4%EB%8D%94-%EC%88%A8%EA%B8%B0%EA%B8%B0/</url>
@@ -98,11 +270,11 @@
       
         <tags>
             
-            <tag> react.js </tag>
-            
             <tag> front-end </tag>
             
             <tag> javascript </tag>
+            
+            <tag> react.js </tag>
             
         </tags>
       
@@ -121,9 +293,9 @@
       
         <tags>
             
-            <tag> react.js </tag>
-            
             <tag> javascript </tag>
+            
+            <tag> react.js </tag>
             
             <tag> fron-end </tag>
             
@@ -213,9 +385,9 @@
       
         <tags>
             
-            <tag> react.js </tag>
-            
             <tag> front-end </tag>
+            
+            <tag> react.js </tag>
             
         </tags>
       
@@ -234,9 +406,9 @@
       
         <tags>
             
-            <tag> react.js </tag>
-            
             <tag> front-end </tag>
+            
+            <tag> react.js </tag>
             
         </tags>
       
@@ -369,9 +541,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> manjaro </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -392,9 +564,9 @@
             
             <tag> server </tag>
             
-            <tag> linux </tag>
-            
             <tag> manjaro </tag>
+            
+            <tag> linux </tag>
             
             <tag> error </tag>
             
@@ -621,7 +793,7 @@
       <link href="/2019/03/10/freebsd-%EC%97%90%EC%84%9C-%EA%B2%8C%EC%8A%A4%ED%8A%B8%ED%99%95%EC%9E%A5-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/"/>
       <url>/2019/03/10/freebsd-%EC%97%90%EC%84%9C-%EA%B2%8C%EC%8A%A4%ED%8A%B8%ED%99%95%EC%9E%A5-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</url>
       
-        <content type="html"><![CDATA[<h2 id="1-vbox-guest-additions-설치하기"><a href="#1-vbox-guest-additions-설치하기" class="headerlink" title="1. vbox guest additions 설치하기"></a>1. vbox guest additions 설치하기</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> pkg install virtualbox-ose-additions</span><br></pre></td></tr></table></figure><h2 id="2-etc-X11-xorg-conf-파일-설정"><a href="#2-etc-X11-xorg-conf-파일-설정" class="headerlink" title="2. /etc/X11/xorg.conf 파일 설정"></a>2. /etc/X11/xorg.conf 파일 설정</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/X11/xorg.conf</span><br></pre></td></tr></table></figure><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Section &quot;Device&quot;</span><br><span class="line">Identifier &quot;Card0&quot;</span><br><span class="line">Driver &quot;vboxvideo&quot;</span><br><span class="line">VendorName &quot;InnoTek Systemberatung GmbH&quot;</span><br><span class="line">BoardName &quot;VirtualBox Graphics Adapter&quot;</span><br><span class="line">EndSection</span><br><span class="line"></span><br><span class="line">Section &quot;InputDevice&quot;</span><br><span class="line">Identifier &quot;Mouse0&quot;</span><br><span class="line">Driver &quot;vboxmouse&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure><h2 id="3-etc-rc-conf-파일-설정"><a href="#3-etc-rc-conf-파일-설정" class="headerlink" title="3.  /etc/rc.conf 파일 설정"></a>3.  /etc/rc.conf 파일 설정</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/rc.conf</span><br></pre></td></tr></table></figure><p>/etc/rc.conf 파일에 다음과 내용 추가<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vboxguest_enable=&quot;YES&quot;</span><br><span class="line">vboxservice_enable=&quot;YES&quot;</span><br></pre></td></tr></table></figure></p><h2 id="4-reboot-후-확인"><a href="#4-reboot-후-확인" class="headerlink" title="4. reboot 후 확인"></a>4. reboot 후 확인</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ reboot</span><br></pre></td></tr></table></figure><img src="/2019/03/10/freebsd-에서-게스트확장-설치하기/freebsd.png" title="spaced title"><p>참고 : <a href="https://www.freebsd.org/doc/handbook/virtualization-guest-virtualbox.html" target="_blank" rel="noopener">freebsd handbook - 21.5. FreeBSD as a Guest on VirtualBox</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="1-vbox-guest-additions-설치하기"><a href="#1-vbox-guest-additions-설치하기" class="headerlink" title="1. vbox guest additions 설치하기"></a>1. vbox guest additions 설치하기</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> pkg install virtualbox-ose-additions</span></span><br></pre></td></tr></table></figure><h2 id="2-etc-X11-xorg-conf-파일-설정"><a href="#2-etc-X11-xorg-conf-파일-설정" class="headerlink" title="2. /etc/X11/xorg.conf 파일 설정"></a>2. /etc/X11/xorg.conf 파일 설정</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/X11/xorg.conf</span><br></pre></td></tr></table></figure><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Section &quot;Device&quot;</span><br><span class="line">Identifier &quot;Card0&quot;</span><br><span class="line">Driver &quot;vboxvideo&quot;</span><br><span class="line">VendorName &quot;InnoTek Systemberatung GmbH&quot;</span><br><span class="line">BoardName &quot;VirtualBox Graphics Adapter&quot;</span><br><span class="line">EndSection</span><br><span class="line"></span><br><span class="line">Section &quot;InputDevice&quot;</span><br><span class="line">Identifier &quot;Mouse0&quot;</span><br><span class="line">Driver &quot;vboxmouse&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure><h2 id="3-etc-rc-conf-파일-설정"><a href="#3-etc-rc-conf-파일-설정" class="headerlink" title="3.  /etc/rc.conf 파일 설정"></a>3.  /etc/rc.conf 파일 설정</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/rc.conf</span><br></pre></td></tr></table></figure><p>/etc/rc.conf 파일에 다음과 내용 추가<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vboxguest_enable=&quot;YES&quot;</span><br><span class="line">vboxservice_enable=&quot;YES&quot;</span><br></pre></td></tr></table></figure></p><h2 id="4-reboot-후-확인"><a href="#4-reboot-후-확인" class="headerlink" title="4. reboot 후 확인"></a>4. reboot 후 확인</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ reboot</span><br></pre></td></tr></table></figure><img src="/2019/03/10/freebsd-에서-게스트확장-설치하기/freebsd.png" title="spaced title"><p>참고 : <a href="https://www.freebsd.org/doc/handbook/virtualization-guest-virtualbox.html" target="_blank" rel="noopener">freebsd handbook - 21.5. FreeBSD as a Guest on VirtualBox</a></p>]]></content>
       
       
       
@@ -942,7 +1114,7 @@
       <link href="/2018/12/27/Spring-Boot-jar%EB%A1%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%93%B1%EB%A1%9D%ED%95%98%EA%B8%B0/"/>
       <url>/2018/12/27/Spring-Boot-jar%EB%A1%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%93%B1%EB%A1%9D%ED%95%98%EA%B8%B0/</url>
       
-        <content type="html"><![CDATA[<p>참고: <a href="http://heowc.tistory.com/38" target="_blank" rel="noopener">Spring Boot - jar로 Deploy(배포)하기 [허원철의 개발 블로그]</a></p><big> 서비스 등록 </big><ol><li>서비스 등록<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/init.d/myApp</span><br></pre></td></tr></table></figure></li></ol><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span>!/bin/sh</span><br><span class="line">SERVICE_NAME=myApp</span><br><span class="line">PATH_TO_JAR=/usr/local/myApp.jar</span><br><span class="line">PID_PATH_NAME=/tmp/myApp-pid</span><br><span class="line">case $1 in</span><br><span class="line">    start)</span><br><span class="line">        echo "Starting $SERVICE_NAME ..."</span><br><span class="line">        if [ ! -f $PID_PATH_NAME ]; then</span><br><span class="line">            nohup java -jar $PATH_TO_JAR /tmp 2&gt;&gt; /dev/null &gt;&gt; /dev/null &amp;</span><br><span class="line">                        echo $! &gt; $PID_PATH_NAME</span><br><span class="line">            echo "$SERVICE_NAME started ..."</span><br><span class="line">        else</span><br><span class="line">            echo "$SERVICE_NAME is already running ..."</span><br><span class="line">        fi</span><br><span class="line">    ;;</span><br><span class="line">    stop)</span><br><span class="line">        if [ -f $PID_PATH_NAME ]; then</span><br><span class="line">            PID=$(cat $PID_PATH_NAME);</span><br><span class="line">            echo "$SERVICE_NAME stoping ..."</span><br><span class="line">            kill $PID;</span><br><span class="line">            echo "$SERVICE_NAME stopped ..."</span><br><span class="line">            rm $PID_PATH_NAME</span><br><span class="line">        else</span><br><span class="line">            echo "$SERVICE_NAME is not running ..."</span><br><span class="line">        fi</span><br><span class="line">    ;;</span><br><span class="line">    restart)</span><br><span class="line">        if [ -f $PID_PATH_NAME ]; then</span><br><span class="line">            PID=$(cat $PID_PATH_NAME);</span><br><span class="line">            echo "$SERVICE_NAME stopping ...";</span><br><span class="line">            kill $PID;</span><br><span class="line">            echo "$SERVICE_NAME stopped ...";</span><br><span class="line">            rm $PID_PATH_NAME</span><br><span class="line">            echo "$SERVICE_NAME starting ..."</span><br><span class="line">            nohup java $JAVA_OPTS -jar $PATH_TO_JAR /tmp 2&gt;&gt; /dev/null &gt;&gt; /dev/null &amp;</span><br><span class="line">                        echo $! &gt; $PID_PATH_NAME</span><br><span class="line">            echo "$SERVICE_NAME started ..."</span><br><span class="line">        else</span><br><span class="line">            echo "$SERVICE_NAME is not running ..."</span><br><span class="line">        fi</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure><ul><li><p>서비스 실행</p><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service myapp start | stop | restart</span><br></pre></td></tr></table></figure><big> * spring boot 1.3부터는 별도의 스크립트 없이도 간단한 설정으로 자체적으로 실행이 가능함</big><ul><li>Maven<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">executable</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">executable</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul></li><li><p>Gradle</p><figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bootJar &#123;</span><br><span class="line">launchScript()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>서비스 등록</p><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /var/myapp/myapp.jar /etc/init.d/myapp</span><br></pre></td></tr></table></figure></li><li><p>서비스 실행</p><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service myapp start</span><br></pre></td></tr></table></figure><p>참고 : <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/deployment-install.html" target="_blank" rel="noopener">Installing Spring Boot Applications</a></p></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>참고: <a href="http://heowc.tistory.com/38" target="_blank" rel="noopener">Spring Boot - jar로 Deploy(배포)하기 [허원철의 개발 블로그]</a></p><big> 서비스 등록 </big><ol><li>서비스 등록<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/init.d/myApp</span><br></pre></td></tr></table></figure></li></ol><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">!/bin/sh</span></span><br><span class="line">SERVICE_NAME=myApp</span><br><span class="line">PATH_TO_JAR=/usr/local/myApp.jar</span><br><span class="line">PID_PATH_NAME=/tmp/myApp-pid</span><br><span class="line">case $1 in</span><br><span class="line">    start)</span><br><span class="line">        echo "Starting $SERVICE_NAME ..."</span><br><span class="line">        if [ ! -f $PID_PATH_NAME ]; then</span><br><span class="line">            nohup java -jar $PATH_TO_JAR /tmp 2&gt;&gt; /dev/null &gt;&gt; /dev/null &amp;</span><br><span class="line">                        echo $! &gt; $PID_PATH_NAME</span><br><span class="line">            echo "$SERVICE_NAME started ..."</span><br><span class="line">        else</span><br><span class="line">            echo "$SERVICE_NAME is already running ..."</span><br><span class="line">        fi</span><br><span class="line">    ;;</span><br><span class="line">    stop)</span><br><span class="line">        if [ -f $PID_PATH_NAME ]; then</span><br><span class="line">            PID=$(cat $PID_PATH_NAME);</span><br><span class="line">            echo "$SERVICE_NAME stoping ..."</span><br><span class="line">            kill $PID;</span><br><span class="line">            echo "$SERVICE_NAME stopped ..."</span><br><span class="line">            rm $PID_PATH_NAME</span><br><span class="line">        else</span><br><span class="line">            echo "$SERVICE_NAME is not running ..."</span><br><span class="line">        fi</span><br><span class="line">    ;;</span><br><span class="line">    restart)</span><br><span class="line">        if [ -f $PID_PATH_NAME ]; then</span><br><span class="line">            PID=$(cat $PID_PATH_NAME);</span><br><span class="line">            echo "$SERVICE_NAME stopping ...";</span><br><span class="line">            kill $PID;</span><br><span class="line">            echo "$SERVICE_NAME stopped ...";</span><br><span class="line">            rm $PID_PATH_NAME</span><br><span class="line">            echo "$SERVICE_NAME starting ..."</span><br><span class="line">            nohup java $JAVA_OPTS -jar $PATH_TO_JAR /tmp 2&gt;&gt; /dev/null &gt;&gt; /dev/null &amp;</span><br><span class="line">                        echo $! &gt; $PID_PATH_NAME</span><br><span class="line">            echo "$SERVICE_NAME started ..."</span><br><span class="line">        else</span><br><span class="line">            echo "$SERVICE_NAME is not running ..."</span><br><span class="line">        fi</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure><ul><li><p>서비스 실행</p><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service myapp start | stop | restart</span><br></pre></td></tr></table></figure><big> * spring boot 1.3부터는 별도의 스크립트 없이도 간단한 설정으로 자체적으로 실행이 가능함</big><ul><li>Maven<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">executable</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">executable</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul></li><li><p>Gradle</p><figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bootJar &#123;</span><br><span class="line">launchScript()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>서비스 등록</p><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /var/myapp/myapp.jar /etc/init.d/myapp</span><br></pre></td></tr></table></figure></li><li><p>서비스 실행</p><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service myapp start</span><br></pre></td></tr></table></figure><p>참고 : <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/deployment-install.html" target="_blank" rel="noopener">Installing Spring Boot Applications</a></p></li></ul>]]></content>
       
       
       
@@ -1036,9 +1208,9 @@
       
         <tags>
             
-            <tag> react.js </tag>
-            
             <tag> front-end </tag>
+            
+            <tag> react.js </tag>
             
             <tag> JavaScript </tag>
             
@@ -1076,7 +1248,7 @@
       <link href="/2018/12/20/How-to-Disable-SELinux-on-CentOS-7/"/>
       <url>/2018/12/20/How-to-Disable-SELinux-on-CentOS-7/</url>
       
-        <content type="html"><![CDATA[<h1 id="SELinux"><a href="#SELinux" class="headerlink" title="SELinux"></a>SELinux</h1><p>SELinux(Security Enhanced Linux)는 관리자와 사용자가 액세스 제어에 대한 제어력을 높일 수 있는 Linux 커널 보안 모듈이다. SELinux 정책 규칙에 따라 접속할 수 있다.</p><p>SELinux 정책 규칙은 프로세스와 사용자가 파일과 상호 작용하는 방법뿐만 아니라 프로세스와 사용자가 서로 상호작용하는 방법을 지정한다.</p><p>파일을 여는 프로세스처럼 액세스를 특별히 허용하는 SELinux 정책 규칙이 없는 경우, 액세스가 거부된다.</p><h1 id="Disable-SELinux"><a href="#Disable-SELinux" class="headerlink" title="Disable SELinux"></a>Disable SELinux</h1><ol><li><p>SELinux mode 변경</p> <figure class="highlight console hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo setenforce 0</span><br></pre></td></tr></table></figure></li><li><p>/etc/selinux/config 변경</p><p> SELINUX 항목을 disabled로 변경</p> <figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span> This file controls the state of SELinux on the system.</span><br><span class="line"><span class="hljs-meta">#</span> SELINUX= can take one of these three values:</span><br><span class="line"><span class="hljs-meta">#</span>       enforcing - SELinux security policy is enforced.</span><br><span class="line"><span class="hljs-meta">#</span>       permissive - SELinux prints warnings instead of enforcing.</span><br><span class="line"><span class="hljs-meta">#</span>       disabled - No SELinux policy is loaded.</span><br><span class="line">SELINUX=disabled</span><br><span class="line"><span class="hljs-meta">#</span> SELINUXTYPE= can take one of these two values:</span><br><span class="line"><span class="hljs-meta">#</span>       targeted - Targeted processes are protected,</span><br><span class="line"><span class="hljs-meta">#</span>       mls - Multi Level Security protection.</span><br><span class="line">SELINUXTYPE=targeted</span><br></pre></td></tr></table></figure></li><li><p>Server reboot</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<h1 id="SELinux"><a href="#SELinux" class="headerlink" title="SELinux"></a>SELinux</h1><p>SELinux(Security Enhanced Linux)는 관리자와 사용자가 액세스 제어에 대한 제어력을 높일 수 있는 Linux 커널 보안 모듈이다. SELinux 정책 규칙에 따라 접속할 수 있다.</p><p>SELinux 정책 규칙은 프로세스와 사용자가 파일과 상호 작용하는 방법뿐만 아니라 프로세스와 사용자가 서로 상호작용하는 방법을 지정한다.</p><p>파일을 여는 프로세스처럼 액세스를 특별히 허용하는 SELinux 정책 규칙이 없는 경우, 액세스가 거부된다.</p><h1 id="Disable-SELinux"><a href="#Disable-SELinux" class="headerlink" title="Disable SELinux"></a>Disable SELinux</h1><ol><li><p>SELinux mode 변경</p> <figure class="highlight console hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo setenforce 0</span><br></pre></td></tr></table></figure></li><li><p>/etc/selinux/config 변경</p><p> SELINUX 항목을 disabled로 변경</p> <figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash"> This file controls the state of SELinux on the system.</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash"> SELINUX= can take one of these three values:</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">       enforcing - SELinux security policy is enforced.</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">       permissive - SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">       disabled - No SELinux policy is loaded.</span></span><br><span class="line">SELINUX=disabled</span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash"> SELINUXTYPE= can take one of these two values:</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">       targeted - Targeted processes are protected,</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">       mls - Multi Level Security protection.</span></span><br><span class="line">SELINUXTYPE=targeted</span><br></pre></td></tr></table></figure></li><li><p>Server reboot</p></li></ol>]]></content>
       
       
       
