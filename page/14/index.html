@@ -152,6 +152,52 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-09T23:46:53.000Z">2019-03-10</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    몇 초 읽기 (나에 대하여 83 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/10/freebsd-에서-gui-환경-셋팅하기/">freebsd 에서 gui 환경 셋팅하기</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="freebsd-에서-gui-환경-셋팅하기-그놈설치"><a href="#freebsd-에서-gui-환경-셋팅하기-그놈설치" class="headerlink" title="freebsd 에서 gui 환경 셋팅하기 (그놈설치)"></a>freebsd 에서 gui 환경 셋팅하기 (그놈설치)</h1><h2 id="1-install-gnome3"><a href="#1-install-gnome3" class="headerlink" title="1. install gnome3"></a>1. install gnome3</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pkg install gnome3</span><br></pre></td></tr></table></figure>
+<h2 id="2-fstab-파일-설정"><a href="#2-fstab-파일-설정" class="headerlink" title="2. fstab 파일 설정"></a>2. fstab 파일 설정</h2><p>/etc/fstab 파일에 내용추가<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proc           /proc       procfs  rw  0   0</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-rc-conf-파일설정"><a href="#3-rc-conf-파일설정" class="headerlink" title="3. rc.conf 파일설정"></a>3. rc.conf 파일설정</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dbus_enable=&quot;YES&quot;</span><br><span class="line">hald_enable=&quot;YES&quot;</span><br><span class="line">gdm_enable=&quot;YES&quot;</span><br><span class="line">gnome_enable=&quot;YES&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="4-재부팅후-확인"><a href="#4-재부팅후-확인" class="headerlink" title="4. 재부팅후 확인"></a>4. 재부팅후 확인</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ reboot</span><br></pre></td></tr></table></figure>
+<img src="/2019/03/10/freebsd-에서-gui-환경-셋팅하기/freebsd.png" title="spaced title">
+<p>참고 : <a href="https://www.freebsd.org/doc/handbook/x11-wm.html" target="_blank" rel="noopener">freebsd handbook - 5.7. Desktop Environments</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-03-09T23:39:32.000Z">2019-03-10</time>
                 
                 
@@ -220,49 +266,6 @@
 <h2 id="1-Firefox-에서-DRM-설정하기"><a href="#1-Firefox-에서-DRM-설정하기" class="headerlink" title="1. Firefox 에서 DRM 설정하기"></a>1. Firefox 에서 DRM 설정하기</h2><p>Firefox 에서 DRM 제어 콘텐츠 재생 체크하기</p>
 <img src="/2019/03/10/ubuntu-에서-Netflix-시청하기/firefox.png" title="spaced title">
 <h2 id="2-extra-codecs-설치하기"><a href="#2-extra-codecs-설치하기" class="headerlink" title="2. extra codecs 설치하기"></a>2. extra codecs 설치하기</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install libavcodec-extra</span><br></pre></td></tr></table></figure>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-09T13:04:07.000Z">2019-03-09</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1분 읽기 (나에 대하여 119 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/03/09/ubuntu-에서-pip3-가-pip-cannot-import-name-main-에러날때/">pip cannot import name main 에러날때</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="pip-install-실행간-ImportError-cannot-import-name-‘main’-에러발생"><a href="#pip-install-실행간-ImportError-cannot-import-name-‘main’-에러발생" class="headerlink" title="pip install 실행간 ImportError: cannot import name ‘main’ 에러발생"></a>pip install 실행간 ImportError: cannot import name ‘main’ 에러발생</h1><h2 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h2><p>ubuntu 에서 apt install python-pip 인스톨후에 sudo pip install pip –upgrade 함</p>
-<h2 id="증상"><a href="#증상" class="headerlink" title="증상"></a>증상</h2><p>pip 실행간 다음과 같은 에러발생<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">guru@guru-notebook:~$ pip3 install numpy</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;/usr/bin/pip3&quot;, line 9, in &lt;module&gt;</span><br><span class="line">    from pip import main</span><br><span class="line">ImportError: cannot import name &apos;main&apos;</span><br></pre></td></tr></table></figure></p>
-<h2 id="해결"><a href="#해결" class="headerlink" title="해결"></a>해결</h2><p>다음 명령어를 실행 (참고 : <a href="https://stackoverflow.com/questions/49836676/error-after-upgrading-pip-cannot-import-name-main" target="_blank" rel="noopener">Error after upgrading pip: cannot import name ‘main’</a>)<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo python3 -m pip uninstall pip &amp;&amp; sudo apt install python3-pip --reinstall</span><br></pre></td></tr></table></figure></p>
 
         </div>
         
@@ -350,7 +353,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        68
+                        69
                     </p>
                 </div>
             </div>
@@ -485,6 +488,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -559,25 +581,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -589,6 +592,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1172,6 +1186,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -1246,25 +1279,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1276,6 +1290,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1963,7 +1988,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

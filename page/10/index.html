@@ -152,6 +152,64 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-08T06:13:22.000Z">2019-06-08</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1분 읽기 (나에 대하여 175 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/08/manjaro-에서-pacman-이용시-pgp-에러-발생시/">manjaro 에서 pacman 이용시 pgp 에러 발생시</a>
+            
+        </h1>
+        <div class="content">
+            <ul>
+<li><p>pacman -Syyu 입력시 다음 에러가 발생할경우</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pacman -Syyu</span><br><span class="line">error: fzf: signature from &quot;Ambrevar &lt;ambrevar@gmail.com&gt;&quot; is unknown trust :: File /var/cache/pacman/pkg/fzf-0.17.0.2-1-x86_64.pkg.tar.xz is corrupted (invalid or corrupted package (PGP signature)).</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>다음 명령어로 해결한다.</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --refresh-keys</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>다음 에러가 추가 발생시</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Syu</span><br><span class="line">error: GPGME error: No data</span><br><span class="line">error: GPGME error: No data</span><br><span class="line">error: GPGME error: No data</span><br><span class="line">error: GPGME error: No data</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>다음 명령어를 입력한다.</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sy archlinux-keyring manjaro-keyring</span><br><span class="line">sudo pacman-key --populate archlinux manjaro</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>다음에 다시한번 확인한다.</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>원인은 자세하게 확인해봐야 하겠지만 업데이트 서버에 있는 서명과 내노트북에 있는 서명값이 달라서 생긴것 같다.</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-05-21T12:13:42.000Z">2019-05-21</time>
                 
                 
@@ -239,49 +297,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-15T07:19:54.000Z">2019-05-15</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1분 읽기 (나에 대하여 128 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/15/Vagrant-에서-메모리-CPU-코어수-조정/">Vagrant 에서 메모리 CPU 코어수 조정</a>
-            
-        </h1>
-        <div class="content">
-            <p>메모리 할당을 설정시 Vagrantfile 에서 다음 항목을 추가한다.<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.customize ["modifyvm", :id, "--memory", 2048]</span><br></pre></td></tr></table></figure></p>
-<p>아니면 CPU 설정시 다음 항목을 수정한다.<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.customize ["modifyvm", :id, "--cpus", 2]</span><br></pre></td></tr></table></figure></p>
-<p>Vagrantfile 예시<br><figure class="highlight ruby hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># -*- mode: ruby -*-</span></span><br><span class="line"><span class="hljs-comment"># vi: set ft=ruby :</span></span><br><span class="line"></span><br><span class="line">hosts = &#123;</span><br><span class="line">  <span class="hljs-string">"n1"</span> =&gt; <span class="hljs-string">"192.168.77.10"</span>,</span><br><span class="line">  <span class="hljs-string">"n2"</span> =&gt; <span class="hljs-string">"192.168.77.11"</span>,</span><br><span class="line">  <span class="hljs-string">"n3"</span> =&gt; <span class="hljs-string">"192.168.77.12"</span>,</span><br><span class="line">  <span class="hljs-string">"n4"</span> =&gt; <span class="hljs-string">"192.168.77.13"</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Vagrant.configure(<span class="hljs-string">"2"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|config|</span></span><br><span class="line"></span><br><span class="line">  config.ssh.insert_key     = <span class="hljs-literal">false</span></span><br><span class="line">  config.ssh.forward_agent  = <span class="hljs-literal">true</span></span><br><span class="line">  check_guest_additions     = <span class="hljs-literal">false</span></span><br><span class="line">  functional_vboxsf         = <span class="hljs-literal">false</span></span><br><span class="line"></span><br><span class="line">  config.vm.box = <span class="hljs-string">"bento/ubuntu-16.04"</span></span><br><span class="line"></span><br><span class="line">  hosts.each <span class="hljs-keyword">do</span> <span class="hljs-params">|name, ip|</span></span><br><span class="line">    config.vm.define name <span class="hljs-keyword">do</span> <span class="hljs-params">|machine|</span></span><br><span class="line">      machine.vm.network <span class="hljs-symbol">:private_network</span>, <span class="hljs-symbol">ip:</span> ip</span><br><span class="line">      machine.vm.provider <span class="hljs-string">"virtualbox"</span> <span class="hljs-keyword">do</span> <span class="hljs-params">|v|</span></span><br><span class="line">        v.customize [<span class="hljs-string">"modifyvm"</span>, <span class="hljs-symbol">:id</span>, <span class="hljs-string">"--cpus"</span>, <span class="hljs-number">2</span>]</span><br><span class="line">        v.name = name</span><br><span class="line">      <span class="hljs-keyword">end</span></span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line">  <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">end</span></span><br></pre></td></tr></table></figure></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -354,7 +369,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        68
+                        69
                     </p>
                 </div>
             </div>
@@ -489,6 +504,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -563,25 +597,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -593,6 +608,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1176,6 +1202,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -1250,25 +1295,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1280,6 +1306,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1967,7 +2004,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

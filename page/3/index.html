@@ -152,6 +152,58 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-31T16:33:35.000Z">2019-08-01</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    몇 초 읽기 (나에 대하여 98 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/01/react-apollo-을-통한-graphql-연동-1일차/">react-apollo 을 통한 graphql 연동 (1일차)</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="react-apollo"><a href="#react-apollo" class="headerlink" title="react-apollo"></a>react-apollo</h2><p>react-apollo 을 통하여 graphql 을 손쉽게 제어가능 </p>
+<ul>
+<li>axios - graphql 연동 예시</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> axios.post(API_URL, &#123;</span><br><span class="line">  query: <span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">    updateUserCity(userID: <span class="hljs-subst">$&#123;id&#125;</span>, city:<span class="hljs-subst">$&#123;city&#125;</span>)&#123;</span></span><br><span class="line"><span class="hljs-string">      id</span></span><br><span class="line"><span class="hljs-string">      name</span></span><br><span class="line"><span class="hljs-string">      age</span></span><br><span class="line"><span class="hljs-string">      city</span></span><br><span class="line"><span class="hljs-string">      knowledge&#123;</span></span><br><span class="line"><span class="hljs-string">        language</span></span><br><span class="line"><span class="hljs-string">        frameworks</span></span><br><span class="line"><span class="hljs-string">      &#125;</span></span><br><span class="line"><span class="hljs-string">    &#125;</span></span><br><span class="line"><span class="hljs-string">  `</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><ol>
+<li><p>create-react-app 으로 프로젝트 생성</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app my-app</span><br><span class="line"><span class="hljs-built_in">cd</span> my-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>react-apollo 설치</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># installing the preset package (apollo-boost) and react integration</span></span><br><span class="line">npm install apollo-boost react-apollo graphql-tag graphql --save</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-07-30T15:33:04.000Z">2019-07-31</time>
                 
                 
@@ -244,51 +296,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-26T03:31:45.000Z">2019-07-26</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    몇 초 읽기 (나에 대하여 51 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/26/vscode-특정폴더-숨기기/">vscode 특정폴더 숨기기</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="설정"><a href="#설정" class="headerlink" title="설정"></a>설정</h2><ol>
-<li>vscode 설정창으로 이동 <img src="/2019/07/26/vscode-특정폴더-숨기기/img1.png" title="spaced title"></li>
-<li>사용자 설정에서 검색창에 exclude 을 입력후에 Files.Execlude 항목에서 숨길 폴더 추가 <img src="/2019/07/26/vscode-특정폴더-숨기기/img2.png" title="spaced title">
-</li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -359,7 +366,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        68
+                        69
                     </p>
                 </div>
             </div>
@@ -494,6 +501,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -568,25 +594,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -598,6 +605,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1181,6 +1199,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -1255,25 +1292,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1285,6 +1303,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1972,7 +2001,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

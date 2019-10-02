@@ -152,6 +152,50 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-26T15:46:55.000Z">2018-12-27</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    몇 초 읽기 (나에 대하여 92 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/12/27/npm-build-간-javascript-heap-out-of-memory-npm-build-발생시/">npm build 간 javascript heap out of memory npm build 발생시</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="증상"><a href="#증상" class="headerlink" title="증상"></a>증상</h1><p>npm run build 후 다음과 같은 에러 메세지 발생<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory</span><br></pre></td></tr></table></figure></p>
+<h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>이는 기본 Node.js 가용 메모리가 빌드하기에 충분하지 않아 발생하는 오류</p>
+<h1 id="조치"><a href="#조치" class="headerlink" title="조치"></a>조치</h1><p>package.json 내부의 build 항목을 다음과 같이 수정</p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  ...</span><br><span class="line">    "build": "node --max_old_space_size=8096 scripts/build.js",</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2018-12-19T16:03:46.000Z">2018-12-20</time>
                 
                 
@@ -230,58 +274,11 @@
 </li>
 <li><p>/etc/selinux/config 변경</p>
 <p> SELINUX 항목을 disabled로 변경</p>
- <figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash"> This file controls the state of SELinux on the system.</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash"> SELINUX= can take one of these three values:</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">       enforcing - SELinux security policy is enforced.</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">       permissive - SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">       disabled - No SELinux policy is loaded.</span></span><br><span class="line">SELINUX=disabled</span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash"> SELINUXTYPE= can take one of these two values:</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">       targeted - Targeted processes are protected,</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">       mls - Multi Level Security protection.</span></span><br><span class="line">SELINUXTYPE=targeted</span><br></pre></td></tr></table></figure>
+ <figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#</span> This file controls the state of SELinux on the system.</span><br><span class="line"><span class="hljs-meta">#</span> SELINUX= can take one of these three values:</span><br><span class="line"><span class="hljs-meta">#</span>       enforcing - SELinux security policy is enforced.</span><br><span class="line"><span class="hljs-meta">#</span>       permissive - SELinux prints warnings instead of enforcing.</span><br><span class="line"><span class="hljs-meta">#</span>       disabled - No SELinux policy is loaded.</span><br><span class="line">SELINUX=disabled</span><br><span class="line"><span class="hljs-meta">#</span> SELINUXTYPE= can take one of these two values:</span><br><span class="line"><span class="hljs-meta">#</span>       targeted - Targeted processes are protected,</span><br><span class="line"><span class="hljs-meta">#</span>       mls - Multi Level Security protection.</span><br><span class="line">SELINUXTYPE=targeted</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Server reboot</p>
 </li>
 </ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-19T15:47:48.000Z">2018-12-20</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    몇 초 읽기 (나에 대하여 109 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/20/Centos7-SELINUX-disable-설정후-커널페닉-증상/">Centos7 SELINUX disable 설정후 커널페닉 증상</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="증상"><a href="#증상" class="headerlink" title="증상"></a>증상</h1><p>   Centos SELINUX 설정을 비활성화 후에 재부팅시 부팅화면에서 멈추는 현상</p>
-<h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>   /etc/selinux/config 파일에</p>
-<p>   SELINUXTYPE=disabled 설정되어 있음</p>
-<h1 id="해결방안"><a href="#해결방안" class="headerlink" title="해결방안"></a>해결방안</h1><p>  grub 화면에서 부팅 운영체제를 선택후 e 키를 눌러서 kernel 부팅 옵션으로 들어가서</p>
-<p>  linux16 / vmlinu 가 있는 부분에 selinux = 0 추가할것</p>
-<p>  linux16 / vmlinu - 생략 - selinux = 0</p>
-<p>  완료후에 Ctrl + x 키로 리부트</p>
 
         </div>
         
@@ -369,7 +366,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        68
+                        69
                     </p>
                 </div>
             </div>
@@ -504,6 +501,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -578,25 +594,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -608,6 +605,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1191,6 +1199,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -1265,25 +1292,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1295,6 +1303,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1982,7 +2001,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

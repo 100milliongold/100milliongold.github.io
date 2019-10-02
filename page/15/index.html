@@ -152,6 +152,49 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-09T13:04:07.000Z">2019-03-09</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1분 읽기 (나에 대하여 119 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/09/ubuntu-에서-pip3-가-pip-cannot-import-name-main-에러날때/">pip cannot import name main 에러날때</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="pip-install-실행간-ImportError-cannot-import-name-‘main’-에러발생"><a href="#pip-install-실행간-ImportError-cannot-import-name-‘main’-에러발생" class="headerlink" title="pip install 실행간 ImportError: cannot import name ‘main’ 에러발생"></a>pip install 실행간 ImportError: cannot import name ‘main’ 에러발생</h1><h2 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h2><p>ubuntu 에서 apt install python-pip 인스톨후에 sudo pip install pip –upgrade 함</p>
+<h2 id="증상"><a href="#증상" class="headerlink" title="증상"></a>증상</h2><p>pip 실행간 다음과 같은 에러발생<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">guru@guru-notebook:~$ pip3 install numpy</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;/usr/bin/pip3&quot;, line 9, in &lt;module&gt;</span><br><span class="line">    from pip import main</span><br><span class="line">ImportError: cannot import name &apos;main&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="해결"><a href="#해결" class="headerlink" title="해결"></a>해결</h2><p>다음 명령어를 실행 (참고 : <a href="https://stackoverflow.com/questions/49836676/error-after-upgrading-pip-cannot-import-name-main" target="_blank" rel="noopener">Error after upgrading pip: cannot import name ‘main’</a>)<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo python3 -m pip uninstall pip &amp;&amp; sudo apt install python3-pip --reinstall</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-03-09T12:54:51.000Z">2019-03-09</time>
                 
                 
@@ -257,52 +300,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-24T06:15:21.000Z">2019-02-24</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1분 읽기 (나에 대하여 215 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/02/24/docker-remote-port-open-docker-원격-API-활성화/">docker remote port open (docker 원격 API 활성화)</a>
-            
-        </h1>
-        <div class="content">
-            <p>경고 : Docker 에서 remote port open 할 경우 별도의 인증절차 없이 restful api 을 사용하므로<br>보안에 취약합니다. 해당 작업으로 발생하는 사항은 권장하지 않으며 발생한 사항에 대하여 책임지지 않습니다.</p>
-<p><a href="http://blog.brian.jp/docker,/docker/swarm,/netsec/2017/10/31/free-servers-with-docker-swarm.html" target="_blank" rel="noopener">http://blog.brian.jp/docker,/docker/swarm,/netsec/2017/10/31/free-servers-with-docker-swarm.html</a></p>
-<h1 id="docker-remote-port-open-docker-원격-API-활성화"><a href="#docker-remote-port-open-docker-원격-API-활성화" class="headerlink" title="docker remote port open (docker 원격 API 활성화)"></a>docker remote port open (docker 원격 API 활성화)</h1><h2 id="1-lib-systemd-system-docker-service-내용-수정"><a href="#1-lib-systemd-system-docker-service-내용-수정" class="headerlink" title="1. /lib/systemd/system/docker.service 내용 수정"></a>1. /lib/systemd/system/docker.service 내용 수정</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Service]</span><br><span class="line">EnvironmentFile=/etc/default/docker</span><br><span class="line">ExecStart=/usr/bin/dockerd -H fd:// $DOCKER_OPTS</span><br></pre></td></tr></table></figure>
-<h2 id="2-etc-default-docker-내용-수정"><a href="#2-etc-default-docker-내용-수정" class="headerlink" title="2. /etc/default/docker 내용 수정"></a>2. /etc/default/docker 내용 수정</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DOCKER_OPTS=&quot;--dns 8.8.8.8 --dns 8.8.4.4 -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="3-docker-리로드-및-재시작"><a href="#3-docker-리로드-및-재시작" class="headerlink" title="3. docker 리로드 및 재시작"></a>3. docker 리로드 및 재시작</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">service docker restart</span><br></pre></td></tr></table></figure>
-<h2 id="4-테스트"><a href="#4-테스트" class="headerlink" title="4. 테스트"></a>4. 테스트</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:2375/version</span><br><span class="line"></span><br><span class="line">&#123;"Platform":&#123;"Name":"Docker Engine - Community"&#125;,"Components":[&#123;"Name":"Engine","Version":"18.09.2","Details":&#123;"ApiVersion":"1.39","Arch":"amd64","BuildTime":"2019-02-10T03:42:13.000000000+00:00","Experimental":"false","GitCommit":"6247962","GoVersion":"go1.10.6","KernelVersion":"4.15.0-45-generic","MinAPIVersion":"1.12","Os":"linux"&#125;&#125;],"Version":"18.09.2","ApiVersion":"1.39","MinAPIVersion":"1.12","GitCommit":"6247962","GoVersion":"go1.10.6","Os":"linux","Arch":"amd64","KernelVersion":"4.15.0-45-generic","BuildTime":"2019-02-10T03:42:13.000000000+00:00"&#125;</span><br></pre></td></tr></table></figure>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -375,7 +372,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        68
+                        69
                     </p>
                 </div>
             </div>
@@ -510,6 +507,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -584,25 +600,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -614,6 +611,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1197,6 +1205,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -1271,25 +1298,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1301,6 +1309,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1988,7 +2007,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

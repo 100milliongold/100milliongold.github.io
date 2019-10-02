@@ -178,13 +178,6 @@
     </url>
 
     <url>
-        <loc>https://100milliongold.github.io/tags/fron-end/</loc>
-        <lastmod>2019-07-19T00:57:07.672Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://100milliongold.github.io/tags/influxDB/</loc>
         <lastmod>2019-07-19T00:57:07.672Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -193,6 +186,13 @@
 
     <url>
         <loc>https://100milliongold.github.io/tags/revealjs/</loc>
+        <lastmod>2019-07-19T00:57:07.672Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://100milliongold.github.io/tags/fron-end/</loc>
         <lastmod>2019-07-19T00:57:07.672Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

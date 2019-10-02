@@ -152,6 +152,55 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-08T11:52:27.000Z">2019-07-08</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1분 읽기 (나에 대하여 205 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/08/mp4-gif-로-파일변환/">mp4 -&gt; gif 로 파일변환</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h2><p>markdown 으로 문서작성간에 실제 사용하는 장면을 추가하고 싶지만 동영상 파일자체의 용량도 크고 마크다운에서는 이미지만 첨부가능 하여 방법을 찾다가. gif 로 변환하여 첨부하기로 했다.</p>
+<h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S ffmpeg</span><br></pre></td></tr></table></figure>
+<h2 id="mp4-gt-gif"><a href="#mp4-gt-gif" class="headerlink" title="mp4 -&gt; gif"></a>mp4 -&gt; gif</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i Screencast\ 2019-07-07\ 16:27:53.mp4 Screencast\ 2019-07-07\ 16:27:53.gif</span><br></pre></td></tr></table></figure>
+<p>이렇게 변환을 했더니 용량이 50메가 넘게 나와서 업로드가 안되었다. 프레임을 낮추어서 변환을 진행했다.</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i Screencast\ 2019-07-07\ 16:27:53.mp4 -r 5 Screencast\ 2019-07-07\ 16:27:53.gif</span><br></pre></td></tr></table></figure>
+<p>-r 5 옵션은 5프레임으로 설정한다는 뜻이다. <br><br><br>변환후에 용량을 확인해보니 20메가 이하로 줄었다.</p>
+<ul>
+<li>확인해보니 샤나인코더도 ffmpeg 기반이라고 한다. <a href="https://namu.wiki/w/FFmpeg" target="_blank" rel="noopener">https://namu.wiki/w/FFmpeg</a></li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-07-08T11:42:25.000Z">2019-07-08</time>
                 
                 
@@ -220,64 +269,6 @@
 <h2 id="조치"><a href="#조치" class="headerlink" title="조치"></a>조치</h2><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> sudo pacman -S npm --overwrite /usr/lib/node_modules/npm/node_modules/query-string/index.d.ts</span></span><br></pre></td></tr></table></figure>
 <p>명령어로 해결</p>
 <p>pacman 설치시 중복된 파일이 있을경우 –overwrite /filepath 을 사용하자</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-08T06:13:22.000Z">2019-06-08</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1분 읽기 (나에 대하여 175 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/08/manjaro-에서-pacman-이용시-pgp-에러-발생시/">manjaro 에서 pacman 이용시 pgp 에러 발생시</a>
-            
-        </h1>
-        <div class="content">
-            <ul>
-<li><p>pacman -Syyu 입력시 다음 에러가 발생할경우</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pacman -Syyu</span><br><span class="line">error: fzf: signature from &quot;Ambrevar &lt;ambrevar@gmail.com&gt;&quot; is unknown trust :: File /var/cache/pacman/pkg/fzf-0.17.0.2-1-x86_64.pkg.tar.xz is corrupted (invalid or corrupted package (PGP signature)).</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>다음 명령어로 해결한다.</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --refresh-keys</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>다음 에러가 추가 발생시</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -Syu</span><br><span class="line">error: GPGME error: No data</span><br><span class="line">error: GPGME error: No data</span><br><span class="line">error: GPGME error: No data</span><br><span class="line">error: GPGME error: No data</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>다음 명령어를 입력한다.</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sy archlinux-keyring manjaro-keyring</span><br><span class="line">sudo pacman-key --populate archlinux manjaro</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>다음에 다시한번 확인한다.</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>원인은 자세하게 확인해봐야 하겠지만 업데이트 서버에 있는 서명과 내노트북에 있는 서명값이 달라서 생긴것 같다.</p>
 
         </div>
         
@@ -365,7 +356,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-normal">
-                        68
+                        69
                     </p>
                 </div>
             </div>
@@ -500,6 +491,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -574,25 +584,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -604,6 +595,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1187,6 +1189,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo -&gt; notion 으로 데이터 이전중 입니다.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T01:27:59.000Z">2019-10-02</time></div>
+                    <a href="/2019/10/02/hexo-notion-으로-데이터-이전중-입니다/" class="has-link-black-ter is-size-6">hexo -&gt; notion 으로 데이터 이전중 입니다.</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/Arrow-Function-ES6-과-Function-의-차이/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Arrow Function (ES6) 과 Normal Function 의 차이">
@@ -1261,25 +1282,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T16:26:29.000Z">2019-08-02</time></div>
-                    <a href="/2019/08/02/npm-WARN-typescript-eslint-eslint-plugin-1-6-0-requires-경고발생/" class="has-link-black-ter is-size-6">npm WARN @typescript-eslint/eslint-plugin@1.6.0 requires .... 경고발생</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1291,6 +1293,17 @@
             아카이브
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1978,7 +1991,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
