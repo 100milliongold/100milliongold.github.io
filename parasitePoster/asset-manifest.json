@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d1b05096.chunk.css",
+    "main.js": "/static/js/main.a7ca82eb.chunk.js",
+    "main.js.map": "/static/js/main.a7ca82eb.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4664e0ed.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4664e0ed.js.map",
+    "static/js/2.917ad5a8.chunk.js": "/static/js/2.917ad5a8.chunk.js",
+    "static/js/2.917ad5a8.chunk.js.map": "/static/js/2.917ad5a8.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.afe992bf3b2917e87bacd428bb443b65.js": "/precache-manifest.afe992bf3b2917e87bacd428bb443b65.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.917ad5a8.chunk.js.LICENSE.txt": "/static/js/2.917ad5a8.chunk.js.LICENSE.txt",
+    "static/media/parasite.logo.png": "/static/media/parasite.logo.c88fbf2d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4664e0ed.js",
+    "static/js/2.917ad5a8.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.a7ca82eb.chunk.js"
+  ]
+}
