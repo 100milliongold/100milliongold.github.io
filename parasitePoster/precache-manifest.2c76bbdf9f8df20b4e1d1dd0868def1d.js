@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "399f65d2121d7ed2e83c903d0bcdcb3a",
+    "revision": "9ace4cb50d3716231797346eff71e0a6",
     "url": "/parasitePoster/index.html"
   },
   {
-    "revision": "6f0507bc7002482904f3",
-    "url": "/parasitePoster/static/css/main.d1b05096.chunk.css"
+    "revision": "6c2cf2c001faf0d6daa8",
+    "url": "/parasitePoster/static/css/main.0a054dd3.chunk.css"
   },
   {
     "revision": "3d40af6cd407db6e72b0",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/parasitePoster/static/js/2.917ad5a8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6f0507bc7002482904f3",
-    "url": "/parasitePoster/static/js/main.0f922090.chunk.js"
+    "revision": "6c2cf2c001faf0d6daa8",
+    "url": "/parasitePoster/static/js/main.8e87c5cc.chunk.js"
   },
   {
     "revision": "8e8fe28466a317d09856",
