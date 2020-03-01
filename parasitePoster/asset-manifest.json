@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/parasitePoster/static/css/main.0a054dd3.chunk.css",
-    "main.js": "/parasitePoster/static/js/main.8e87c5cc.chunk.js",
-    "main.js.map": "/parasitePoster/static/js/main.8e87c5cc.chunk.js.map",
+    "main.js": "/parasitePoster/static/js/main.f29e767f.chunk.js",
+    "main.js.map": "/parasitePoster/static/js/main.f29e767f.chunk.js.map",
     "runtime-main.js": "/parasitePoster/static/js/runtime-main.b3b68288.js",
     "runtime-main.js.map": "/parasitePoster/static/js/runtime-main.b3b68288.js.map",
     "static/js/2.917ad5a8.chunk.js": "/parasitePoster/static/js/2.917ad5a8.chunk.js",
     "static/js/2.917ad5a8.chunk.js.map": "/parasitePoster/static/js/2.917ad5a8.chunk.js.map",
     "index.html": "/parasitePoster/index.html",
-    "precache-manifest.2c76bbdf9f8df20b4e1d1dd0868def1d.js": "/parasitePoster/precache-manifest.2c76bbdf9f8df20b4e1d1dd0868def1d.js",
+    "precache-manifest.118d1a5531e081f166f632e9d9f12bf7.js": "/parasitePoster/precache-manifest.118d1a5531e081f166f632e9d9f12bf7.js",
     "service-worker.js": "/parasitePoster/service-worker.js",
     "static/css/main.0a054dd3.chunk.css.map": "/parasitePoster/static/css/main.0a054dd3.chunk.css.map",
     "static/js/2.917ad5a8.chunk.js.LICENSE.txt": "/parasitePoster/static/js/2.917ad5a8.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.b3b68288.js",
     "static/js/2.917ad5a8.chunk.js",
     "static/css/main.0a054dd3.chunk.css",
-    "static/js/main.8e87c5cc.chunk.js"
+    "static/js/main.f29e767f.chunk.js"
   ]
 }
