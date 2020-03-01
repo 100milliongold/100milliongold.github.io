@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2d6f0cff59d1d15297c19e39438c7fee",
+    "revision": "2e68ee103b2b01a571019946ad18568d",
     "url": "/bingoGame/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bingoGame/static/css/2.0f3d6610.chunk.css"
   },
   {
-    "revision": "ea9d3636fe4281ee2e7f",
+    "revision": "546a749c078b4f804ec5",
     "url": "/bingoGame/static/css/main.d14964b3.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bingoGame/static/js/2.9ddd60b9.chunk.js"
   },
   {
-    "revision": "ea9d3636fe4281ee2e7f",
-    "url": "/bingoGame/static/js/main.5d390c57.chunk.js"
+    "revision": "546a749c078b4f804ec5",
+    "url": "/bingoGame/static/js/main.d6f606d4.chunk.js"
   },
   {
     "revision": "d4867be9c2d97eaeea59",
