@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/parasitePoster/precache-manifest.118d1a5531e081f166f632e9d9f12bf7.js"
+  "/parasitePoster/precache-manifest.02ea85cc82e13be12e7bfa8c1d1c2560.js"
 );
 
 self.addEventListener('message', (event) => {
