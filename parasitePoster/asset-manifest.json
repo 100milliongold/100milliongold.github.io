@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/parasitePoster/static/css/main.0a054dd3.chunk.css",
-    "main.js": "/parasitePoster/static/js/main.f29e767f.chunk.js",
-    "main.js.map": "/parasitePoster/static/js/main.f29e767f.chunk.js.map",
+    "main.js": "/parasitePoster/static/js/main.82bf413d.chunk.js",
+    "main.js.map": "/parasitePoster/static/js/main.82bf413d.chunk.js.map",
     "runtime-main.js": "/parasitePoster/static/js/runtime-main.b3b68288.js",
     "runtime-main.js.map": "/parasitePoster/static/js/runtime-main.b3b68288.js.map",
-    "static/js/2.917ad5a8.chunk.js": "/parasitePoster/static/js/2.917ad5a8.chunk.js",
-    "static/js/2.917ad5a8.chunk.js.map": "/parasitePoster/static/js/2.917ad5a8.chunk.js.map",
+    "static/js/2.2dcc7cd2.chunk.js": "/parasitePoster/static/js/2.2dcc7cd2.chunk.js",
+    "static/js/2.2dcc7cd2.chunk.js.map": "/parasitePoster/static/js/2.2dcc7cd2.chunk.js.map",
     "index.html": "/parasitePoster/index.html",
-    "precache-manifest.02ea85cc82e13be12e7bfa8c1d1c2560.js": "/parasitePoster/precache-manifest.02ea85cc82e13be12e7bfa8c1d1c2560.js",
+    "precache-manifest.1bd463c4a6cc68e556ddf94e51054fcf.js": "/parasitePoster/precache-manifest.1bd463c4a6cc68e556ddf94e51054fcf.js",
     "service-worker.js": "/parasitePoster/service-worker.js",
     "static/css/main.0a054dd3.chunk.css.map": "/parasitePoster/static/css/main.0a054dd3.chunk.css.map",
-    "static/js/2.917ad5a8.chunk.js.LICENSE.txt": "/parasitePoster/static/js/2.917ad5a8.chunk.js.LICENSE.txt",
+    "static/js/2.2dcc7cd2.chunk.js.LICENSE.txt": "/parasitePoster/static/js/2.2dcc7cd2.chunk.js.LICENSE.txt",
     "static/media/parasite.logo.png": "/parasitePoster/static/media/parasite.logo.c88fbf2d.png"
   },
   "entrypoints": [
     "static/js/runtime-main.b3b68288.js",
-    "static/js/2.917ad5a8.chunk.js",
+    "static/js/2.2dcc7cd2.chunk.js",
     "static/css/main.0a054dd3.chunk.css",
-    "static/js/main.f29e767f.chunk.js"
+    "static/js/main.82bf413d.chunk.js"
   ]
 }
